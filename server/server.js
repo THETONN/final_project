@@ -322,6 +322,21 @@ app.post('/qa', (req, res) => {
     });
 });
 
+// Post data from answer users questionnaire
+app.post('/insert-answers', (req, res) => {
+    const answers = req.body.answers;
+    answers.forEach(answer => {
+        // สมมติว่า db คือ instance ของ MySQL connection
+        db.query('INSERT INTO user_answers (id_user, id_question, id_choice, id_group) VALUES (?, ?, ?, ?)', 
+        [answer.id_user, answer.id_question, answer.id_choice, answer.id_group], 
+        (error, results, fields) => {
+            if (error) throw error;
+            // การจัดการข้อมูลที่เพิ่มเข้าไป
+        });
+    });
+    res.send('Answers inserted');
+});
+
 
 
 // ========================================================================================================
