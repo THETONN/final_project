@@ -57,49 +57,43 @@ const QuizMain = () => {
     return localStorage.getItem("userId"); // 'userId' คือ key ที่คุณเก็บ id_user
   };
   const submitAnswers = async () => {
-    // console.log('id:',getUserIdFromStorage());
-    // console.log('id:',getUserIdFromStorage());
-
     try {
-      const id_user = getUserIdFromStorage(); // ต้องมีฟังก์ชันนี้
-      console.log("User ID:", id_user); // แสดง ID ผู้ใช้
-
-      const answersPayload = { userAnswers, id_user };
-      console.log("Answers Payload:", answersPayload);
-      // แสดงคำถามและคำตอบ
-    //   questions.forEach((question, index) => {
-    //     // Assuming that userAnswers[index] directly contains the answer string
-    //     const answer = userAnswers[index]; // This is the answer string like 'Red' or 'Swimming'
-    //     console.log(`Question: ${question.question}, Answer: ${answer}`);
-    // });
-
-      const predictionResponse = await axios.post(
-        "http://localhost:3001/predict",
-        answersPayload
-      );
-      const id_group = predictionResponse.data.id_group;
-
-      // สร้างอาร์เรย์ของข้อมูลคำตอบ
-      const userAnswersData = Object.keys(userAnswers).map((questionIndex) => {
-        return {
-          id_user: id_user,
-          id_question: parseInt(questionIndex) + 1, // สมมติว่า id_question คือ index + 1 ของคำถาม
-          id_choice: userAnswers[questionIndex], // สมมติว่า id_choice คือคำตอบที่ผู้ใช้เลือก
-          id_group: id_group,
-        };
+      const id_user = getUserIdFromStorage();
+      console.log("User ID:", id_user);
+  
+      // สร้างอาร์เรย์ของคำตอบจาก userAnswers object ที่เรามี
+      const answersArray = Object.values(userAnswers);
+  
+      // ส่งคำตอบไปยัง backend
+      const predictionResponse = await axios.post("http://localhost:8081/predict", {
+        answers: answersArray, // ส่งคำตอบในรูปแบบอาร์เรย์
+        id_user: id_user,
       });
-      console.log('User Answers Data to be sent:', userAnswersData);
-
-      // ส่งข้อมูลไปยัง API ที่จะทำการ insert
+      const id_group = predictionResponse.data.id_group; // ตัวแปรนี้ควรมีค่ากลุ่มที่ได้จากการทำนาย
+  
+      // ส่งข้อมูลคำตอบไปยัง database
+      const userAnswersData = answersArray.map((answer, index) => ({
+        id_user: id_user,
+        id_question: index + 1, // หรือใช้การที่เหมาะสมกับการกำหนด id_question ของคุณ
+        id_choice: answer, // สมมติว่า answer คือ id_choice ที่เก็บไว้ใน database
+        id_group: id_group,
+      }));
+  
       await axios.post("http://localhost:8081/insert-answers", userAnswersData);
-
-      // นำทางไปยังหน้าตามกลุ่มของผู้ใช้
-      if (id_group === 1) {
-        navigate("/HomePredict");
-      } else if (id_group === 2) {
-        navigate("/HomePredict2");
-      } else {
-        navigate("/HomePredict3");
+  
+      // นำทางไปยังหน้าตามกลุ่มที่ได้รับจากการทำนาย
+      switch (id_group) {
+        case 1:
+          navigate("/HomePredict");
+          break;
+        case 2:
+          navigate("/HomePredict2");
+          break;
+        case 3:
+          navigate("/HomePredict3");
+          break;
+        default:
+          navigate("/"); // หน้าหลักหรือหน้าเริ่มต้นเมื่อไม่ตรงกับกลุ่มใดๆ
       }
     } catch (error) {
       console.error("Error during submission:", error);

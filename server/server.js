@@ -8,6 +8,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET; // ใช้ secret key ที่เก็บใน environment variable
+const { spawn } = require('child_process');
 
 
 // Database connection
@@ -49,6 +50,34 @@ app.use(express.urlencoded({ extended: true}));
 
 // Create hashed password
 const salt =10;
+
+const loadModel = () => {
+    return spawn('python', ['load_model.py']);
+  };
+
+// Endpoint to handle the prediction
+app.post('/predict', (req, res) => {
+    // Assuming req.body is in the correct format for your model
+    const modelInput = req.body.answers; // or any other preprocessing you need
+
+    const pythonProcess = loadModel();
+
+    pythonProcess.stdout.once('data', (data) => {
+      // When the model is loaded, send the data for prediction
+      pythonProcess.stdin.write(JSON.stringify(modelInput));
+      pythonProcess.stdin.end();
+    });
+
+    pythonProcess.stdout.on('data', (data) => {
+      // Send back the prediction result to the client
+      res.send(data.toString());
+    });
+
+    pythonProcess.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`);
+      res.status(500).send(data.toString());
+    });
+});
 
 // Pages
 // Register and Login
