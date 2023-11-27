@@ -51,9 +51,20 @@ app.use(express.urlencoded({ extended: true}));
 // Create hashed password
 const salt =10;
 
+
+console.log('Current directory:', process.cwd());
+
 const loadModel = () => {
-    return spawn('python', ['load_model.py']);
+    // If the model.py is in the same directory as server.js, no need to navigate up a directory.
+    return spawn('python3', [__dirname +'/model.py']);
   };
+  
+  // In the '/predict' endpoint handler
+  const pythonProcess = loadModel();
+  
+  pythonProcess.on('error', (error) => {
+    console.error('Error spawning Python process:', error);
+  });
 
 // Endpoint to handle the prediction
 app.post('/predict', (req, res) => {
