@@ -472,7 +472,7 @@ app.get('/feed', (req, res) => {
                 JOIN 
                     users u ON ur.id_users = u.id
                 JOIN 
-                    feedback_question fq ON ur.id_question = fq.id_feedback
+                    feedback_question fq ON ur.id_feedback = fq.id_feedback
                 JOIN 
                     mgroup g ON ur.id_group = g.id_group
                 ORDER BY 
