@@ -1,0 +1,42 @@
+/* body {
+    background-image: url('../public/images/BGnature.jpg');
+    background-color: #892CDC;
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    margin: 0;
+    padding: 0;
+  } */
+
+.quizCss {
+  display: flex;
+  justify-content: center;
+  /* จัดข้อมูลตรงกลางแนวนอน */
+  align-items: center;
+  /* จัดข้อมูลตรงกลางแนวตั้ง */
+  height: 100vh;
+  /* ความสูงของ .App ให้เท่ากับความสูงของหน้าจอ */
+  background-image: url('../public/images/backQuiz.jpg');
+  /* URL ของรูปภาพ PNG ที่คุณต้องการใช้เป็นพื้นหลัง */
+  background-color: #892CDC;
+  background-size: cover;
+  /* ปรับขนาดรูปภาพให้เต็มขนาดหน้าจอ */
+  background-repeat: no-repeat;
+  /* ไม่ให้รูปภาพทำซ้ำ */
+  background-attachment: fixed;
+  /* ให้รูปภาพปรากฏคงที่ในกรณีสกรอลล์ */
+  margin: 0;
+  padding: 0;
+}
+
+.Content {
+  display: table;
+  max-width: auto;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  /* เพิ่มเงาด้านหลัง */
+}

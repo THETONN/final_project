@@ -1,0 +1,28 @@
+/* body {
+    background-size: cover ;
+    background-image: url(../../imgs/RiverMoon.jpg);
+    background-repeat: no-repeat; 
+  } */
+
+  
+.singup {
+    color: #FFFFFF;
+    background-color: #FFA500;
+    border-color: #E49400
+}
+.singup:hover {
+    color: #FFFFFF;
+    background-color: #E49400;
+    border-color: #FFA500;
+}
+.login{
+    color: #FFFFFF;
+    background-color: #892CDC;
+    border-color: #892CDC
+}
+.login:hover {
+    color: #FFFFFF;
+    background-color: #6F1EB8;
+    border-color: #892CDC
+}
+

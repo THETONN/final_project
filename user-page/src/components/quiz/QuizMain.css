@@ -1,0 +1,355 @@
+.Question {
+    margin-bottom: 20px;
+}
+
+.AnswerOption {
+    margin-bottom: 10px;
+}
+
+.NextButton {
+    background-color: #892CDC;
+    color: #fff;
+    padding: 10px 30px;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.BackButton {
+    background-color: #d40000;
+    color: #fff;
+    padding: 10px 30px;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.NextButton:hover {
+    background-color: #a15ddc;
+
+}
+
+.BackButton:hover {
+    background-color: #d24b4b;
+}
+
+.NextButton[disabled],
+.BackButton[disabled] {
+    display: none;
+}
+
+.finalPage {
+    text-align: center;
+}
+
+.finalPage h1 {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #000000;
+    text-transform: none;
+    text-shadow: none;
+}
+
+/* Default styles */
+.Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+/* Styles for screens with a maximum width of 768px (e.g., tablets) */
+@media (max-width: 768px) {
+    .Content {
+        padding: 10px;
+        margin: 1rem;
+    }
+}
+
+/* Styles for screens with a maximum width of 480px (e.g., smartphones) */
+@media (max-width: 480px) {
+    .Content {
+        padding: 5px;
+    }
+
+    .progressbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .progress-container {
+        flex-direction: column;
+    }
+
+    .progress-bar {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .QandA {
+        /* ปรับขนาดกรอบคำถาม */
+        padding: 10px;
+    }
+
+    .finalPage {
+        /* ปรับขนาดกรอบหน้าสุดท้าย */
+        padding: 10px;
+    }
+
+}
+
+/* Styles for screens with a maximum width of 380px */
+@media (max-width: 380px) {
+    .Content {
+        padding: 5px;
+        max-width: 380px;
+        /* กำหนดความกว้างสูงสุด */
+    }
+
+    .progressbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .progress-container {
+        flex-direction: column;
+    }
+
+    .progress-bar {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .QandA {
+        /* ปรับขนาดกรอบคำถาม */
+        padding: 10px;
+    }
+
+    .finalPage {
+        /* ปรับขนาดกรอบหน้าสุดท้าย */
+        padding: 10px;
+    }
+
+    /* ปรับขนาดข้อความหรือสไตล์อื่น ๆ ตามที่คุณต้องการ */
+}
+
+
+/*============ Progress Bar ===============*/
+
+.container {
+    width: auto;
+}
+
+.task-progress-header {
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    padding: 15px;
+    margin-left: 20px;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+}
+
+.progressbar li img {
+    width: 15px;
+}
+
+.progressbar {
+    counter-reset: step;
+}
+
+/* Adjusted Progress Bar for Smaller Questions */
+.progressbar li {
+    list-style-type: none;
+    padding: 1rem;
+    width: 10%;
+    /* ปรับความกว้างของแต่ละขั้นของ Progress Bar */
+    float: left;
+    font-size: 12px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: #7d7d7d7e;
+    font-size: 11px;
+
+}
+
+
+
+
+
+.progressbar li:before {
+    width: 20px;
+    height: 20px;
+    content: counter(step);
+    counter-increment: step;
+    line-height: 20px;
+    border: 2px solid #7d7d7d7e;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
+    font-size: 10px;
+}
+
+.progressbar li:after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #7d7d7d;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressbar li:first-child:after {
+    content: none;
+}
+
+.progressbar li.active {
+    color: #770dd3;
+}
+
+.progressbar li.active:before {
+    border-color: #770dd3;
+}
+
+.progressbar li.active+li:after {
+    background-color: #892CDC;
+}
+
+/* Progress Bar Styles */
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 10px;
+    background-color: #ccc;
+    position: relative;
+}
+
+.progress-indicator {
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background-color: #55b776;
+    /* สีแถบหลอดเส้นที่คุณต้องการ */
+    transition: width 0.3s ease-in-out;
+}
+
+/* Adjusted Progress Bar for small screens */
+@media (max-width: 480px) {
+    .progress-container {
+        flex-direction: column;
+    }
+
+    .progress-bar {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+
+/* กรอบคำถาม */
+.QandA {
+    margin-bottom: 20px;
+    border: 2px solid #892CDC;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 100%;
+    /* width: 35rem; */
+}
+
+.finalPage {
+    margin-bottom: 20px;
+    border: 2px solid #892CDC;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 100%;
+}
+
+.SubmitButton {
+    background-color: #892CDC;
+    /* เปลี่ยนสีเป็นสีม่วงเข้ม */
+    color: #fff;
+    padding: 10px 30px;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.SubmitButton:hover {
+    background-color: #a15ddc;
+    /* เปลี่ยนสีเมื่อ hover */
+}
+
+/* Adjusted Progress Bar for Horizontal Layout with Left Margin */
+.progressbar {
+    counter-reset: step;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin-right: 2rem;
+    /* เพิ่มความห่างด้านซ้าย */
+}
+
+.progressbar li {
+    width: 100vh;
+    /* ใช้ความสูงของหน้าจอเป็นความห่าง */
+    float: left;
+    font-size: 12px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: #7d7d7d7e;
+    font-size: 11px;
+}
+
+.progressbar li:before {
+    width: 20px;
+    height: 20px;
+    content: counter(step);
+    counter-increment: step;
+    line-height: 20px;
+    border: 2px solid #7d7d7d7e;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
+    font-size: 10px;
+}
+
+.progressbar li:after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #7d7d7d;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressbar li:first-child:after {
+    content: none;
+}

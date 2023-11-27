@@ -1,0 +1,104 @@
+.contact-container {
+  text-align: center;
+  /* จัดข้อความตรงกลาง */
+  margin-top: 50px;
+  /* ระยะห่างด้านบน */
+  padding: 20px;
+  /* ขอบข้าง */
+  border-radius: 10px;
+  /* ขอบโครงรูป */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  /* เงา */
+}
+
+/* สไตล์สำหรับ h4 (หัวข้อ) */
+.contact-container h4 {
+  color: #ffffff;
+  /* สีข้อความ */
+  font-size: 24px;
+  /* ขนาดตัวอักษร */
+  margin-bottom: 10px;
+  /* ระยะห่างด้านล่าง */
+}
+
+.allContact {
+  padding-bottom: 5rem;
+}
+
+.bgContact {
+  background-color: #6750A3;
+  padding: 3rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 20px;
+}
+
+/* .allCon{
+    background-color: rgb(191, 191, 191);
+    color: black;
+    
+} */
+
+.px-5 {
+  padding-right: 0rem !important;
+  padding-left: 3rem !important;
+}
+
+@media (max-width: 767px) {
+  .bgContact {
+    margin-bottom: 1rem;
+  }
+
+  .px-5 {
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
+  }
+}
+
+
+@media (max-width: 350px) {
+  .bgContact {
+    margin-bottom: 1rem;
+    margin-left: 20rem;
+  }
+
+}
+
+
+/* CSS สำหรับหน้าจอขนาดเล็ก (โทรศัพท์มือถือ) */
+@media (max-width: 767px) {
+  .contact-container {
+    margin-top: 20px;
+    /* ยกเลิกค่า margin-top ในหน้าจอขนาดเล็ก */
+  }
+
+  .bgContact {
+    width: 100%;
+    /* ทำให้ขนาดเต็มหน้าจอ */
+    height: auto;
+    /* ปรับขนาดสูงตามเนื้อหา */
+  }
+
+  .px-5 {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
+    /* ปรับการระยะห่างของข้อความ */
+  }
+}
+
+/* CSS สำหรับหน้าจอขนาดแคบ (เช่น โทรศัพท์มือถือแนวนอน) */
+@media (max-width: 350px) {
+  .bgContact {
+    margin-left: 0;
+    /* ยกเลิกการกำหนด margin-left ในขนาดหน้าจอขนาดเล็ก */
+  }
+}
+
+/* CSS เพิ่มเติมสำหรับแก้ไขปัญหาข้อความที่หลุดออกจากกรอบ */
+@media (max-width: 767px) {
+  .infoAll p {
+    word-wrap: break-word; /* ใช้การตัดคำแต่งการคำที่ยาวเกินกรอบ */
+    overflow-wrap: break-word;
+    white-space: normal; /* ใช้การเว้นวรรคปกติ */
+  }
+}

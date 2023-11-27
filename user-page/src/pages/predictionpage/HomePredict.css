@@ -1,0 +1,324 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: serif;
+  } */
+
+
+/* MainTopHomepage */
+.bgAfter2 {
+  width: 100%;
+  height: 50rem;
+}
+
+.mainTopHome2 {
+  /* background-color: black; */
+  background-image: url('../public/images/bgAfter.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 42rem;
+  padding-top: 15rem;
+  padding-bottom: 11rem;
+}
+
+.mainTopHome3 {
+  /* background-color: black; */
+  background-image: url('../public/images/bgAfter.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding-top: 11rem;
+  padding-bottom: 11rem;
+
+}
+
+.ContainMain2 {
+  display: grid;
+  grid-template-columns: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.mainTopHome2 h1 {
+  color: white;
+  font-size: 60px;
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+.mainTopHome2 h4 {
+  margin-bottom: 0;
+  color: white;
+  text-align: center;
+}
+
+/* TopVacation */
+.topVacation2 {
+  padding-top: 2rem;
+  background-color: black;
+}
+
+.topVacation2 h1 {
+  padding-top: 2rem;
+  background-color: black;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.HeadPredict2 {
+  background-color: black;
+  color: white;
+}
+
+.HeadPredict2 h1 {
+  margin-bottom: 4rem;
+}
+
+.haveBTN2 {
+  background-image: url('../public/images/BGhaveBTN.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: auto;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  margin-bottom: -1rem;
+}
+
+.TopicEachHome2 {
+  color: #000000;
+  padding-bottom: 1rem;
+  text-align: center;
+  justify-content: center;
+  color: white;
+}
+
+.DetailEachHome2 {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.btnGoQs2 {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+#coverAllofBTN2 {
+  background-color: rgb(0, 0, 0);
+  padding: 5rem 5rem 5rem 5rem;
+  border-radius: 2rem;
+  text-align: center;
+  border: 2px solid #BC6FF1;
+}
+
+hr.style52 {
+  background-color: #BC6FF1;
+  border-top: 5px dashed #000000;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .mainTopHome2 h1 {
+    font-size: 2rem;
+  }
+
+  .mainTopHome2 h3 {
+    font-size: 1.5rem;
+  }
+
+  .mainTopHome2 h4 {
+    font-size: 1rem;
+  }
+
+  .topVacation2 h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .HeadPredict2 h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .topVacation2 .row {
+    flex-wrap: wrap;
+  }
+
+  .topVacation2 .col-sm {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .ContainMain2 {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+
+  .ContainMain2 h1 {
+    font-size: 25px;
+  }
+
+  .ContainMain2 h4 {
+    font-size: 15px;
+  }
+  
+  .ContainMain3 {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+
+  .ContainMain3 h1 {
+    font-size: 25px;
+  }
+
+  .ContainMain3 h4 {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  #sectionAbout2 .aboutContent,
+  #sectionContact2 .footerContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (min-width: 660px) {
+  .Flip2 {
+    margin-bottom: 1rem;
+  }
+
+  .DetailPredictTour2 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  .Flip2 {
+    margin-bottom: 1rem;
+  }
+
+  .DetailPredictTour2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .text-center2 {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .mainTopHome2 h1 {
+    font-size: 1.8rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .mainTopHome2 h3 {
+    font-size: 1.5rem;
+  }
+
+  .mainTopHome2 h4 {
+    font-size: 1rem;
+  }
+
+  #sectionAbout2 h1 {
+    font-size: 1.3rem;
+    text-align: center;
+    padding-top: 1rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .topVacation2 .row {
+    flex-wrap: wrap;
+  }
+
+  .topVacation2 .col-sm {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .FC2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  #sectionAbout2 .aboutContent,
+  #sectionContact2 .footerContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mainTopHome2 {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+  }
+
+  .haveBTN2 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    margin-bottom: -10px;
+  }
+
+  .TopicEachHome2 {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .DetailEachHome2 {
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btnGoQs2 {
+    height: 3rem;
+  }
+
+  .btnGoQs2 h4 {
+    font-size: 1rem;
+  }
+
+  #coverAllofBTN2 {
+    background-color: black;
+    padding: 2rem;
+    border-radius: 5%;
+  }
+}
+
+@media (max-width: 767px) {
+  .row2 [class^="col-"] {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .btnGoQs2 {
+    height: 3rem;
+  }
+
+  .btnGoQs2 h4 {
+    font-size: 0.7rem;
+  }
+}

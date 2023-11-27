@@ -1,0 +1,135 @@
+.logoPredictTour3 img {
+    max-width: 100%;
+}
+
+.DetailPredictTour {
+    font-size: 1.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.TopicEach {
+    color: #9F7CFC;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.DetailEach {
+    font-size: large;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    /* Align the text to the left */
+}
+
+.btnEach {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+
+@media (min-width: 760px) {
+    .a22 {
+        width: 100%;
+        padding-right: 5rem;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .btnEach {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 576px) {
+    .DetailPredictTour {
+        font-size: 1.2rem;
+    }
+
+    .btnEach {
+        margin-bottom: 1rem;
+    }
+
+}
+
+@media (min-width: 767px) {
+    .logoPredictTour3 img {
+        max-width: 70%;
+    }
+
+    .DetailPredictTour {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .TopicEach {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .DetailEach {
+        font-size: 1rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+}
+
+.detailsModal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.modalContent {
+    background-color: #fff;
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+}
+
+.modalContent button {
+    cursor: pointer;
+    background-color: #e01111;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    border-radius: 30px;
+}
+
+.modalContentDetail {
+    padding: 1rem;
+    max-height: 450px; /* ตั้งค่าความสูงสูงสุดที่ต้องการให้ scroll ได้ */
+    overflow-y: auto; /* ให้แสดง scrollbar เมื่อเนื้อหามีมากเกินไป */
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+}

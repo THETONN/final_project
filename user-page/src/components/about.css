@@ -1,0 +1,252 @@
+.About {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.meanRocket{
+  background-color: rgba(0, 0, 0, 0.5); /* Darker background */
+  padding: 1rem;
+  border-radius: 18px;
+ }
+
+.class_img{
+  width: auto;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.a1 {
+  background: url("/public/images/Mountain.jpg");
+  background-size: cover;
+  height: 25rem;
+}
+
+.LogoName {
+  padding-top: 1rem;
+  color: white;
+  text-align: center;
+}
+
+
+.a2 {
+  background-color: black;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.a3 {
+  background-color: black;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.a4 {
+  background-color: black;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.a5 {
+  background-color: black;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.a2 img {
+  border-radius: 15px;
+}
+.a3 img {
+  border-radius: 15px;
+}
+.a4 img {
+  border-radius: 15px;
+}
+.a5 img {
+  border-radius: 15px;
+}
+
+
+/* .container{
+  border: 1px solid red;
+} */
+
+
+.DetailAbout {
+  padding-top: 3rem;
+  color: white;
+  text-align: center;
+  max-width: 60rem;
+  margin: auto;
+}
+
+.DetailGroup0 {
+  padding: 1rem;
+  font-size: 1.3rem;
+}
+
+/* .linkToHome {
+  color: #9F7CFC;
+  margin: 1rem;
+} */
+
+.linkToHome:hover {
+  color: #cab7ff;
+}
+
+.logoAbout2 img {
+  height: 100%;
+  max-width: 100%;
+}
+
+.logoAbout3 img {
+  height: 100%;
+  max-width: 100%;
+}
+
+.a3 {
+  /* background: url("/public/images/RiverMoon.jpg"); */
+  background-size: cover;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.a4 {
+  background-color: black;
+  background-size: cover;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.a5 {
+  /* background: url("/public/images/RiverMoon.jpg"); */
+  background-size: cover;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.DetailAbout {
+  padding-bottom: 3rem;
+}
+
+/* #coverAllDeail{
+  background-color: rgba(255, 255, 255, 0.174);
+  border-radius: 2rem;
+} */
+
+.NameWeb{
+  padding-bottom: 1rem;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .About {
+    padding: 0;
+  }
+
+  .a1 h3 {
+    font-size: 2rem;
+    padding-top: 5rem;
+  }
+
+  .DetailAbout {
+    max-width: none;
+  }
+
+  .logoAbout2 {
+    padding: 0;
+    max-width: 50%;
+  }
+
+  .logoAbout3 {
+    padding: 0;
+    max-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .logoAbout2,
+  .logoAbout3 {
+    display: none;
+  }
+
+  .LogoName h1 {
+    font-size: 1.5rem;
+    padding-bottom: 20px;
+  }
+
+  .LogoName {
+    font-size: 1.3rem;
+  }
+
+  .DetailAbout h1 {
+    font-size: 1.5rem;
+  }
+
+  .DetailAbout {
+    font-size: 1.3rem;
+  }
+
+  .linkToHome {
+    font-size: 1.1rem;
+  }
+
+  .DetailGroup0 {
+    font-size: 1.2rem;
+  }
+
+  .meanRocket{
+    font-size: 1.5rem;
+  }
+
+  .a2{
+    height: 40rem;
+  }
+
+}
+
+@media only screen and (max-width: 1200px) {
+  .DetailGroup0 {
+    font-size: 1.3rem;
+  }
+  .meanRocket{
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .DetailGroup0 {
+    font-size: 1rem;
+  }
+  .meanRocket{
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .a1 h4 {
+    font-size: 16px;
+    padding: 0;
+    }
+}

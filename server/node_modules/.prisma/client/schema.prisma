@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model users {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  name      String?
+  password  String
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model choice {
+  id_choice     Int   @id @default(autoincrement())
+  choice        String
+  id_question   Int
+}
+
+model feedback_question {
+  id_feedback_q           Int @id   @default(autoincrement())
+  question_feedback       String
+  question_rate           Int
+  id_recommen             Int
+}
+
+model mgroup {
+  id_group                Int   @id @default(autoincrement())
+  group_name              String
+  group_description       String
+  image                   String
+}
+
+model questionnaire {
+  id_question             Int   @id @default(autoincrement())
+  question_topic          String
+}
+
+model recommendation {
+  id_recommen             Int   @id @default(autoincrement())
+  id_group                Int
+  id_users                Int
+}
+
+model responses {
+  id_responses            Int   @id @default(autoincrement())
+  id_users                Int
+  id_choice               Int
+}
+
+model trip {
+  id_trip                 Int   @id @default(autoincrement())
+  trip_name               String
+  trip_description        String
+  id_group                Int
+}

@@ -1,0 +1,212 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: serif;
+}
+
+
+
+/* MainTopHomepage */
+.BGhome {
+  width: 100%;
+  height: 50rem;
+}
+
+.mainTopHome {
+  background-image: url('../public/images/BGhome.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: auto;
+  margin-top: 3rem;
+}
+
+.ContainMain {
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+
+.mainTopHome h1 {
+  padding: 3rem;
+  color: white;
+  font-size: 50px;
+  text-align: center;
+}
+
+.mainTopHome h3 {
+  display: grid;
+  padding-bottom: 0.1rem;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+}
+
+.mainTopHome h4 {
+  padding-bottom: 4rem;
+  margin-bottom: 0;
+  color: white;
+  text-align: center;
+}
+
+/* TopVacation */
+.topVacation {
+  padding-top: 2rem;
+  background-color: black;
+}
+
+.topVacation h1 {
+  padding-top: 2rem;
+  background-color: black;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .ContainMain {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+
+  .mainTopHome h1 {
+    font-size: 1.3rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .mainTopHome h3 {
+    font-size: 1.5rem;
+
+  }
+
+  .mainTopHome h4 {
+    font-size: 1rem;
+  }
+
+  .topVacation h1 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+  .topVacation .row {
+    flex-wrap: wrap;
+  }
+
+  .topVacation .col-sm {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .BTN {
+    margin-top: -2rem;
+  }
+
+  .FC {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  #sectionAbout .aboutContent,
+  #sectionContact .footerContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .row [class^="col-"] {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .mainTopHome {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
+
+/* ...Existing CSS rules... */
+
+@media only screen and (max-width: 749px) {
+  .mainTopHome {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .topVacation>div {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1080px) {
+  .mainTopHome {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .topVacation>div {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .mainTopHome {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .topVacation>div {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .mainTopHome {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+
+  .topVacation>div {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .ContainMain h1 {
+    font-size: 35px;
+  }
+
+  .ContainMain h3 {
+    font-size: 25px;
+  }
+
+  .ContainMain h4 {
+    font-size: 16px;
+    padding-top: 0rem;
+
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .ContainMain h1 {
+     font-size: 25px;
+  }
+
+}

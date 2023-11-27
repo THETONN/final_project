@@ -1,0 +1,35 @@
+.buttonHomeQS {
+  background-color: #6750A3;
+  border-color: #6750A3;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+  /* adjust padding as needed */
+  transition: background-color 0.3s ease-in-out;
+  /* add transition */
+}
+
+.buttonHomeQS:hover {
+  background-color: #7B69D6;
+  /* change color on hover */
+}
+
+.buttonHomeQS h2 {
+  font-size: 1.5rem;
+  /* adjust font size as needed */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+@media (min-width: 768px) {
+
+  /* adjust breakpoint as needed */
+  /* .buttonHomeQS {
+    padding: 2rem 4rem;
+  } */
+
+  .buttonHomeQS h2 {
+    font-size: 2rem;
+    /* adjust font size as needed */
+  }
+}

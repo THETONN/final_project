@@ -1,0 +1,91 @@
+# version: '3' # กำหนด docker version
+# services:
+#   node-server: # ตั้งชื่อ container (เหมือน --name)
+#     container_name: node
+#     build: . # ตำแหน่ง dockerfile
+#     ports:
+#       - "8081:8081" # map port ออกมา เหมือน -p ใน docker run
+    
+      
+#   db:
+#     image: mysql:latest
+#     hostname: db
+#     container_name: db
+#     command: --default-authentication-plugin=mysql_native_password
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root # กำหนด user ของ root mysql
+#       MYSQL_DATABASE: project # กำหนด database เริ่มต้นของ mysql
+#     ports:
+#       - "3306:3306"
+#     volumes:
+#       - mysql_data_test:/var/lib/mysql # เปลี่ยน path เป็น volume ที่เราสร้างไปด้านล่างใน docker-compose  
+#   phpmyadmin:
+#     image: phpmyadmin/phpmyadmin:latest
+#     container_name: phpmyadmin
+#     environment:
+#       PMA_HOST: db # ระบุ host ที่จะให้ phpmyadmin ไปจัดการ ซึ่งสามารถใส่เป็นชื่อ container name (db) ได้เลย
+#       PMA_PORT: 3306 # ระบุ port ของ Database
+#       PMA_USER: root # ระบุ user ของ Database
+#       PMA_PASSWORD: root # ระบุ password ของ Database
+#     ports:
+#       - "8080:80"
+#     depends_on:
+#       - db     
+# volumes:
+#   mysql_data_test: # กำหนดชื่อ volume ที่ต้องการจะสร้าง
+#     driver: local      
+
+version: '3'
+
+services:
+  node-server:
+    container_name: node
+    build: .
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+      - ./prisma:/use/src/app/prisma # Add this volume for Prisma
+    environment:
+      DATABASE_URL: "mysql://root:root@db:3306/db"
+
+  db:
+    image: mysql:latest
+    hostname: db
+    container_name: db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data_test:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+  prisma:
+    container_name: prisma
+    build: .
+    command: npx prisma generate
+    volumes:
+      - ./prisma:/use/src/app/prisma # Mount the prisma directory
+    environment:
+      DATABASE_URL: "mysql://root:root@db:3306/project"
+
+volumes:
+  mysql_data_test:

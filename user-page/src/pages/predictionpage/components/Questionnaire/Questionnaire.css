@@ -1,0 +1,247 @@
+.AllQuestionnaire {
+    background-color: black;
+}
+
+.QuestionEach {
+    font-size: 20px;
+}
+
+.Questionnaire {
+    padding: 2rem;
+    padding-bottom: 1rem;
+
+}
+
+
+.ScoreButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.ScoreButton {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.532);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.ScoreButton.Selected {
+    background-color: #892CDC;
+    color: rgb(255, 255, 255);
+}
+
+.Details {
+    padding-top: 1.5rem;
+    background-color: black;
+}
+
+.logoPredictTour3 img {
+    max-width: 100%;
+}
+
+
+.TopicEach {
+    color: #9F7CFC;
+    padding-bottom: 1rem
+}
+
+.DetailEach {
+    color: white;
+    background-color: #393E46;
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+
+
+
+
+.Description {
+    color: rgba(255, 255, 255, 0.532);
+    font-size: small;
+    display: grid;
+    grid-template-columns: 80%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.MainFeedback {
+    display: grid;
+    grid-template-columns: 80%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.5rem;
+}
+
+.Feedback {
+    font-size: 1.5rem;
+}
+
+
+.Questionnaire {
+    display: grid;
+    grid-template-columns: 80%;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+
+}
+
+.InsideQQ p {
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 3px solid #892CDC;
+}
+
+.photoAndDetails {
+    display: grid;
+    grid-template-columns: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+.TitleFeed {
+    color: #892CDC;
+}
+
+.DescriptionFeed {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.InsideQQ {
+    margin-bottom: 1rem;
+}
+
+.ScoreButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.ScoreLabel {
+    font-size: 12px;
+    color: #888;
+    /* สีของข้อความกำกับด้านบน */
+}
+
+
+@media (min-width: 760px) {
+    .photoAndDetails {
+        width: 100%;
+    }
+
+    .TopicEach {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logoPredictTour3 img {
+        max-width: 70%;
+    }
+
+
+}
+
+
+@media (min-width: 576px) {
+    .DetailPredictTour {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .DetailPredictTour {
+        font-size: 1rem;
+    }
+
+    .photoAndDetails {
+        display: grid;
+        grid-template-columns: 80%;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    .logoPredictTour3 img,
+    .DetailPredictTour {
+        text-align: center;
+    }
+
+    .logoPredictTour3 img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 995px) {
+    .ScoreButtons {
+        flex-direction: row;
+        /* เรียงเป็นแถวเมื่อขนาดหน้าจอเล็กกว่า 995px */
+        flex-wrap: nowrap;
+        /* ป้องกันการขึ้นบรรทัดใหม่ */
+        justify-content: center;
+        /* จัดให้ตรงกลาง */
+    }
+
+    .InsideQQ {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .row.InsideQQ {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Questionnaire.css (เพิ่มส่วนนี้) */
+
+.reANDsub {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.ResetButton {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px;
+    margin-right: 1rem;
+}
+
+.ResetButton:hover {
+    background-color: #d32f2f;
+}
+
+.SubmitButton {
+    margin-right: 3rem;
+}
+
+@media (max-width: 1200px) {
+    .reANDsub {
+        justify-content: center;
+    }
+
+    .ResetButton,
+    .SubmitButton {
+        margin-right: 0;
+    }
+}

@@ -1,0 +1,52 @@
+.Main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* margin-top: 1rem; */
+    
+    
+}
+.bg-primary{
+    height: 100%;
+    
+}
+.bg-white{
+    height: auto;
+    width: 80%;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+h1{
+    display: inline-flex;
+    color: black;
+    
+}
+@media screen and (max-width:1200px){
+    .MainDash{
+        justify-content: flex-start;
+        margin-top: 2rem;
+    }
+    .bg-primary{
+        height: auto;
+        width: auto;
+    }
+    .bg-white{
+        height: auto;
+        width: auto;
+    }
+}
+
+@media screen and (max-width:768px){
+    .MainDash{
+        align-items: center;
+        
+    }
+    .bg-primary{
+        height: auto;
+    }
+    .bg-white{
+        height: auto;
+        width: auto;
+    }
+}
