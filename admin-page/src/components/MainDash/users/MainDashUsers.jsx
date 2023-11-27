@@ -48,7 +48,7 @@ function MainDashUsers() {
   };
 
   // Delete
-  const handleDeleteUser = async (id_users) => {
+  const handleDeleteUser = async (id) => {
     const MySwal = withReactContent(Swal);
 
     MySwal.fire({
@@ -64,12 +64,12 @@ function MainDashUsers() {
         try {
           // Make a request to delete the user
           const response = await axios.delete(
-            "http://localhost:8081/users/" + id_users
+            "http://localhost:8081/users/" + id
           );
           // window.location.reload()
           console.log("Server response:", response);
           // Update the state to reflect the deletion
-          setUsers((prevUsers) => prevUsers.filter((user) => user.id_users !== id_users));
+          setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
 
           MySwal.fire("Deleted!", "Your user has been deleted.", "success");
         } catch (error) {
@@ -191,7 +191,7 @@ function MainDashUsers() {
           severity="danger"
           raised
           className="rounded-5 "
-          onClick={(e) => handleDeleteUser(users.id_users)}
+          onClick={(e) => handleDeleteUser(users.id)}
         />
       </React.Fragment>
     );

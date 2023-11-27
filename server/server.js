@@ -125,7 +125,7 @@ app.post("/login", async (req, res) => {
 // Delete Users
 app.delete('/users/:id', (req, res) => {
     const id = req.params.id;
-    const sql = "DELETE FROM users WHERE id_users = ?";
+    const sql = "DELETE FROM users WHERE id = ?";
     con.query(sql, [id], (err, data) => {
         if (err) {
             console.error(err);
