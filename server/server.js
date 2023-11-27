@@ -441,19 +441,52 @@ app.get('/trip', (req, res) => {
 
 // QA Table 
 app.get('/qa', (req, res) => {
-    const sql = "SELECT questionnaire.question_topic, choice.choice " +
-                "FROM questionnaire " +
-                "LEFT JOIN choice ON questionnaire.id_question = choice.id_question";
+    const sql = `SELECT u.name AS user, 
+                        q.question_topic AS question, 
+                        c.choice AS choice, 
+                        g.group_name AS group_name,
+                        g.group_description AS group_description
+                 FROM user_answers ua 
+                 JOIN users u ON ua.id = u.id
+                 JOIN questionnaire q ON ua.id_question = q.id_question
+                 JOIN choice c ON ua.id_choice = c.id_choice
+                 JOIN mgroup g ON ua.id_group = g.id_group`;
+
     con.query(sql, (err, data) => {
         if (err) {
             console.error(err);
             return res.status(500).send("Database server error");
         }
-
         return res.json(data);
     });
 });
 
+app.get('/feed', (req, res) => {
+    const sql = `SELECT 
+                    u.name AS user, 
+                    fq.question_feedback AS Q, 
+                    ur.rating AS rating, 
+                    g.group_name AS mGroup
+                FROM 
+                    user_ratings ur
+                JOIN 
+                    users u ON ur.id_users = u.id
+                JOIN 
+                    feedback_question fq ON ur.id_question = fq.id_feedback
+                JOIN 
+                    mgroup g ON ur.id_group = g.id_group
+                ORDER BY 
+                    u.id, fq.id_feedback
+                `;
+
+    con.query(sql, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Database server error");
+        }
+        return res.json(data);
+    });
+});
 
 
 // Root
