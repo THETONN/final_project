@@ -184,33 +184,61 @@ app.delete('/trip/:id', (req, res) => {
 
 
 // ------------- Add a new users ----------------------------------------------------------------
-app.post('/users', (req, res) => {
-
-    const sql = "INSERT INTO users (`name`,`password`,`email`) VALUES(?, ? , ?)";
-
-    bcrypt.hash(req.body.password.toString(), salt, (err, hash) => {
-        if (err) {
-            console.error("Error hashing password:", err);
-            return res.status(500).json({ error: "Internal Server Error" });
-        }
-
-        const values = [
-            req.body.username,
-            hash,
-            req.body.email,
-            req.body.role,
-        ];
-
-        con.query(sql, values, (err, result) => {
-            if (err) {
-                console.error("Error inserting data:", err);
-                return res.status(500).json({ error: "Internal Server Error" });
-            }
-
-            return res.json({ Status: "Success" });
-        });
+app.post("/users", async (req, res) => {
+    const { name, email, password } = req.body;
+    const userExist = await prisma.users.findUnique({
+      where: { email },
     });
+  
+    if (userExist) {
+      return res.status(409).json({ message: "User already exists" }); // ใช้สถานะ 409 สำหรับ conflict
+
+    }
+
+    try {
+      const hashedPassword = await bcrypt.hash(password, salt);
+      const user = await prisma.users.create({
+        data: {
+          name,
+          email,
+          password: hashedPassword,
+        },
+      });
+
+      const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
+      res.json({ token, userId: user.id, role: user.role });
+    } catch (error) {
+      // จัดการกับข้อผิดพลาดที่อาจเกิดขึ้น
+      res.status(500).json({ message: "Internal Server Error", error: error.message });
+    }
 });
+// app.post('/users', (req, res) => {
+
+//     const sql = "INSERT INTO users (`name`,`password`,`email`) VALUES(?, ? , ?)";
+
+//     bcrypt.hash(req.body.password.toString(), salt, (err, hash) => {
+//         if (err) {
+//             console.error("Error hashing password:", err);
+//             return res.status(500).json({ error: "Internal Server Error" });
+//         }
+
+//         const values = [
+//             req.body.username,
+//             hash,
+//             req.body.email,
+//             req.body.role,
+//         ];
+
+//         con.query(sql, values, (err, result) => {
+//             if (err) {
+//                 console.error("Error inserting data:", err);
+//                 return res.status(500).json({ error: "Internal Server Error" });
+//             }
+
+//             return res.json({ Status: "Success" });
+//         });
+//     });
+// });
 
 // Add group
 app.post("/group", function (req, res) {

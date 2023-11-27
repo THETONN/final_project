@@ -98,7 +98,7 @@ function QuestionandAnswer() {
             <Column
               body={(data, options) => options.rowIndex + 1}
               header="#"
-              style={{ width: "25%" }}
+              style={{ width: "5%" }}
             ></Column>
             <Column
               field="user"

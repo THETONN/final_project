@@ -263,7 +263,7 @@ function Groupmain() {
             <Column
               field="group_description"
               header="Description"
-              style={{ width: "40%" }}
+              style={{ width: "50%" }}
             ></Column>
 
             <Column
