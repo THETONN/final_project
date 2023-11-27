@@ -466,6 +466,21 @@ app.get('/trip', (req, res) => {
     });
 });
 
+// Questionnaire
+app.get('/Q', (req, res) => {
+    const sql = "SELECT questionnaire.question_topic, choice.choice " +
+                "FROM questionnaire " +
+                "LEFT JOIN choice ON questionnaire.id_question = choice.id_question";
+    con.query(sql, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Database server error");
+        }
+
+        return res.json(data);
+    });
+});
+
 
 // QA Table 
 app.get('/qa', (req, res) => {
