@@ -3,12 +3,12 @@ import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput } 
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+
 
 function Registers() {
   const [values, setValues] = useState({
@@ -30,6 +30,7 @@ function Registers() {
 
   }, [navigate]);
 
+
   const showAlert = () => {
     MySwal.fire({
       title: "success!",
@@ -49,6 +50,7 @@ function Registers() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+
     try {
     
     if (values.password !== values.confirm_password) {
@@ -57,10 +59,11 @@ function Registers() {
       
       return;
     }
-
+    
     await axios.post('http://localhost:8081/register', values);
-    window.location.href = "/Login";
     showAlert();
+    navigate ("/Login");
+    
     // alert("Account created successfully");
   } catch (error) {
     setError(error?.response?.data?.message);

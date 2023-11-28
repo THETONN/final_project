@@ -52,43 +52,43 @@ app.use(express.urlencoded({ extended: true}));
 const salt =10;
 
 
-console.log('Current directory:', process.cwd());
+// console.log('Current directory:', process.cwd());
 
-const loadModel = () => {
-    // If the model.py is in the same directory as server.js, no need to navigate up a directory.
-    return spawn('python3', [__dirname +'/model.py']);
-  };
+// const loadModel = () => {
+//     // If the model.py is in the same directory as server.js, no need to navigate up a directory.
+//     return spawn('python3', [__dirname +'/model.py']);
+//   };
   
-  // In the '/predict' endpoint handler
-  const pythonProcess = loadModel();
+//   // In the '/predict' endpoint handler
+//   const pythonProcess = loadModel();
   
-  pythonProcess.on('error', (error) => {
-    console.error('Error spawning Python process:', error);
-  });
+//   pythonProcess.on('error', (error) => {
+//     console.error('Error spawning Python process:', error);
+//   });
 
 // Endpoint to handle the prediction
-app.post('/predict', (req, res) => {
-    // Assuming req.body is in the correct format for your model
-    const modelInput = req.body.answers; // or any other preprocessing you need
+// app.post('/predict', (req, res) => {
+//     // Assuming req.body is in the correct format for your model
+//     const modelInput = req.body.answers; // or any other preprocessing you need
 
-    const pythonProcess = loadModel();
+//     const pythonProcess = loadModel();
 
-    pythonProcess.stdout.once('data', (data) => {
-      // When the model is loaded, send the data for prediction
-      pythonProcess.stdin.write(JSON.stringify(modelInput));
-      pythonProcess.stdin.end();
-    });
+//     pythonProcess.stdout.once('data', (data) => {
+//       // When the model is loaded, send the data for prediction
+//       pythonProcess.stdin.write(JSON.stringify(modelInput));
+//       pythonProcess.stdin.end();
+//     });
 
-    pythonProcess.stdout.on('data', (data) => {
-      // Send back the prediction result to the client
-      res.send(data.toString());
-    });
+//     pythonProcess.stdout.on('data', (data) => {
+//       // Send back the prediction result to the client
+//       res.send(data.toString());
+//     });
 
-    pythonProcess.stderr.on('data', (data) => {
-      console.error(`stderr: ${data}`);
-      res.status(500).send(data.toString());
-    });
-});
+//     pythonProcess.stderr.on('data', (data) => {
+//       console.error(`stderr: ${data}`);
+//       res.status(500).send(data.toString());
+//     });
+// });
 
 // Pages
 // Register and Login

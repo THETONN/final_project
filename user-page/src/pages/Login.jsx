@@ -27,10 +27,13 @@ const Login = () => {
   useEffect(() => {
     // ตรวจสอบว่ามี session ใน localStorage หรือไม่
     const userId = localStorage.getItem('userId');
+    console.log(userId);
     if (userId) {
       navigate('/LoginHome'); // ถ้ามี session, นำทางไปยังหน้าหลัก
     }
   }, [navigate]);
+
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
