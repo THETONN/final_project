@@ -57,33 +57,70 @@ const QuizMain = () => {
     return localStorage.getItem("userId"); // 'userId' is the key where user id is stored
   };
 
+  // สมมุติว่านี่คือ object ที่ใช้สำหรับ mapping คำตอบไปยังตัวเลขที่ถูก encode
+  const answerEncoding = {
+    น้องชอบอะไร: {
+      ตีน: 12,
+      ผลไม้: 1,
+    },
+    // ... สำหรับทุกคำถามถึง 'question_18'
+  };
+
   const submitAnswers = async () => {
     try {
       const id_user = getUserIdFromStorage();
-      console.log("User ID:", id_user);
-
-      const answersArray = Object.entries(userAnswers).map(
-        ([question, answerId]) => ({
+  
+      // แปลงคำตอบเป็นตัวเลขที่ถูก encode
+      const encodedAnswers = questions.map((questionObj, index) => {
+        const questionText = questionObj.question;
+        const userAnswer = questionObj.answers[userAnswers[questionText]];
+        const encodedValue = answerEncoding[questionText]?.[userAnswer];
+  
+        if (encodedValue === undefined) {
+          console.error(`No encoding for question: ${questionText}, answer: ${userAnswer}`);
+          return null;
+        }
+  
+        return {
           id_user: id_user,
-          id_question: questions.findIndex((q) => q.question === question) + 1,
-          id_choice: answerId,
-        })
-      );
-      console.log("Answers to be submitted:", answersArray);
+          id_question: index + 1,
+          id_choice: encodedValue,
+        };
+      }).filter(a => a != null);
 
-      await axios.post("http://localhost:8081/submit-answers", {
-        answers: answersArray,
+      console.log("Encoded answers to be submitted:", encodedAnswers);
+  
+      // ส่งคำตอบที่ถูก encode ไปยัง API /predict
+      
+      const predictionResponse = await axios.post("http://localhost:8081/predict", { answers: encodedAnswers });
+      const predictedGroup = predictionResponse.data.group;
+  
+      // Post ข้อมูลพร้อมกับกลุ่มที่ทำนายได้ไปยังฐานข้อมูล
+      const dbPostResponse = await axios.post("http://localhost:8081/submit-to-db", {
+        answers: encodedAnswers.map(answer => ({ ...answer, group: predictedGroup })),
       });
-      console.log("Answers have been submitted.");
-
-      // Navigate to different pages based on the group id received from the server
-      // Assuming you receive id_group from server after submitting answers
-      // ...
+  
+      console.log("Data submitted to database:", dbPostResponse.data);
+  
+      // นำทางไปยัง path ตามกลุ่มที่ทำนายได้
+      switch (predictedGroup) {
+        case 1:
+          navigate("/HomePredict");
+          break;
+        case 2:
+          navigate("/HomePredict2");
+          break;
+        case 3:
+          navigate("/HomePredict3");
+          break;
+        default:
+          console.error("Invalid group prediction:", predictedGroup);
+      }
     } catch (error) {
-      console.error("Error during submission:", error);
+      console.error("Error during prediction and submission:", error);
     }
   };
-
+  
   const steps = Array.from(
     { length: questions.length },
     (_, index) => `${index + 1}/${questions.length}`
