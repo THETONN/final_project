@@ -18,7 +18,7 @@ const QuizMain = () => {
         setQuestions(formattedData);
       })
       .catch((err) => {
-        // จัดการข้อผิดพลาดที่นี่
+        // Handle the error here
       });
   }, []);
 
@@ -46,59 +46,44 @@ const QuizMain = () => {
     setStep(step - 1);
   };
 
-  const checkAnswer = (answerIndex) => {
-    const selectedAnswer = questions[step].answers[answerIndex];
+  const checkAnswer = (answerId) => {
     setUserAnswers({
       ...userAnswers,
-      [step]: selectedAnswer,
+      [questions[step].question]: answerId,
     });
   };
+
   const getUserIdFromStorage = () => {
-    return localStorage.getItem("userId"); // 'userId' คือ key ที่คุณเก็บ id_user
+    return localStorage.getItem("userId"); // 'userId' is the key where user id is stored
   };
+
   const submitAnswers = async () => {
     try {
       const id_user = getUserIdFromStorage();
       console.log("User ID:", id_user);
-  
-      // สร้างอาร์เรย์ของคำตอบจาก userAnswers object ที่เรามี
-      const answersArray = Object.values(userAnswers);
-  
-      // ส่งคำตอบไปยัง backend
-      const predictionResponse = await axios.post("http://localhost:8081/predict", {
-        answers: answersArray, // ส่งคำตอบในรูปแบบอาร์เรย์
-        id_user: id_user,
+
+      const answersArray = Object.entries(userAnswers).map(
+        ([question, answerId]) => ({
+          id_user: id_user,
+          id_question: questions.findIndex((q) => q.question === question) + 1,
+          id_choice: answerId,
+        })
+      );
+      console.log("Answers to be submitted:", answersArray);
+
+      await axios.post("http://localhost:8081/submit-answers", {
+        answers: answersArray,
       });
-      const id_group = predictionResponse.data.id_group; // ตัวแปรนี้ควรมีค่ากลุ่มที่ได้จากการทำนาย
-  
-      // ส่งข้อมูลคำตอบไปยัง database
-      const userAnswersData = answersArray.map((answer, index) => ({
-        id_user: id_user,
-        id_question: index + 1, // หรือใช้การที่เหมาะสมกับการกำหนด id_question ของคุณ
-        id_choice: answer, // สมมติว่า answer คือ id_choice ที่เก็บไว้ใน database
-        id_group: id_group,
-      }));
-  
-      await axios.post("http://localhost:8081/insert-answers", userAnswersData);
-  
-      // นำทางไปยังหน้าตามกลุ่มที่ได้รับจากการทำนาย
-      switch (id_group) {
-        case 1:
-          navigate("/HomePredict");
-          break;
-        case 2:
-          navigate("/HomePredict2");
-          break;
-        case 3:
-          navigate("/HomePredict3");
-          break;
-        default:
-          navigate("/"); // หน้าหลักหรือหน้าเริ่มต้นเมื่อไม่ตรงกับกลุ่มใดๆ
-      }
+      console.log("Answers have been submitted.");
+
+      // Navigate to different pages based on the group id received from the server
+      // Assuming you receive id_group from server after submitting answers
+      // ...
     } catch (error) {
       console.error("Error during submission:", error);
     }
   };
+
   const steps = Array.from(
     { length: questions.length },
     (_, index) => `${index + 1}/${questions.length}`
@@ -129,7 +114,7 @@ const QuizMain = () => {
                     name={`answer-${step}`}
                     value={index}
                     onChange={() => {}}
-                    checked={userAnswers[step] === answer}
+                    checked={userAnswers[questions[step].question] === index}
                   />
                   <label style={{ marginLeft: "0.3rem" }}>{answer}</label>
                 </div>
@@ -144,9 +129,11 @@ const QuizMain = () => {
             )}
             {step < questions.length - 1 && (
               <button
-                className={`NextButton ${!userAnswers[step] ? "disabled" : ""}`}
+                className={`NextButton ${
+                  !userAnswers[questions[step].question] ? "disabled" : ""
+                }`}
                 onClick={nextStep}
-                disabled={!userAnswers[step]}
+                disabled={!userAnswers[questions[step].question]}
               >
                 Next
               </button>
