@@ -10,6 +10,12 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET; // ใช้ secret key ที่เก็บใน environment variable
 const { spawn } = require('child_process');
 
+console.log(`Current directory: ${process.cwd()}`);
+require('dotenv').config();
+
+// const fs = require('fs');
+// console.log(fs.readdirSync('./node_modules'));
+
 
 // Database connection
 const con = mysql.createConnection({
@@ -47,6 +53,8 @@ app.use(cors({
 // for json exchange
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
+
+
 
 // Create hashed password
 const salt =10;
@@ -112,11 +120,12 @@ app.post("/register", async (req, res) => {
           password: hashedPassword,
         },
       });
-
+      console.log('JWT_SECRET:', process.env.JWT_SECRET);
       const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
       res.json({ token, userId: user.id, role: user.role });
     } catch (error) {
       // จัดการกับข้อผิดพลาดที่อาจเกิดขึ้น
+      console.log(error)
       res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 });

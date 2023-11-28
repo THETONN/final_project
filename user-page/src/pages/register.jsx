@@ -31,12 +31,13 @@ function Registers() {
   }, [navigate]);
 
 
-  const showAlert = () => {
-    MySwal.fire({
+  const showAlert = async () => {
+    await MySwal.fire({
       title: "success!",
       text: "Account created successfully!",
       icon: "success"
     });
+    navigate("/Login");
   };
   const showAlert2 = () => {
     Swal.fire({
@@ -49,25 +50,21 @@ function Registers() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-
+  
     try {
-    
-    if (values.password !== values.confirm_password) {
-      showAlert2();
-      // alert("Password and Confirm Password do not match");
+      if (values.password !== values.confirm_password) {
+        showAlert2();
+        return;
+      }
       
-      return;
+      const response = await axios.post('http://localhost:8081/register', values);
+      showAlert();
+      // ตรวจสอบว่าการแจ้งเตือนแสดงขึ้นจริงๆ ก่อนที่จะนำทางผู้ใช้
+      // navigate("/Login");
+    } catch (error) {
+      setError(error?.response?.data?.message);
+      // อย่าลืมจัดการแสดงข้อความข้อผิดพลาดใน UI
     }
-    
-    await axios.post('http://localhost:8081/register', values);
-    showAlert();
-    navigate ("/Login");
-    
-    // alert("Account created successfully");
-  } catch (error) {
-    setError(error?.response?.data?.message);
-  }
   };
 
   return (
@@ -82,6 +79,7 @@ function Registers() {
                   <Link to="/" style={{ position: 'absolute', top: '20px', left: '20px', textDecoration: 'none', color: '#892CDC' }}>
                     <FontAwesomeIcon icon={faTimes} style={{ color: '#FFA500', fontSize: '24px', cursor: 'pointer' }} />
                   </Link>
+                  {error && <div className="error-message">{error}</div>}
                   <MDBInput
                     wrapperClass='mb-4 w-100'
                     label='Name'

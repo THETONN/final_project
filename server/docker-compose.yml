@@ -48,7 +48,10 @@ services:
     links:
       - db
     volumes:
-      - ./prisma:/use/src/app/prisma # Add this volume for Prisma
+      - ./prisma:/usr/src/app/prisma
+       - './.env:/usr/src/app/.env'
+    env_file:
+      - .env
     environment:
       DATABASE_URL: "mysql://root:root@db:3306/db"
 
