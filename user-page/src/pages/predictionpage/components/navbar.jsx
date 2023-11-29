@@ -51,7 +51,7 @@ function MainNavbar() {
                     alt="RocketTrip"
                     style={{ marginRight: 10 }}
                   />
-                  <span style={{ fontSize: 'large', color: 'white', paddingRight: '9rem', fontSize: '20px', fontWeight: 'bold' }}>Rocket Trips</span>
+                  <span style={{ fontSize: 'large', color: 'white', paddingRight: '9rem', fontWeight: 'bold' }}>Rocket Trips</span>
                 </div>
               )}
               <Nav.Link
