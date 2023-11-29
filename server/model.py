@@ -24,7 +24,11 @@ app = Flask(__name__)
 # model = joblib.load('/usr/src/app/model/kmeans_model.joblib')
 model = joblib.load('kmeans_model.joblib')
 
+
+
 @app.route('/predict', methods=['POST'])
+
+
 def predict():
     data = request.json['answers']
     predictions = model.predict([data])
