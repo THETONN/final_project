@@ -45,7 +45,7 @@ const Login = () => {
       localStorage.setItem("username", res.username); // ตั้งค่า username ใน localStorage
   
       if (res.role === "ADMIN") {
-        navigate('http://localhost:5173/Dashboard'); // พอร์ตสำหรับ Admin
+        window.location.href = 'http://localhost:5174/Dashboard'; // พอร์ตสำหรับ Admin
       } else {
         navigate('/LoginHome'); // พอร์ตสำหรับ User
       }
