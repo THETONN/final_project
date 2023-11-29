@@ -375,14 +375,14 @@ app.post('/qa', (req, res) => {
 app.post('/insert-answers', (req, res) => {
     const answers = req.body.answers;
     let insertCount = 0;
-    let errors = [];D
+    let errors = [];
 
     answers.forEach((answer, index) => {
         db.query('INSERT INTO user_answers (id_user, id_question, id_choice, id_group) VALUES (?, ?, ?, ?)', 
         [answer.id_user, answer.id_question, answer.id_choice, answer.id_group], 
         (error, results, fields) => {
             if (error) {
-                errors.push({index, error});
+                errors.push({ index, error });
                 return;
             }
             insertCount++;
@@ -390,9 +390,9 @@ app.post('/insert-answers', (req, res) => {
             // ตอบกลับเมื่อประมวลผลทุกรายการเสร็จสิ้น
             if (insertCount + errors.length === answers.length) {
                 if (errors.length > 0) {
-                    res.status(500).json({message: 'Some answers were not inserted', errors});
+                    res.status(500).json({ message: 'Some answers were not inserted', errors });
                 } else {
-                    res.send('All answers inserted successfully');
+                    res.status(200).json({ message: 'All answers inserted successfully' });
                 }
             }
         });

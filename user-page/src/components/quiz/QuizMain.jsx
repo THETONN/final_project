@@ -80,7 +80,8 @@ const QuizMain = () => {
           console.error(`No encoding for question: ${questionText}, answer: ${userAnswer}`);
           return null;
         }
-  
+        console.log(`useranswer: ${userAnswer}`);
+        
         return {
           id_user: id_user,
           id_question: index + 1,
@@ -89,6 +90,7 @@ const QuizMain = () => {
       }).filter(a => a != null);
 
       console.log("Encoded answers to be submitted:", encodedAnswers);
+      
   
       // ส่งคำตอบที่ถูก encode ไปยัง API /predict
       
