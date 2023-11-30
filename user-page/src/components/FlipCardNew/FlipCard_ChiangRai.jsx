@@ -18,22 +18,22 @@ const FlipCard_ChiangRai = () => {
             <div className="flip-card-inner">
                 <div className="flip-card-front">
                     <Card className="card">
-                        <Card.Img className='imageCard' variant="top" src="./images/ChiangRaiCard.png" />
+                        <Card.Img className='imageCard' variant="top" src="./images/DoiSuthep.jpeg" />
                         <Card.Body>
-                            <Card.Title>Chiang Rai, Thailand</Card.Title>
+                            <Card.Title>Chiang Mai, Thailand</Card.Title>
                             <Card.Text>
-                                Wat Rong Khun - White Temple
+                                Doi Suthep
                             </Card.Text>
                         </Card.Body>
                     </Card>
                 </div>
                 <div className="flip-card-back">
-                    <Card className="card"> 
+                    <Card className="card">
                         <Card.Body>
-                            <Card.Title className='cardTitleBack'>Wat Rong Khun <br /> White Temple</Card.Title>
+                            <Card.Title className='cardTitleBack'>Doi Suthep</Card.Title>
                             <Card.Text className='cardTextBack'>
-                                Wat Rong Khun, better known as the White Temple, is a privately owned art exhibit in the style of a Buddhist temple in Pa O Don Chai, Mueang District, Chiang Rai Province, Thailand. It is owned by Chalermchai Kositpipat, who designed, constructed, and opened it to visitors in 1997.
-                            </Card.Text>
+
+                                Suthep is a district in western Chiang Mai named after the adjacent Doi Suthep mountain. Wat Phra That Doi Suthep, located on the mountainside, was built in 1386 to enshrine a fragment of Buddha's shoulder bone. The district, along with Doi Pui, constitutes Doi Suthep-Pui National Park. This area is known for its remarkable temple and natural beauty.                           </Card.Text>
                             {/* <Button className='cardBTN' variant="primary">Back</Button> */}
                         </Card.Body>
                     </Card>

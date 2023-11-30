@@ -26,20 +26,19 @@ const ChonBuri = () => {
             <div className="flip-card-inner">
                 <div className="flip-card-front">
                     <Card className="card">
-                        <Card.Img className="imageCard" variant="top" src="./images/ChonBuriCard.jpg" />
+                        <Card.Img className="imageCard" variant="top" src="./images/Tak.jpg" />
                         <Card.Body>
-                            <Card.Title>Chon Buri, Thailand</Card.Title>
-                            <Card.Text>Pattaya City</Card.Text>
+                            <Card.Title>Tak, Thailand</Card.Title>
+                            <Card.Text>Doi Hua Mod</Card.Text>
                         </Card.Body>
                     </Card>
                 </div>
                 <div className="flip-card-back">
                     <Card className="card">
                         <Card.Body>
-                            <Card.Title className="cardTitleBack">Pattaya City</Card.Title>
+                            <Card.Title className="cardTitleBack">Doi Hua Mod</Card.Title>
                             <Card.Text className="cardTextBack">
-                                Pattaya is a city on Thailand’s eastern Gulf coast known for its beaches. A quiet fishing village as recently as the 1960s, it’s now lined with resort hotels, high-rise condos, shopping malls, cabaret bars and 24-hour clubs. Nearby, hillside Wat Phra Yai Temple features an 18m-tall golden Buddha. The area also features several designer golf courses, some with views of Pattaya Bay.
-                            </Card.Text>
+                                Doi Hua Mod, located in Tambon Ung Pang, Umphang District, Tak Province, is a renowned fog-viewing spot within the Umphang Wildlife Sanctuary. The summit is adorned with grass, low bushes, and drought-resistant trees like pines and teak, which blossom in the rainy season. The landscape is characterized by the absence of large trees.                            </Card.Text>
                         </Card.Body>
                     </Card>
                 </div>

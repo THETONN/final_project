@@ -82,7 +82,7 @@ export const SidebarData = [
     {
         icon: UilSignOutAlt,
         heading: "SignOut",
-        Link:'/SignOut'
+        Link:'http://localhost:5173/'
 
     },
 

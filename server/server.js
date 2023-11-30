@@ -530,6 +530,8 @@ app.get('/group', (req, res) => {
     });
 });
 
+
+
 // Group Table 
 app.get('/trip', (req, res) => {
     const sql = "SELECT * FROM `trip`";

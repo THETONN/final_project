@@ -15,11 +15,11 @@ const FlipCard_Kribi = () => {
             <div className="flip-card-inner">
                 <div className="flip-card-front">
                     <Card className="card">
-                        <Card.Img className='imageCard' variant="top" src="./images/KrabiCard.png" />
+                        <Card.Img className='imageCard' variant="top" src="./images/SuphanBuri.jpg" />
                         <Card.Body>
-                            <Card.Title>Kribi, Thailand</Card.Title>
+                            <Card.Title>Suphan Buri, Thailand</Card.Title>
                             <Card.Text>
-                                Railay Beach              
+                                The Celestial Dragon Village
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -27,10 +27,10 @@ const FlipCard_Kribi = () => {
                 <div className="flip-card-back">
                     <Card className="card">
                         <Card.Body>
-                            <Card.Title className='cardTitleBack'>Railay Beach</Card.Title>
+                            <Card.Title className='cardTitleBack'>The Celestial Dragon Village
+                            </Card.Title>
                             <Card.Text className='cardTextBack'>
-                                Railay, also known as Rai Leh, is a small peninsula between the city of Krabi and Ao Nang in Thailand. It is accessible only by boat due to high limestone cliffs cutting off mainland access.
-                                These cliffs attract rock climbers from all over the world, but the area is also popular due to its beautiful beaches and quiet relaxing atmosphere.
+                                During his tenure as Prime Minister, Banyar Sillapacharoen led the establishment of a museum in Suphan Buri Province, Thailand. This museum highlights the history of the local Chinese community and Chinese culture. Positioned near the main shrine along the Suphan Buri River, the initiative commemorates the 20th anniversary of Thai-Chinese diplomatic relations in 2539 B.E.
                             </Card.Text>
                             {/* <Button className='cardBTN' variant="primary">Back</Button> */}
                         </Card.Body>

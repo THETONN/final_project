@@ -26,20 +26,19 @@ const Kanchanaburi = () => {
       <div className="flip-card-inner">
         <div className="flip-card-front">
           <Card className="card">
-            <Card.Img className="imageCard" variant="top" src="./images/KanchanaburiCard.jpg" />
+            <Card.Img className="imageCard" variant="top" src="./images/Kanchanaburi.jpg" />
             <Card.Body>
               <Card.Title>Kanchanaburi, Thailand</Card.Title>
-              <Card.Text>The Float House River Kwai</Card.Text>
+              <Card.Text>The Bridge Over the River Kwai</Card.Text>
             </Card.Body>
           </Card>
         </div>
         <div className="flip-card-back">
           <Card className="card">
             <Card.Body>
-              <Card.Title className="cardTitleBack">The Float House River Kwai</Card.Title>
+              <Card.Title className="cardTitleBack">The Bridge Over the <br /> River Kwai</Card.Title>
               <Card.Text className="cardTextBack">
-                One of the best elegant Kanchanaburi hotels-The FloatHouse River Kwai Resort aims to be the world’s best floating resort. The FloatHouseRiver Kwai Resort is a fancy boutique hideaway and can be found in very few places in the world. The only way to reach the resort is by boat as it actually floats on a flowing river surrounded by thick green jungle. 
-              </Card.Text>
+                The Kwae River bridge in Kanchanaburi, Thailand, showcases a unique semi-circular steel structure. Serving as a crucial path for the Thonburi - Nam Tok railway, it blends truss and reinforced concrete sections. Located around 4 kilometers north of the city center, the bridge holds historical importance as part of the Death Railway.</Card.Text>
             </Card.Body>
           </Card>
         </div>

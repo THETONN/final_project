@@ -292,7 +292,7 @@ const QuizMain = () => {
       {step >= 0 && step < questions.length ? (
         <>
           <div className="QuestionHeader" style={{ marginBottom: "1rem" }}>
-            <span style={{ fontSize: "1.2rem" }}>{`Page ${steps[step]}`}</span>
+            <span style={{ fontSize: "1.2rem" }}>{`Question:  ${steps[step]}`}</span>
           </div>
           <div className="QandA">
             <div className="Question">

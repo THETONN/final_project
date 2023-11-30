@@ -26,20 +26,19 @@ const Kalasin = () => {
             <div className="flip-card-inner">
                 <div className="flip-card-front">
                     <Card className="card">
-                        <Card.Img className="imageCard" variant="top" src="./images/KalasinCard.jpg" />
+                        <Card.Img className="imageCard" variant="top" src="./images/KaiIsland.jpg" />
                         <Card.Body>
-                            <Card.Title>Kalasin, Thailand</Card.Title>
-                            <Card.Text>Thepsuda Bridge</Card.Text>
+                            <Card.Title>Krabi, Thailand</Card.Title>
+                            <Card.Text>Kai Island</Card.Text>
                         </Card.Body>
                     </Card>
                 </div>
                 <div className="flip-card-back">
                     <Card className="card">
                         <Card.Body>
-                            <Card.Title className="cardTitleBack">Thepsuda Bridge</Card.Title>
+                            <Card.Title className="cardTitleBack">Kai Island</Card.Title>
                             <Card.Text className="cardTextBack">
-                                The Thesuda Bridge is a reinforced concrete bridge used to pass through the Lam Pao Dam. Between Laem Non Wiset Tambon Non Buri District. With the Nong Bua. Nongkhai Province has two lanes of 2,040 meters.  This bridge was named on April 22, 2010 named The Bridge is considered a beautiful view of the Lam Pao Dam. Especially at sunset.
-                            </Card.Text>
+                                Located in the southern part of Poda Island in the Andaman Sea, facing Ao Nang Bay, the Chicken Island is approximately 8 kilometers away from the mainland. It is one of the three islands contributing to the formation of the sandy phenomenon known as the "Separated Sea," situated to the west and rooted in the larger island.                            </Card.Text>
                         </Card.Body>
                     </Card>
                 </div>
