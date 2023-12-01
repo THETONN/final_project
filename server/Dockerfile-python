@@ -3,8 +3,8 @@ FROM python:3.8
 
 WORKDIR /usr/src/app
 
-# Install Flask, Gunicorn, scikit-learn (specific version), joblib
-RUN pip install Flask gunicorn scikit-learn==1.3.1 joblib
+# Install Flask, Gunicorn, scikit-learn (specific version), joblib, and flask_cors
+RUN pip install Flask gunicorn scikit-learn==1.3.1 joblib flask_cors
 
 COPY model/kmeans_model.joblib /usr/src/app/
 COPY model.py /usr/src/app/

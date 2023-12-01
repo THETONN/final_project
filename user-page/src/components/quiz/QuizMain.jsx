@@ -208,95 +208,92 @@ const QuizMain = () => {
 
   
 
-  const submitAnswers = async () => {
-    console.log('questions:', questions);
-    console.log('userAnswers:', userAnswers);
+    const submitAnswers = async () => {
+      console.log('questions:', questions);
+      console.log('userAnswers:', userAnswers);
     
-    try {
-      const id_user = getUserIdFromStorage();
-  
-      // Normalize user answers, remove line breaks, and ensure consistent capitalization if necessary
-      const normalizedUserAnswers = {};
-      for (const questionText in userAnswers) {
-        const answer = userAnswers[questionText];
-        normalizedUserAnswers[questionText] = answer.replace(/\r\n/g, '').trim();
-      }
-  
-      const encodedAnswers = questions.map((questionObj, index) => {
-        const questionText = questionObj.question;
-        const userAnswer = normalizedUserAnswers[questionText];
-        const encodedValue = answerEncoding[questionText]?.[userAnswer];
-  
-        console.log(`questionText: ${questionText}`);
-        console.log(`userAnswer: ${userAnswer}`);
-        console.log(`encodedValue: ${encodedValue}`);
-
-        
-  
-        if (encodedValue === undefined) {
-          console.error(`No encoding for question: ${questionText}, answer: ${userAnswer}`);
-          return null;
+      try {
+        const id_user = getUserIdFromStorage();
+    
+        // Normalize user answers
+        const normalizedUserAnswers = {};
+        for (const questionText in userAnswers) {
+          const answer = userAnswers[questionText];
+          normalizedUserAnswers[questionText] = answer.replace(/\r\n/g, '').trim();
         }
-  
-        return {
-          id_user: id_user,
-          id_question: index + 1,
-          id_choice: encodedValue,
-        };
-      }).filter(a => a != null);
-
-      if (encodedAnswers.length === 18) { // Check if there are exactly 18 items
-        encodedAnswers.forEach((encodedAnswer, index) => {
-          console.log(`Question ${index + 1} encoded value:`, encodedAnswer);
-        });
-      } else {
-        console.error(`Expected 18 encoded answers, but got ${encodedAnswers.length}`);
-      }
-
-      console.log("Encoded answers to be submitted:", encodedAnswers.id_choice);
-      console.log("Encoded answers to be submitted:", encodedAnswers);
-
-      // ส่งคำตอบที่ถูก encode ไปยัง API /predict
-      const idChoices = encodedAnswers.map(answer => answer.id_choice);
-      console.log("id_choice values to be submitted:", idChoices);
-
-      const predictionResponse = await axios.post(
-        "http://localhost:8081/predict",
-        { answers: idChoices }
-      );
-      const predictedGroup = predictionResponse.data.group;
-
-      // Post ข้อมูลพร้อมกับกลุ่มที่ทำนายได้ไปยังฐานข้อมูล
-      const dbPostResponse = await axios.post(
-        "http://localhost:8081/submit-to-db",
-        {
-          answers: encodedAnswers.map((answer) => ({
-            ...answer,
-            group: predictedGroup,
-          })),
+    
+        const encodedAnswers = questions.map((questionObj, index) => {
+          const questionText = questionObj.question;
+          const userAnswer = normalizedUserAnswers[questionText];
+          const encodedValue = answerEncoding[questionText]?.[userAnswer];
+    
+          console.log(`questionText: ${questionText}`);
+          console.log(`userAnswer: ${userAnswer}`);
+          console.log(`encodedValue: ${encodedValue}`);
+    
+          if (encodedValue === undefined) {
+            console.error(`No encoding for question: ${questionText}, answer: ${userAnswer}`);
+            return null;
+          }
+    
+          return {
+            id_user: id_user,
+            id_question: index + 1,
+            id_choice: encodedValue,
+          };
+        }).filter(a => a != null);
+    
+        if (encodedAnswers.length === 18) {
+          encodedAnswers.forEach((encodedAnswer, index) => {
+            console.log(`Question ${index + 1} encoded value:`, encodedAnswer);
+          });
+        } else {
+          console.error(`Expected 18 encoded answers, but got ${encodedAnswers.length}`);
         }
-      );
-
-      console.log("Data submitted to database:", dbPostResponse.data);
-
-      // นำทางไปยัง path ตามกลุ่มที่ทำนายได้
-      switch (predictedGroup) {
-        case 1:
-          navigate("/HomePredict");
-          break;
-        case 2:
-          navigate("/HomePredict2");
-          break;
-        case 3:
-          navigate("/HomePredict3");
-          break;
-        default:
-          console.error("Invalid group prediction:", predictedGroup);
+    
+        console.log("Encoded answers to be submitted:", encodedAnswers);
+    
+        // ส่งคำตอบที่ถูก encode ไปยัง API /predict
+        const idChoices = encodedAnswers.map(answer => answer.id_choice);
+        console.log("id_choice values to be submitted:", idChoices);
+    
+        const predictionResponse = await axios.post(
+          "http://localhost:5000/predict",
+          { data: idChoices }
+        );
+        const predictedGroup = predictionResponse.data.group;
+    
+        // Post ข้อมูลพร้อมกับกลุ่มที่ทำนายได้ไปยังฐานข้อมูล
+        const dbPostResponse = await axios.post(
+          "http://localhost:8081/submit-to-db",
+          {
+            answers: encodedAnswers.map((answer) => ({
+              ...answer,
+              group: predictedGroup,
+            })),
+          }
+        );
+    
+        console.log("Data submitted to database:", dbPostResponse.data);
+    
+        // นำทางไปยัง path ตามกลุ่มที่ทำนายได้
+        switch (predictedGroup) {
+          case 0:
+            navigate("/HomePredict");
+            break;
+          case 1:
+            navigate("/HomePredict2");
+            break;
+          case 2:
+            navigate("/HomePredict3");
+            break;
+          default:
+            console.error("Invalid group prediction:", predictedGroup);
+        }
+      } catch (error) {
+        console.error("Error during prediction and submission:", error);
       }
-    } catch (error) {
-      console.error("Error during prediction and submission:", error);
-    }
-  };
+    };
 
   const steps = Array.from(
     { length: questions.length },

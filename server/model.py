@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # Import CORS module
 import numpy as np
 from sklearn.decomposition import PCA
 import joblib
@@ -7,6 +8,7 @@ app = Flask(__name__)
 
 # Load the K-means model
 kmeans_model = joblib.load('kmeans_model.joblib')
+CORS(app)
 
 
 mean = np.array([0.514625, 1.135142, 1.552537, 0.516647, 1.015472, 0.763831, 0.868298, 0.600797, 
