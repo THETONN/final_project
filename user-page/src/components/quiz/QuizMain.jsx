@@ -190,6 +190,18 @@ const QuizMain = () => {
   
   };
 
+  //for each id_choice:
+      // std = (encode-mean)/std [index]
+      // if question == 'season': 
+      //   season = std*2
+      //   index[...] = season
+          //  return index[...]
+      //  return std  
+
+    // process predict  
+    // submit ---> encode ---> function std ---> return std ---> ---> /predict
+    // predict ---> function pca ---> function predict ---> cluster(0,1,2)
+
   
 
   const submitAnswers = async () => {
