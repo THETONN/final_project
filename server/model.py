@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import numpy as np
 from sklearn.decomposition import PCA
+import joblib
 
 app = Flask(__name__)
 
@@ -8,13 +9,13 @@ app = Flask(__name__)
 kmeans_model = joblib.load('kmeans_model.joblib')
 
 
-mean = np.array([0.514625, 1.135142, 0.516647, 1.552537, 1.015472, 0.868298, 0.763831, 0.600797, 
-                1.108106, 1.088603, 0.893100, 0.476510, 0.992861, 1.139260, 1.192320, 0.998679, 
-                1.092060, 0.760109, 0.717185, 0.502057])  #  mean values for each feature
-std_dev = np.array([
-                1.715370, 1.637571, 0.812144, 6.848197, 0.812144, 2.028463, 1.667932, 1.673624, 
-                4.239089, 1.216319, 2.277040, 1.747628, 4.548387, 3.544592, 2.185958, 4.453510, 
-                3.166983, 1.605313, 1.330171, 1.690702])  #  standard deviation values for each feature
+mean = np.array([0.514625, 1.135142, 1.552537, 0.516647, 1.015472, 0.763831, 0.868298, 0.600797, 
+                1.108106, 1.088603, 1.192320, 1.092060, 0.760109, 0.476510, 0.992861, 1.139260, 
+                0.998679, 0.717185])  #  mean values for each feature
+
+std_dev = np.array([1.715370, 1.637571, 6.848197, 0.812144, 0.812144, 1.667932, 2.028463, 1.673624, 
+                    4.239089, 1.216319, 2.185958, 3.166983, 1.605313, 1.747628, 4.548387, 3.544592, 
+                    4.453510, 1.330171])  #  standard deviation values for each feature
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -26,7 +27,7 @@ def predict():
     standardized_data = (encoded_data - mean) / std_dev
     
     # Double the value of the first data point
-    standardized_data[0] *= 2
+    standardized_data[13] *= 2
 
     # Fit and apply PCA transformation on the modified data
     pca = PCA(n_components=2)

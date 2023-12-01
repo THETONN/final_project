@@ -70,125 +70,129 @@ const QuizMain = () => {
   const answerEncoding = {
     'Gender': {
       'Male': 0,
-      'Female': 1,
-      'Alternative':2,
+      'Female': 2,
+      'Alternative': 1,
     },
     'Age': {
-      'less than or equal to 20 years old': 0,
+      '20 yesrs old or less': 0,
       '21-30 years old': 1,
-      '31-40 years old':2,
-      '41-50 years old':3,
-      '51-60 years old':4,
-      'Over 60 years old':5
+      '31-40 years old': 2,
+      '41-50 years old': 3,
+      '51-60 years old': 4,
+      'Over 60 years old': 5
     },
     'Occupation': {
-      'Student': 0,
+      'Student': 2,
       'Business owner': 1,
-      'Government officers':2,
-      'Private company employees':3,
-      'Housewife/Househusband':4,
-      'Employees':5,
-      'Farmer':6,
-      'Others':7
+      'Government officer': 0,
+      'Private company employee': 3,
+      'Housewife/Househusband': 4,
+      'Employee': 6,
+      'Farmer': 8,
+      'Freelancer': 5,
+      'Others': 7,
     },
     'Education level': {
       "Under bachelor's degree": 0,
       "Bachelor's degree or equivalent": 1,
-      "Higher bachelor's degree": 2, 
+      "Master's degree": 2, 
     },
     
-    'Income(monthly)': {
+    'Income (monthly)': {
       "Less than 15,000 THB": 0,
       "15,000 - 30,000 THB": 1,
-      "30,001 - 45,000 THB":2,
-      '45,001 - 60,000 THB':3,
-      'More than 60,000 THB':4
+      "30,001 - 45,000 THB": 2,
+      "45,001 - 60,000 THB": 3,
+      "More than 60,000 THB": 4
     },
     'Household size (including the respondent)': {
       '1 person': 0,
       '2-3 people': 1,
-      '4-5 people':2,
-      'More than 5 people':3
+      '4-5 people': 2,
+      'More than 5 people': 3
     },
     'Vehicle ownership': {
-      'Yes': 0,
-      'No': 1,
+      'private car': 1,
+      'motorcycle': 3,
+      'other': 0,
+      'none': 2,
     },
     'Status': {
-      'Single': 0,
-      'Married': 1,
-      'Not mentioned':2,
+      'Single': 1,
+      'Married': 0,
+      'Prefer not to answer': 2,
     },
-    'Your current residence (Region)': {
+    'Your residential region': {
       'Central': 0,
-      'North': 1,
-      'South':2,
-      'North-East':3,
-      'Eastern':4,
-      'Western':5
+      'North': 4,
+      'South': 5,
+      'NorthEast':3,
+      'Eastern': 2,
+      'Western': 1
     },
     'The frequency of domestic traveling': {
-      'More than 5 times/year': 0,
-      '4-5 times/year': 1,
-      '2-3 times/year':2,
-      'Less than 2 times/year-East':3
+      'Less than 2 times/year': 0,
+      '2-3 times/year': 1,
+      '4-5 times/year': 2,
+      'More than 5 times/year': 3
     },
-    'The average number of travel companions per 1 round trip regularly': {
-      'Single': 0,
-      '1-2 persons': 1,
-      '3-4 persons':2,
-      'More than 5 persons':3
+    'The average number of travel companions': {
+      'none': 0,
+      '1-2 people': 1,
+      '3-4 people': 2,
+      '5 people': 3,
+      'More than 5 people': 4
     },
-    'The average travel expenditures per 1 round trip': {
+    'The average travel expenditures per 1 round trip per person': {
       'Lower than 500 THB': 0,
-      '501-1,500 THB': 1,
-      '1,501-2,500 THB':2,
-      '2,501-3,500 THB':3,
-      'More than 3,500 THB':4
+      '501-1500 THB': 1,
+      '1501-2500 THB': 2,
+      '2501-3500 THB': 3,
+      'More than 3500 THB': 4
     },
     'The average days for traveling per 1 round trip': {
         '1 day': 0,
         '1-2 days': 1,
-        '3-4 days':2,
-        'More Than 4 days':3
+        '3-4 days': 2,
+        'More than 4 days': 3
       },
-    'The preference season for traveling': {
-        'Hot season': 0,
-        'Rainy season': 1,
+    'The preferred season for traveling': {
+        'Hot season': 1,
+        'Rainy season': 0,
         'Cold season':2,
       
     },
-    'The preference types of tourism destinations regularly': {
-        'Environment destination (such as beaches, mountains, waterfalls, etc.)': 0,
-        'Historical Attraction (such as temples, historical parks, museums, etc.)': 1,
-        'Cultural Attraction (such as floating markets, traditional festivals, cultural performances, etc.)':2,
-        'Recreational destinations (such as entertainment venues, amusement parks, zoos, shopping malls, concerts, etc.)':3,
-        'Ethnic destinations (such as Karen village, coffee planting workshop, homestay, etc.)':4,
-        'Business destinations (such as seminars, business negotiations, meetings, etc.)':5
+    'The preferred types of tourism destinations': {
+        'Natural sights destination (beaches, mountains, waterfalls, etc.)': 0,
+        'Historical destination (temples, historical parks, museums, etc.)': 1,
+        'Cultural destination (floating markets, traditional festivals, cultural performances, etc.)': 2,
+        'Recreational destinations (entertainment venues, amusement parks, zoos, shopping malls, concerts, etc.)': 4,
+        'Ethnic destinations (Karen village, coffee planting workshop, homestay, etc.)': 5,
+        'Business destinations (seminars, business negotiations, meetings, etc.)': 3
     },
-    'The preference region that you travel regularly': {
-        'Central region': 0,
-        'North region': 1,
-        'South region':2,
-        'North-East region':3,
-        'Eastern region':4,
-        'Western region':5
+    'The preferred region of traveling': {
+        'Central': 0,
+        'North': 4,
+        'South': 5,
+        'NorthEast': 3,
+        'Eastern': 2,
+        'Western': 1
     },
-    'The preference type of vehicles for traveling regularly': {
-        'Private car': 0,
-        'Motorcycle': 1,
-        'Public transport':2,
-        'Airplane':3,
-        'Train':4,
-        'Passenger ship':5
+    'The preference type of vehicle for traveling': {
+        'Private car': 1,
+        'Motorcycle': 0,
+        'Public transportations': 2,
+        'Airplane': 4,
+        'Train': 3,
+        'Passenger ship': 5
     },
-    'The preferences period of time for traveling': {
-      'Weekend (Saturday-Sunday)': 0,
-      'Weekday (Monday-Friday)': 1,
-      'Holidays':2,
+    'The preferred period of traveling': {
+      'Weekends (Saturday-Sunday)': 2,
+      'Weekdays (Monday-Friday)': 0,
+      'Holidays': 1
     },
   
-  };
+  }
 
   //for each id_choice:
       // std = (encode-mean)/std [index]
