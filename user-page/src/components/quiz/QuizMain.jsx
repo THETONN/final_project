@@ -191,6 +191,12 @@ const QuizMain = () => {
       'Weekdays (Monday-Friday)': 0,
       'Holidays': 1
     },
+    'Do you still want to travel after the end of the COVID-19 pandemic': {
+      'I’d love to': 0,
+      'I’m not sure': 2,
+      'Definitely not!':1
+    },
+
   
   }
 
@@ -243,12 +249,12 @@ const QuizMain = () => {
           };
         }).filter(a => a != null);
     
-        if (encodedAnswers.length === 18) {
+        if (encodedAnswers.length === 19) {
           encodedAnswers.forEach((encodedAnswer, index) => {
             console.log(`Question ${index + 1} encoded value:`, encodedAnswer);
           });
         } else {
-          console.error(`Expected 18 encoded answers, but got ${encodedAnswers.length}`);
+          console.error(`Expected 19 encoded answers, but got ${encodedAnswers.length}`);
         }
     
         console.log("Encoded answers to be submitted:", encodedAnswers);
@@ -262,17 +268,18 @@ const QuizMain = () => {
           { data: idChoices }
         );
         const predictedGroup = predictionResponse.data.group;
+        console.log('Predict group',predictedGroup);
     
         // Post ข้อมูลพร้อมกับกลุ่มที่ทำนายได้ไปยังฐานข้อมูล
-        const dbPostResponse = await axios.post(
-          "http://localhost:8081/submit-to-db",
-          {
-            answers: encodedAnswers.map((answer) => ({
-              ...answer,
-              group: predictedGroup,
-            })),
-          }
-        );
+        // const dbPostResponse = await axios.post(
+        //   "http://localhost:8081/submit-to-db",
+        //   {
+        //     answers: encodedAnswers.map((answer) => ({
+        //       ...answer,
+        //       group: predictedGroup,
+        //     })),
+        //   }
+        // );
     
         console.log("Data submitted to database:", dbPostResponse.data);
     
