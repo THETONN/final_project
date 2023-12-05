@@ -17,7 +17,7 @@ function MainNavbar() {
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [username, setUsername] = useState(''); // เพิ่ม state สำหรับเก็บ username
-
+  
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);

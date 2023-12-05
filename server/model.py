@@ -12,13 +12,11 @@ pca_model = joblib.load('pca_model.joblib')
 CORS(app)
 
 
-mean = np.array([0.514625, 1.135142, 1.552537, 0.516647, 1.015472, 0.763831, 0.868298, 0.600797, 
-                1.108106, 1.088603, 1.192320, 1.092060, 0.760109, 0.476510, 0.992861, 1.139260, 
-                0.998679, 0.717185,1.690702])  #  mean values for each feature
+std_dev = np.array([1.135142,0.516647,1.015472,0.763831,1.088603,1.192320,1.092060,0.760109,0.514625,1.552537,
+                    0.868298,0.600797,1.108106,0.476510,0.992861,1.139260,0.998679,0.717185,0.502057])  #  mean values for each feature
 
-std_dev = np.array([1.715370, 1.637571, 6.848197, 0.812144, 0.812144, 1.667932, 2.028463, 1.673624, 
-                    4.239089, 1.216319, 2.185958, 3.166983, 1.605313, 1.747628, 4.548387, 3.544592, 
-                    4.453510, 1.330171,0.502057])  #  standard deviation values for each feature
+mean = np.array([1.637571,0.812144,0.812144,1.667932,1.216319,2.185958,3.166983,1.605313,1.715370,6.848197,
+                 2.028463,1.673624,4.239089,1.747628,4.548387,3.544592,4.453510,1.330171,1.690702])  #  standard deviation values for each feature
 
 column_names = [
     'age', 'education', 'income', 'household', 'after_freq',
@@ -36,9 +34,11 @@ def predict():
     print("Raw data:", raw_data)
      # Convert raw data to DataFrame with the appropriate column names
     df_data = pd.DataFrame([raw_data], columns=column_names)
+    print(df_data)
     
 
     standardized_data = (df_data - mean) / std_dev
+    print(standardized_data)
 
 
     season_col = 'after_season'
@@ -56,11 +56,12 @@ def predict():
 
     # Assuming pca_transformed_data is a 2D numpy array
     data_pca = pd.DataFrame(pca_transformed_data, columns=[f'principal_feature_{i}' for i in range(pca_transformed_data.shape[1])])
-
-    print(data_pca)
+    
+    print('data_pca:',data_pca)
     
     # Use the PCA-transformed data to make a prediction with the K-means model
     prediction = kmeans_model.predict(data_pca)
+    print('predict:',prediction)
     
     # Return the prediction as a JSON response
     return jsonify({'group': int(prediction[0])})

@@ -200,17 +200,6 @@ const QuizMain = () => {
   
   }
 
-  //for each id_choice:
-      // std = (encode-mean)/std [index]
-      // if question == 'season': 
-      //   season = std*2
-      //   index[...] = season
-          //  return index[...]
-      //  return std  
-
-    // process predict  
-    // submit ---> encode ---> function std ---> return std ---> ---> /predict
-    // predict ---> function pca ---> function predict ---> cluster(0,1,2)
 
   
 
@@ -281,7 +270,7 @@ const QuizMain = () => {
         //   }
         // );
     
-        console.log("Data submitted to database:", dbPostResponse.data);
+        // console.log("Data submitted to database:", dbPostResponse.data);
     
         // นำทางไปยัง path ตามกลุ่มที่ทำนายได้
         switch (predictedGroup) {
