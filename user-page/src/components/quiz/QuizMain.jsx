@@ -46,14 +46,7 @@ const QuizMain = () => {
     setStep(step - 1);
   };
 
-  // const checkAnswer = (answerId) => {
-  //   // const answerText = questions[step].answers[answerId];
-  //   setUserAnswers({
-  //     ...userAnswers,
-  //     [questions[step].question]: answerId,
-  //     // [questions[step].question]: answerText,
-  //   });
-  // };
+
   const checkAnswer = (answerId) => {
     const answerText = questions[step].answers[answerId];
     setUserAnswers({
@@ -206,6 +199,7 @@ const QuizMain = () => {
     const submitAnswers = async () => {
       console.log('questions:', questions);
       console.log('userAnswers:', userAnswers);
+      // const userId = getUserIdFromStorage()
     
       try {
         const id_user = getUserIdFromStorage();
@@ -222,9 +216,9 @@ const QuizMain = () => {
           const userAnswer = normalizedUserAnswers[questionText];
           const encodedValue = answerEncoding[questionText]?.[userAnswer];
     
-          console.log(`questionText: ${questionText}`);
-          console.log(`userAnswer: ${userAnswer}`);
-          console.log(`encodedValue: ${encodedValue}`);
+          // console.log(`questionText: ${questionText}`);
+          // console.log(`userAnswer: ${userAnswer}`);
+          // console.log(`encodedValue: ${encodedValue}`);
     
           if (encodedValue === undefined) {
             console.error(`No encoding for question: ${questionText}, answer: ${userAnswer}`);
@@ -232,9 +226,11 @@ const QuizMain = () => {
           }
     
           return {
+            question_text: questionText, // นี่คือที่มาของ answer.question_text
             id_user: id_user,
             id_question: index + 1,
             id_choice: encodedValue,
+            original_answer: userAnswer, // คำตอบดิบที่ผู้ใช้ตอบ
           };
         }).filter(a => a != null);
     
@@ -247,6 +243,7 @@ const QuizMain = () => {
         }
     
         console.log("Encoded answers to be submitted:", encodedAnswers);
+        
     
         // ส่งคำตอบที่ถูก encode ไปยัง API /predict
         const idChoices = encodedAnswers.map(answer => answer.id_choice);
@@ -258,19 +255,22 @@ const QuizMain = () => {
         );
         const predictedGroup = predictionResponse.data.group;
         console.log('Predict group',predictedGroup);
+
+        const answersPayload = {
+          id_user: getUserIdFromStorage(), // Make sure this function is correctly retrieving the user's ID
+          predicted_group: predictedGroup, // This should come from your prediction logic
+          answers: questions.map(questionObj => userAnswers[questionObj.question])
+        };
+      
+        console.log("Payload being sent:", answersPayload);
+        
+        // Send this payload to your backend
+        const response = await axios.post("http://localhost:8081/insert-answers", answersPayload);
+
     
-        // Post ข้อมูลพร้อมกับกลุ่มที่ทำนายได้ไปยังฐานข้อมูล
-        // const dbPostResponse = await axios.post(
-        //   "http://localhost:8081/submit-to-db",
-        //   {
-        //     answers: encodedAnswers.map((answer) => ({
-        //       ...answer,
-        //       group: predictedGroup,
-        //     })),
-        //   }
-        // );
-    
-        // console.log("Data submitted to database:", dbPostResponse.data);
+ 
+      
+        console.log("Data submitted to database:", response.data)
     
         // นำทางไปยัง path ตามกลุ่มที่ทำนายได้
         switch (predictedGroup) {

@@ -372,32 +372,82 @@ app.post('/qa', (req, res) => {
 });
 
 // Post data from answer users questionnaire
+
+
+// app.post('/insert-answers', (req, res) => {
+//     const { id_user, answers, predicted_group } = req.body;
+//     let insertCount = 0;
+//     let errors = [];
+//     // console.log(answers);
+
+//     if (!answers) {
+//         // If answers is undefined or not present, send an error response
+//         return res.status(400).json({ message: 'No answers provided' });
+//       }
+//       console.log("Received answers:", answers);
+//       console.log("id_user:", id_user);
+//       console.log("predicted_group:", predicted_group);
+      
+//     answers.forEach((answer, index) => {
+
+//         console.log(`Answer ${index}:`, answer);
+//       // ตัวอย่างนี้ไม่รวม 'id' และ 'Created' เนื่องจาก 'id' น่าจะเป็น AUTO_INCREMENT และ 'Created' อาจเป็นค่าปัจจุบันที่ฐานข้อมูลกำหนดเอง
+//       const query = 'INSERT INTO answers_users (id_users, age, education, income, household, after_freq, after_person, after_expenditure, after_day_travel, gender, occupation, per_vehicle, status, per_region, after_season, after_type, after_region, after_vehicle, after_period_time, after_want_travel, groups) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+//       console.log('query:',query);
+    
+//     //   const values = [answer.id_users, answer.age, answer.education, answer.income, answer.household, answer.after_freq, answer.after_person, answer.after_expenditure, answer.after_day_travel, answer.gender, answer.occupation, answer.per_vehicle, answer.status, answer.per_region, answer.after_season, answer.after_type, answer.after_region, answer.after_vehicle, answer.after_period_time, answer.after_want_travel, answer.groups];
+//     const values = [id_user, ...answers, predicted_group];
+//       console.log('values:',values);
+//       con.query(query, values, (error, results) => {
+//         if (error) {
+//           errors.push({ answer: answer, error: error });
+//           return;
+//         }
+//         insertCount++;
+//         if (insertCount + errors.length === answers.length) {
+//           if (errors.length > 0) {
+//             res.status(500).json({ message: 'Some answers were not inserted', errors });
+//           } else {
+//             res.status(200).json({ message: 'All answers inserted successfully' });
+//           }
+//         }
+//       });
+//     });
+//   });
+
 app.post('/insert-answers', (req, res) => {
-    const answers = req.body.answers;
-    let insertCount = 0;
-    let errors = [];
-
-    answers.forEach((answer, index) => {
-        db.query('INSERT INTO user_answers (id_user, id_question, id_choice, id_group) VALUES (?, ?, ?, ?)', 
-        [answer.id_user, answer.id_question, answer.id_choice, answer.id_group], 
-        (error, results, fields) => {
-            if (error) {
-                errors.push({ index, error });
-                return;
-            }
-            insertCount++;
-
-            // ตอบกลับเมื่อประมวลผลทุกรายการเสร็จสิ้น
-            if (insertCount + errors.length === answers.length) {
-                if (errors.length > 0) {
-                    res.status(500).json({ message: 'Some answers were not inserted', errors });
-                } else {
-                    res.status(200).json({ message: 'All answers inserted successfully' });
-                }
-            }
-        });
+    const { id_user, predicted_group, answers } = req.body;
+    // Ensure that `answers` is an array with the correct length
+    // if (!Array.isArray(answers) || answers.length !== 18) {
+    //   return res.status(400).send('Invalid answers array');
+    // }
+  
+    // Add `id_user` and `predicted_group` to the beginning and end of the answers array
+    const values = [id_user, ...answers, predicted_group];
+    console.log("values:", values);
+  
+    // Construct the query with the correct number of placeholders
+    const placeholders = values.map(() => '?').join(',');
+    const query = `
+    INSERT INTO answers_users (
+      id_users, age, education, income, household,
+      after_freq, after_person, after_expenditure, after_day_travel,
+      gender, occupation, per_vehicle, status, per_region,
+      after_season, after_type, after_region, after_vehicle,
+      after_period_time, after_want_travel, \`groups\`
+    ) VALUES (${placeholders})`;
+  
+    // Execute the query
+    con.query(query, values, (error, results) => {
+      if (error) {
+        console.error('Error executing query:', error);
+        return res.status(500).json({ message: 'Database query failed', error });
+      }
+      res.json({ message: 'Answers inserted successfully', results });
     });
-});
+  });
+
+
 
 
 
