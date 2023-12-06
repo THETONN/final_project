@@ -73,7 +73,7 @@ const Login = () => {
       if (res.role === "ADMIN") {
         window.location.href = 'http://localhost:5174/Dashboard'; // พอร์ตสำหรับ Admin
       } else {
-        navigate('/LoginHome'); // พอร์ตสำหรับ User
+        window.location.href = '/LoginHome'; // พอร์ตสำหรับ User
       }
     } catch (error) {
       setError(error?.response?.data?.message);

@@ -4,16 +4,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function MainNavbar() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [username, setUsername] = useState('');
+  const [groupId, setGroupId] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-  }, []);
   const handleClick = (id) => {
     const element = document.getElementById(id);
     element.scrollIntoView({
@@ -22,8 +21,12 @@ function MainNavbar() {
     });
   };
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [username, setUsername] = useState(''); // เพิ่ม state สำหรับเก็บ username
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username') || 'Guest';
+    const storedGroupId = localStorage.getItem('groupId');
+    setUsername(storedUsername);
+    setGroupId(storedGroupId);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,27 +40,27 @@ function MainNavbar() {
     };
   }, []);
 
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const handleDropdownToggle = () => {
-    setShowDropdown(!showDropdown);
-  };
-
-  const login = (username) => {
-    // ทำการเข้าสู่ระบบ และรับชื่อผู้ใช้จากต้นทาง (เช่น จาก API)
-    // หลังจากเข้าสู่ระบบสำเร็จ
-    setUsername(username);
-    // และทำอื่นๆ เช่น เก็บ token หรืออื่นๆ ตามความเหมาะสม
-  };
-  const navigate = useNavigate();
-
   const handleLogout = () => {
-    
     localStorage.removeItem('userId');
-    navigate('/'); // นำทางกลับไปยังหน้าhomepage
+    localStorage.removeItem('groupId');
+    setUsername('Guest');
+    setGroupId(null);
+    navigate('/');
   };
 
-  
+  const handleTourClick = () => {
+    console.log(groupId);
+    if (groupId=='null') {
+      alert('Please complete the questionnaire to be assigned to a group.');
+    } else {
+      navigate(`/HomePredict${groupId}`);
+    }
+  };
+
+  // Modify the style for the Tour link based on the groupId presence
+  const tourLinkStyle = groupId && groupId !== 'null' && groupId !== 'defaultGroupId' 
+    ? { marginRight: 40, fontSize: 'large' }
+    : { marginRight: 40, fontSize: 'large', pointerEvents: 'none', opacity: '0.5' };
 
   return (
     <div>
@@ -85,7 +88,7 @@ function MainNavbar() {
               )}
               <Nav.Link
                 style={{ marginRight: 40, fontSize: 'large' }}
-                href="#home"
+                href="/"
                 onClick={() => handleClick('sectionHome')}
               >
                 Home
@@ -97,11 +100,7 @@ function MainNavbar() {
               >
                 About
               </Nav.Link>
-              <Nav.Link
-                style={{ marginRight: 40, fontSize: 'large', pointerEvents:'none', opacity:'0.5' }}
-                href="/HomePredict"
-                onClick={() => handleClick('sectionTour2')}
-              >
+              <Nav.Link style={tourLinkStyle} onClick={handleTourClick}>
                 Tour
               </Nav.Link>
               <Nav.Link
@@ -112,20 +111,20 @@ function MainNavbar() {
                 Contact
               </Nav.Link>
               {
-                <Dropdown onToggle={handleDropdownToggle} show={showDropdown}>
-                  <Dropdown.Toggle style={{
-                    marginRight: 40,
-                    fontSize: 'medium',
-                    backgroundColor: '#6750A3',
-                    borderRadius: '18px',
-                    border: 'white',
-                    width: 'auto',
-                    textAlign: 'center',
-                  }} variant="dark" id="dropdown-basic">
-                    {username || username}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item  onClick={handleLogout}>Logout</Dropdown.Item>
+                <Dropdown onToggle={() => setShowDropdown(!showDropdown)} show={showDropdown}>
+                <Dropdown.Toggle style={{
+                  marginRight: 40,
+                  fontSize: 'medium',
+                  backgroundColor: '#6750A3',
+                  borderRadius: '18px',
+                  border: 'white',
+                  width: 'auto',
+                  textAlign: 'center',
+                }} variant="dark" id="dropdown-basic">
+                  {username || 'Guest'}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               }

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import React, { useState,useEffect } from "react";
+
 import './HomePredict.css'
 // impoet Nav from components
 import MainNavbar from './components/navbar'
@@ -15,11 +16,21 @@ import Contact from './components/contact/Contact'
 //import Questionnaire from componentes
 import Questionnaire from './components/Questionnaire/Questionnaire'
 import { Link } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 
 
 function HomePredict() {
-  const [count, setCount] = useState(0)
+  const navigate = useNavigate();
+  useEffect(() => {
+    const storedGroupId = localStorage.getItem('groupId');
+    console.log(storedGroupId);
+    if (storedGroupId !== '0') {
+      // alert('You are not authorized to view this page.');
+      navigate(`/HomePredict${storedGroupId}`);; // Redirect to a safe page or a not authorized page
+    }
+    
+  }, [navigate]);
 
   return (
     <div className='App2'>
@@ -57,7 +68,7 @@ function HomePredict() {
             <div className='ContainMain2'>
               <div id='coverAllofBTN2'>
                 <h3 className='DetailPredictTour2'>
-                  <h1 className='TopicEachHome2'>Find perfect <span style={{ color: '#9F7CFC' }}>TRIP</span> with us!</h1>
+                  <span className='TopicEachHome2'>Find perfect <span style={{ color: '#9F7CFC' }}>TRIP</span> with us!</span>
                   <hr className='style52' />
                   <p className='DetailEachHome2'>Please take a few minutes to complete our survey and provide us with your valuable feedback</p>
                 </h3>

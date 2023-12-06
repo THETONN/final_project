@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import React, { useState,useEffect } from "react";
 import './HomePredict.css'
 // impoet Nav from components
-import MainNavbar from './components/navbar'
+// import MainNavbar from '../LoginHome/components/navbarAfterLogin'
 // impoer Nav Login components
 import MainNavbarLog from './components/navbarAfterLogin'
 // import for use Container from bootstrap
@@ -15,16 +15,26 @@ import Contact from './components/contact/Contact'
 //import Questionnaire from componentes
 import Questionnaire from './components/Questionnaire/Questionnaire'
 import { Link } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 
 
 function HomePredict3() {
     const [count, setCount] = useState(0)
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        const storedGroupId = localStorage.getItem("groupId");
+        console.log(storedGroupId);
+        if (storedGroupId !== "2") {
+          navigate(`/HomePredict${storedGroupId}`);
+        }
+      }, [navigate]);
+
 
     return (
         <div className='App2'>
             <MainNavbarLog />
-            {/* <MainNavbar /> */}
             <div style={{ backgroundColor: 'black', paddingTop: '5rem' }}>
                 <section id='sectionAbout2'>
                     <div className='mainTopHome3'>
@@ -74,19 +84,19 @@ function HomePredict3() {
 
 
             {/* {S-Questionnaire} */}
-            <section id='sectionFeedback2'>
+            <section id='sectionFeedback'>
                 <Questionnaire />
             </section>
             {/* {E-Questionnaire} */}
 
             {/* S-Contact */}
-            <section id="sectionContact2" className="scroll-section">
+            <section id="sectionContact" className="scroll-section">
                 <Contact />
             </section>
             {/* E-Contact */}
 
             {/* S-Footer */}
-            <section id="sectionFooter2">
+            <section id="sectionFooter">
                 <Footer />
             </section>
             {/* E-Footer */}

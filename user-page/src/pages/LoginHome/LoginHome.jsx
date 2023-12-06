@@ -16,6 +16,7 @@ import axios from "axios";
 function LoginHomePage() {
   const [userGroup, setUserGroup] = useState(null);
   const navigate = useNavigate();
+  const [userId, setUserId] = useState(localStorage.getItem('userId'));
 
   useEffect(() => {
 
@@ -42,7 +43,7 @@ function LoginHomePage() {
         console.log('Please complete the questionnaire to be assigned to a group.');
       }
     }
-  }, [navigate]);
+  }, [userId, navigate]);
   
   // Retrieve the group_id from localStorage
   // const userGroup = localStorage.getItem('group_id');
@@ -51,7 +52,7 @@ function LoginHomePage() {
 
   return (
     <div className='App'>
-      <MainNavbar />
+      <MainNavbar userGroup={userGroup} />
 
 
       <section id="sectionHome" className="scroll-section">

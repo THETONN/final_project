@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState,useEffect } from "react";
 import './HomePredict.css'
 // impoet Nav from components
 import MainNavbar from './components/navbar'
@@ -15,11 +15,21 @@ import Contact from './components/contact/Contact'
 //import Questionnaire from componentes
 import Questionnaire from './components/Questionnaire/Questionnaire'
 import { Link } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 
 
 function HomePredict2() {
   const [count, setCount] = useState(0)
+  const navigate = useNavigate();
+  useEffect(() => {
+    const storedGroupId = localStorage.getItem('groupId');
+    console.log(storedGroupId);
+    if (storedGroupId !== '1') {
+      // alert('You are not authorized to view this page.');
+      navigate(`/HomePredict${storedGroupId}`); // Redirect to a safe page or a not authorized page
+    }
+  }, [navigate]);
 
   return (
     <div className='App2'>

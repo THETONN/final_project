@@ -283,13 +283,13 @@ const QuizMain = () => {
       // นำทางไปยัง path ตามกลุ่มที่ทำนายได้
       switch (predictedGroup) {
         case 0:
-          navigate("/HomePredict");
+          navigate("/HomePredict0");
           break;
         case 1:
-          navigate("/HomePredict2");
+          navigate("/HomePredict1");
           break;
         case 2:
-          navigate("/HomePredict3");
+          navigate("/HomePredict2");
           break;
         default:
           console.error("Invalid group prediction:", predictedGroup);
