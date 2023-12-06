@@ -31,6 +31,35 @@ function Registers() {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 
+  const handleRegister = async (userData) => {
+    try {
+      const response = await axios.post('http://localhost:8081/register', userData);
+      
+      // ตรวจสอบว่า response มี data หรือไม่
+      if (response.data) {
+        // ตั้งค่า userId ใน localStorage
+        localStorage.setItem('userId', response.data.userId);
+        
+        // ตรวจสอบว่ามี groupId ใน response หรือไม่
+        if(response.data.groupId) {
+          localStorage.setItem('groupId', response.data.groupId);
+        } else {
+          // ถ้าไม่มี groupId อาจจะเป็นเพราะเป็นผู้ใช้ใหม่ที่ยังไม่ได้ทำการจัดกลุ่ม
+          console.log('New user registered without groupId. They may need to complete a questionnaire.');
+        }
+        
+        // นำทางไปยังหน้าแรกหรือหน้าที่เหมาะสม
+        navigate('/homepage');
+      } else {
+        // จัดการกรณีที่ไม่ได้รับ response data อย่างเหมาะสม
+        throw new Error('Registration did not return expected data.');
+      }
+    } catch (error) {
+      console.error('Registration failed:', error);
+      // จัดการกับข้อผิดพลาดที่นี่
+    }
+  };
+
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
@@ -55,21 +84,6 @@ function Registers() {
     });
   };
 
-  const header = <div className="font-bold mb-3">Pick a password</div>;
-
-  const footer = (
-    <>
-        <Divider />
-        <p className="mt-2">Suggestions</p>
-        <ul className="pl-2 ml-2 mt-0 line-height-3">
-            <li>At least one lowercase</li>
-            <li>At least one uppercase</li>
-            <li>At least one numeric</li>
-            <li>Minimum 8 characters</li>
-        </ul>
-    </>
-);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -79,14 +93,16 @@ function Registers() {
         return;
       }
 
-
       const response = await axios.post(
         "http://localhost:8081/register",
         values
       );
-      showAlert();
+        showAlert();
+    
+      
       // ตรวจสอบว่าการแจ้งเตือนแสดงขึ้นจริงๆ ก่อนที่จะนำทางผู้ใช้
       // navigate("/Login");
+
     } catch (error) {
       setError(error?.response?.data?.message);
       // อย่าลืมจัดการแสดงข้อความข้อผิดพลาดใน UI

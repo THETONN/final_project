@@ -65,6 +65,7 @@ const Login = () => {
       // alert('Login response:', res);
       localStorage.setItem("userId", res.userId);
       localStorage.setItem("username", res.username); // ตั้งค่า username ใน localStorage
+      localStorage.setItem("groupId", res.groupId);
       
 
 

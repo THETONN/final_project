@@ -13,9 +13,6 @@ const { spawn } = require('child_process');
 console.log(`Current directory: ${process.cwd()}`);
 require('dotenv').config();
 
-// const fs = require('fs');
-// console.log(fs.readdirSync('./node_modules'));
-
 
 // Database connection
 const con = mysql.createConnection({
@@ -38,7 +35,7 @@ const { error, log } = require('console');
 
 
 const app = express();
-// app.use(express.static(path.join(__dirname,"../Dashboard-starter/public")));
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -59,44 +56,6 @@ app.use(express.urlencoded({ extended: true}));
 // Create hashed password
 const salt =10;
 
-
-// console.log('Current directory:', process.cwd());
-
-// const loadModel = () => {
-//     // If the model.py is in the same directory as server.js, no need to navigate up a directory.
-//     return spawn('python3', [__dirname +'/model.py']);
-//   };
-  
-//   // In the '/predict' endpoint handler
-//   const pythonProcess = loadModel();
-  
-//   pythonProcess.on('error', (error) => {
-//     console.error('Error spawning Python process:', error);
-//   });
-
-// Endpoint to handle the prediction
-// app.post('/predict', (req, res) => {
-//     // Assuming req.body is in the correct format for your model
-//     const modelInput = req.body.answers; // or any other preprocessing you need
-
-//     const pythonProcess = loadModel();
-
-//     pythonProcess.stdout.once('data', (data) => {
-//       // When the model is loaded, send the data for prediction
-//       pythonProcess.stdin.write(JSON.stringify(modelInput));
-//       pythonProcess.stdin.end();
-//     });
-
-//     pythonProcess.stdout.on('data', (data) => {
-//       // Send back the prediction result to the client
-//       res.send(data.toString());
-//     });
-
-//     pythonProcess.stderr.on('data', (data) => {
-//       console.error(`stderr: ${data}`);
-//       res.status(500).send(data.toString());
-//     });
-// });
 
 // Pages
 // Register and Login
@@ -121,8 +80,21 @@ app.post("/register", async (req, res) => {
         },
       });
       console.log('JWT_SECRET:', process.env.JWT_SECRET);
-      const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
-      res.json({ token, userId: user.id, role: user.role });
+      const token = jwt.sign(
+        { 
+          userId: user.id,
+          role: user.role,
+          groupId: user.groupId // Include group_id if it's not sensitive
+        },
+        
+        process.env.JWT_SECRET,
+        { expiresIn: '24h' }
+        
+      );
+      console.log('groupId:', user.groupId);
+
+      
+      res.json({ token, userId: user.id, role: user.role, groupId: user.groupId });
     } catch (error) {
       // จัดการกับข้อผิดพลาดที่อาจเกิดขึ้น
       console.log(error)
@@ -130,27 +102,6 @@ app.post("/register", async (req, res) => {
     }
 });
 
-//login
-//////////////============================================================================////////////////////////
-// app.post("/login", async (req, res) => {
-//     const { email, password } = req.body;
-//     console.log(email,password);
-//     const user = await prisma.users.findUnique({
-//       where: { email },
-//     });
-  
-//     if (!user) {
-//       return res.status(404).json({ message: "User not found" });
-//     }
-  
-//     const isMatch = await bcrypt.compare(password, user.password);
-//     if (!isMatch) {
-//       return res.status(401).json({ message: "Incorrect password" });
-//     }
-  
-//     delete user.password;
-//     res.json(user);
-//   });
 
 app.post("/login", async (req, res) => {
     const { email, password } = req.body;
@@ -163,12 +114,17 @@ app.post("/login", async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
+    console.log(`User logged in with ID: ${user.id} and group ID: ${user.groupId}`);
     if (!isMatch) {
       return res.status(401).json({ message: "Incorrect password" });
     }
 
-    // ส่งกลับ role และ userId
-    res.json({ userId: user.id, role: user.role, username: user.name  });
+    // Generate JWT token on successful login
+    const token = jwt.sign({ userId: user.id, role: user.role, groupId: user.groupId }, process.env.JWT_SECRET, { expiresIn: '24h' });
+
+    console.log('groupId:', user.groupId);
+    // Return the token, user details, and group
+    res.json({ token, userId: user.id, role: user.role, username: user.name, groupId: user.groupId });
 });
 //////////////============================================================================////////////////////////
 // Delete Users
@@ -261,33 +217,6 @@ app.post("/users", async (req, res) => {
       res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 });
-// app.post('/users', (req, res) => {
-
-//     const sql = "INSERT INTO users (`name`,`password`,`email`) VALUES(?, ? , ?)";
-
-//     bcrypt.hash(req.body.password.toString(), salt, (err, hash) => {
-//         if (err) {
-//             console.error("Error hashing password:", err);
-//             return res.status(500).json({ error: "Internal Server Error" });
-//         }
-
-//         const values = [
-//             req.body.username,
-//             hash,
-//             req.body.email,
-//             req.body.role,
-//         ];
-
-//         con.query(sql, values, (err, result) => {
-//             if (err) {
-//                 console.error("Error inserting data:", err);
-//                 return res.status(500).json({ error: "Internal Server Error" });
-//             }
-
-//             return res.json({ Status: "Success" });
-//         });
-//     });
-// });
 
 // Add group
 app.post("/group", function (req, res) {
@@ -374,54 +303,9 @@ app.post('/qa', (req, res) => {
 // Post data from answer users questionnaire
 
 
-// app.post('/insert-answers', (req, res) => {
-//     const { id_user, answers, predicted_group } = req.body;
-//     let insertCount = 0;
-//     let errors = [];
-//     // console.log(answers);
-
-//     if (!answers) {
-//         // If answers is undefined or not present, send an error response
-//         return res.status(400).json({ message: 'No answers provided' });
-//       }
-//       console.log("Received answers:", answers);
-//       console.log("id_user:", id_user);
-//       console.log("predicted_group:", predicted_group);
-      
-//     answers.forEach((answer, index) => {
-
-//         console.log(`Answer ${index}:`, answer);
-//       // ตัวอย่างนี้ไม่รวม 'id' และ 'Created' เนื่องจาก 'id' น่าจะเป็น AUTO_INCREMENT และ 'Created' อาจเป็นค่าปัจจุบันที่ฐานข้อมูลกำหนดเอง
-//       const query = 'INSERT INTO answers_users (id_users, age, education, income, household, after_freq, after_person, after_expenditure, after_day_travel, gender, occupation, per_vehicle, status, per_region, after_season, after_type, after_region, after_vehicle, after_period_time, after_want_travel, groups) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-//       console.log('query:',query);
-    
-//     //   const values = [answer.id_users, answer.age, answer.education, answer.income, answer.household, answer.after_freq, answer.after_person, answer.after_expenditure, answer.after_day_travel, answer.gender, answer.occupation, answer.per_vehicle, answer.status, answer.per_region, answer.after_season, answer.after_type, answer.after_region, answer.after_vehicle, answer.after_period_time, answer.after_want_travel, answer.groups];
-//     const values = [id_user, ...answers, predicted_group];
-//       console.log('values:',values);
-//       con.query(query, values, (error, results) => {
-//         if (error) {
-//           errors.push({ answer: answer, error: error });
-//           return;
-//         }
-//         insertCount++;
-//         if (insertCount + errors.length === answers.length) {
-//           if (errors.length > 0) {
-//             res.status(500).json({ message: 'Some answers were not inserted', errors });
-//           } else {
-//             res.status(200).json({ message: 'All answers inserted successfully' });
-//           }
-//         }
-//       });
-//     });
-//   });
-
 app.post('/insert-answers', (req, res) => {
     const { id_user, predicted_group, answers } = req.body;
-    // Ensure that `answers` is an array with the correct length
-    // if (!Array.isArray(answers) || answers.length !== 18) {
-    //   return res.status(400).send('Invalid answers array');
-    // }
-  
+
     // Add `id_user` and `predicted_group` to the beginning and end of the answers array
     const values = [id_user, ...answers, predicted_group];
     console.log("values:", values);
@@ -447,8 +331,21 @@ app.post('/insert-answers', (req, res) => {
     });
   });
 
-
-
+// update group
+  app.post('/update-group', (req, res) => {
+    const { id_user, group } = req.body;
+  
+    const query = 'UPDATE users SET groupId = ? WHERE id = ?';
+  
+    con.query(query, [group, id_user], (error, results) => {
+      if (error) {
+        console.error('Error updating user group:', error);
+        res.status(500).json({ message: 'Failed to update user group', error });
+      } else {
+        res.json({ message: 'User group updated successfully', results });
+      }
+    });
+  });
 
 
 // ========================================================================================================
