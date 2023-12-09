@@ -12,8 +12,9 @@ function Details() {
   useEffect(() => {
     // ตรวจสอบสถานะ feedback จาก localStorage
     const savedFeedback = localStorage.getItem("feedback"); 
+    const group = localStorage.getItem('groupId');
     setIsSubmitted(savedFeedback === "1");
-    console.log(savedFeedback);                
+    console.log(group);                
 
     if (savedFeedback !== "1") {
       axios
@@ -67,13 +68,12 @@ function Details() {
         // แปลง scores ไปเป็นรูปแบบที่ต้องการ
         const feedbackData = {
             id_user: localStorage.getItem('userId'),
-            
             Q1: scores['question1'],
             Q2: scores['question2'],
             Q3: scores['question3'],
             Q4: scores['question4'],
             Q5: scores['question5'],
-            groupId: localStorage.getItem('groupId'),
+            groupId: localStorage.getItem('groupId')
         };
 
         console.log('Feedback data to submit:', feedbackData);

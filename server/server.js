@@ -357,7 +357,7 @@ app.post('/update-group-and-feedback', (req, res) => {
 
     // SQL query for inserting feedback
     const sql = 'INSERT INTO user_ratings (id_user, Q1, Q2, Q3, Q4, Q5, groupId) VALUES (?, ?, ?, ?, ?, ?, ?)';
-
+    
     // Execute the query
     con.query(sql, [id_user, groupId, ...scores], (err, result) => {
         if (err) {
@@ -608,11 +608,53 @@ app.get('/feed', (req, res) => {
     });
 });
 
+// Route สำหรับเรียกข้อมูลจำนวนคนในแต่ละกลุ่ม
+app.get('/group-counts', (req, res) => {
+    const sql = `
+        SELECT groupId, COUNT(*) AS count
+        FROM users
+        WHERE groupId IS NOT NULL AND deletedAt IS NULL
+        GROUP BY groupId;
+    `;
+    con.query(sql, (err, results) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            // สร้าง object ที่มี key เป็น groupId และ value เป็น count
+            const groupCounts = results.reduce((acc, { groupId, count }) => {
+                acc[groupId] = count;
+                return acc;
+            }, {});
+            res.json(groupCounts);
+        }
+    });
+});
 
-// Root
-// app.get('/',(req,res) =>{
-//     res.sendFile(path.join(__dirname,'../Dashboard-starter/src/index.jsx'));
-// });
+// Endpoint สำหรับเรียกค่าเฉลี่ย ratings
+app.get('/average-ratings', (req, res) => {
+    const query = `
+      SELECT groupId, 
+             AVG((Q1 + Q2 + Q3 + Q4 + Q5) / 5.0) AS averageRating
+      FROM user_ratings
+      GROUP BY groupId;
+    `;
+    con.query(query, (err, results) => {
+      if (err) {
+        res.status(500).send('Error on the server.');
+      } else {
+        const formattedResults = results.map(row => ({
+          groupId: row.groupId,
+          // Ensure that averageRating is a number before calling toFixed
+          averageRating: parseFloat(Number(row.averageRating).toFixed(2))
+        }));
+        res.json(formattedResults);
+      }
+    });
+  });
+  
+  
+  
+
 
 const port = 8081;
 app.listen(port,() => {

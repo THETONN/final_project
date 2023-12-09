@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Rating } from "primereact/rating";
 
 function Cardnew() {
+  const [groupCounts, setGroupCounts] = useState({});
+
+  useEffect(() => {
+    // ตรงนี้ใส่ URL ของ API endpoint ที่คุณสร้าง
+    axios.get('http://localhost:8081/group-counts').then(response => {
+      setGroupCounts(response.data);
+    }).catch(error => {
+      console.error("There was an error fetching the group counts!", error);
+    });
+    // console.log(groupCounts);
+  }, []);
   return (
     <div>
       <div className="grid mt-2">
@@ -9,8 +21,8 @@ function Cardnew() {
           <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
             <div className="flex justify-content-between mb-3">
               <div>
-                <span className="block text-500 font-medium mb-3">Group 1</span>
-                <div className="text-900 font-medium text-xl">152 people</div>
+                <span className="block text-500 font-medium mb-3">Group 0</span>
+                <div className="text-900 font-medium text-xl">{groupCounts[0] || 0} people</div>
               </div>
               <div
                 className="flex align-items-center justify-content-center bg-blue-100 border-round"
@@ -28,8 +40,8 @@ function Cardnew() {
           <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
             <div className="flex justify-content-between mb-3">
               <div>
-                <span className="block text-500 font-medium mb-3">Group 2</span>
-                <div className="text-900 font-medium text-xl">110 people</div>
+                <span className="block text-500 font-medium mb-3">Group 1</span>
+                <div className="text-900 font-medium text-xl">{groupCounts[1]  || 0} people</div>
               </div>
               <div
                 className="flex align-items-center justify-content-center bg-orange-100 border-round"
@@ -48,9 +60,9 @@ function Cardnew() {
             <div className="flex justify-content-between mb-3">
               <div>
                 <span className="block text-500 font-medium mb-3">
-                Group 3
+                Group 2
                 </span>
-                <div className="text-900 font-medium text-xl">200 people</div>
+                <div className="text-900 font-medium text-xl">{groupCounts[2]  || 0} people</div>
               </div>
               <div
                 className="flex align-items-center justify-content-center bg-cyan-100 border-round"
@@ -64,7 +76,7 @@ function Cardnew() {
             {/* <Rating value={3} readOnly cancel={false} /> */}
           </div>
         </div>
-        <div className="col-12 md:col-6 lg:col-3">
+        {/* <div className="col-12 md:col-6 lg:col-3">
           <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
             <div className="flex justify-content-between mb-3">
               <div>
@@ -80,11 +92,11 @@ function Cardnew() {
                 <i className="pi pi-users text-purple-500 text-xl"></i>
               </div>
             </div>
-            {/* <span className="text-green-500 font-medium">85 </span> */}
-            {/* <span className="text-500">responded</span> */}
-            {/* <Rating value={2} readOnly cancel={false} /> */}
+            <span className="text-green-500 font-medium">85 </span>
+            <span className="text-500">responded</span>
+            <Rating value={2} readOnly cancel={false} />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
