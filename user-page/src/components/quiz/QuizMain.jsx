@@ -275,25 +275,34 @@ const QuizMain = () => {
       console.log("Data submitted to database:", response.data);
 
       // Here you would update the user's group in the database
-      await axios.post("http://localhost:8081/update-group", {
+      await axios.post("http://localhost:8081/update-group-and-feedback", {
         id_user: id_user,
         group: predictedGroup,
+        feedback: '0',
       });
 
-      // นำทางไปยัง path ตามกลุ่มที่ทำนายได้
-      switch (predictedGroup) {
-        case 0:
-          navigate("/HomePredict0");
-          break;
-        case 1:
-          navigate("/HomePredict1");
-          break;
-        case 2:
-          navigate("/HomePredict2");
-          break;
-        default:
-          console.error("Invalid group prediction:", predictedGroup);
-      }
+      // อัปเดตกลุ่มของผู้ใช้ใน localStorage
+    localStorage.setItem('groupId', predictedGroup);
+    localStorage.setItem('feedback', '0');
+
+    // นำทางไปยังหน้าที่ถูกต้องตามกลุ่มที่ทำนายได้
+    navigate(`/HomePredict${predictedGroup}`);
+
+
+      // switch (predictedGroup) {
+      //   case 0:
+      //     navigate("/HomePredict0");
+      //     break;
+      //   case 1:
+      //     window.location.href = "/HomePredict1";
+      //     break;
+      //   case 2:
+      //     window.location.href = "/HomePredict2";
+
+      //     break;
+      //   default:
+      //     console.error("Invalid group prediction:", predictedGroup);
+      // }
     } catch (error) {
       console.error("Error during prediction and submission:", error);
     }

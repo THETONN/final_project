@@ -84,7 +84,8 @@ app.post("/register", async (req, res) => {
         { 
           userId: user.id,
           role: user.role,
-          groupId: user.groupId // Include group_id if it's not sensitive
+          groupId: user.groupId, // Include group_id if it's not sensitive
+          feedback: user.feedback
         },
         
         process.env.JWT_SECRET,
@@ -94,7 +95,7 @@ app.post("/register", async (req, res) => {
       console.log('groupId:', user.groupId);
 
       
-      res.json({ token, userId: user.id, role: user.role, groupId: user.groupId });
+      res.json({ token, userId: user.id, role: user.role, groupId: user.groupId, feedback: user.feedback });
     } catch (error) {
       // จัดการกับข้อผิดพลาดที่อาจเกิดขึ้น
       console.log(error)
@@ -120,11 +121,11 @@ app.post("/login", async (req, res) => {
     }
 
     // Generate JWT token on successful login
-    const token = jwt.sign({ userId: user.id, role: user.role, groupId: user.groupId }, process.env.JWT_SECRET, { expiresIn: '24h' });
+    const token = jwt.sign({ userId: user.id, role: user.role, groupId: user.groupId, feedback: user.feedback }, process.env.JWT_SECRET, { expiresIn: '24h' });
 
     console.log('groupId:', user.groupId);
     // Return the token, user details, and group
-    res.json({ token, userId: user.id, role: user.role, username: user.name, groupId: user.groupId });
+    res.json({ token, userId: user.id, role: user.role, username: user.name, groupId: user.groupId,feedback:user.feedback });
 });
 //////////////============================================================================////////////////////////
 // Delete Users
@@ -332,20 +333,57 @@ app.post('/insert-answers', (req, res) => {
   });
 
 // update group
-  app.post('/update-group', (req, res) => {
-    const { id_user, group } = req.body;
-  
-    const query = 'UPDATE users SET groupId = ? WHERE id = ?';
-  
-    con.query(query, [group, id_user], (error, results) => {
-      if (error) {
-        console.error('Error updating user group:', error);
-        res.status(500).json({ message: 'Failed to update user group', error });
-      } else {
-        res.json({ message: 'User group updated successfully', results });
-      }
+app.post('/update-group-and-feedback', (req, res) => {
+    const { id_user, group, feedback } = req.body;
+
+    const query = 'UPDATE users SET groupId = ?, feedback = ? WHERE id = ?';
+
+    con.query(query, [group, feedback, id_user], (error, results) => {
+        if (error) {
+            console.error('Error updating user group and feedback:', error);
+            res.status(500).json({ message: 'Failed to update user group and feedback', error });
+        } else {
+            res.json({ message: 'User group and feedback updated successfully', results });
+        }
     });
-  });
+});
+
+
+  // post feedback from user
+  app.post('/submit_feedback', (req, res) => {
+    const { id_user, Q1, Q2, Q3, Q4, Q5, groupId } = req.body;
+
+    const scores = [Q1, Q2, Q3, Q4, Q5];
+
+    // SQL query for inserting feedback
+    const sql = 'INSERT INTO user_ratings (id_user, Q1, Q2, Q3, Q4, Q5, groupId) VALUES (?, ?, ?, ?, ?, ?, ?)';
+
+    // Execute the query
+    con.query(sql, [id_user, groupId, ...scores], (err, result) => {
+        if (err) {
+            console.error('Error inserting feedback:', err);
+            res.status(500).send('Internal Server Error');
+        } else {
+            console.log('Feedback inserted successfully');
+            res.status(200).send('Feedback submitted successfully');
+        }
+    });
+});
+
+app.post('/update-feedback-status', async (req, res) => {
+    const { id_user, feedback } = req.body;
+
+    try {
+        // อัปเดตคอลัมน์ feedback ในตาราง users
+        const query = 'UPDATE users SET feedback = ? WHERE id = ?';
+        // สมมติว่า 'con' คือ connection ของคุณกับฐานข้อมูล
+        con.query(query, [feedback, id_user]);
+        res.json({ message: 'Feedback status updated successfully' });
+    } catch (error) {
+        console.error('Error updating feedback status:', error);
+        res.status(500).send('Server error');
+    }
+});
 
 
 // ========================================================================================================
@@ -526,6 +564,19 @@ app.get('/qa', (req, res) => {
             console.error(err);
             return res.status(500).send("Database server error");
         }
+        return res.json(data);
+    });
+});
+
+// feedback_question table
+app.get('/feedback', (req, res) => {
+    const sql = 'SELECT * FROM feedback_question';
+    con.query(sql, (err, data) => {
+        if (err) {
+            console.error('Database query error:', err);
+            return res.status(500).send('Database server error');
+        }
+
         return res.json(data);
     });
 });

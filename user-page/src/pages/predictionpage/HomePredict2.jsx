@@ -22,6 +22,7 @@ import {useNavigate } from 'react-router-dom';
 function HomePredict2() {
   const [count, setCount] = useState(0)
   const navigate = useNavigate();
+  
   useEffect(() => {
     const storedGroupId = localStorage.getItem('groupId');
     console.log(storedGroupId);
