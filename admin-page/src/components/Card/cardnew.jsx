@@ -15,10 +15,10 @@ function Cardnew() {
     // console.log(groupCounts);
   }, []);
   return (
-    <div className="row">
+    <div>
       <div className="grid mt-2">
-        <div className="col-12 md:col-6 lg:col-3 ">
-          <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
+        <div className="col-12 md:col-6 lg:col-4">
+          <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round" >
             <div className="flex justify-content-between mb-3">
               <div>
                 <span className="block text-500 font-medium mb-3">Group 0</span>
@@ -36,7 +36,7 @@ function Cardnew() {
           </div>
         </div>
         {/* ============================================================================================= */}
-        <div className="col-12 md:col-6 lg:col-3">
+        <div className="col-12 md:col-6 lg:col-4">
           <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
             <div className="flex justify-content-between mb-3">
               <div>
@@ -55,7 +55,7 @@ function Cardnew() {
             {/* <Rating value={4} readOnly cancel={false} /> */}
           </div>
         </div>
-        <div className="col-12 md:col-6 lg:col-3">
+        <div className="col-12 md:col-6 lg:col-4">
           <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
             <div className="flex justify-content-between mb-3">
               <div>
