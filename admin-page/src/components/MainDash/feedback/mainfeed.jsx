@@ -73,7 +73,7 @@ function QuestionandAnswer() {
 
   return (
     <div className="Main">
-      <div className="d-flex  bg-primary justify-content-center align-items-center">
+      <div className="d-flex  justify-content-center align-items-center">
         <div className=" bg-white rounded p-3">
           {error && <div className="alert alert-danger">{error}</div>}
           <h1 className="mt-2 text-dark">FeedBack Table</h1>
@@ -101,23 +101,38 @@ function QuestionandAnswer() {
               style={{ width: "5%" }}
             ></Column>
             <Column
-              field="user"
+              field="	id_user"
               header="user"
               style={{ width: "15%" }}
             ></Column>
             <Column
-              field="Q"
-              header="Q"
-              style={{ width: "40%" }}
+              field="Q1"
+              header="Q1"
+              style={{ width: "15%" }}
             ></Column>
             <Column
-              field="rating"
-              header="rating"
-              style={{ width: "5%" }}
+              field="Q2"
+              header="Q2"
+              style={{ width: "15%" }}
             ></Column>
             <Column
-              field="mGroup"
-              header="Group"
+              field="Q3"
+              header="Q3"
+              style={{ width: "15%" }}
+            ></Column>
+            <Column
+              field="Q4"
+              header="Q4"
+              style={{ width: "15%" }}
+            ></Column>
+            <Column
+              field="Q5"
+              header="Q5"
+              style={{ width: "15%" }}
+            ></Column>
+            <Column
+              field="groupId"
+              header="groupId"
               style={{ width: "25%" }}
             ></Column>
             

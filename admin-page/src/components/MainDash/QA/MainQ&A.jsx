@@ -8,14 +8,11 @@ import { Column } from "primereact/column";
 import "primeflex/package.json";
 import { Toolbar } from "primereact/toolbar";
 
-const initialValue = { question: "", option: "", };
+const initialValue = { question: "", option: "" };
 
 function QuestionandAnswer() {
   const [qa, setQa] = useState([]);
   const [error, setError] = useState(null);
-
-  
-  
 
   const exportCSV = () => {
     dt.current.exportCSV();
@@ -41,8 +38,6 @@ function QuestionandAnswer() {
         }
       });
   };
-
- 
 
   // const leftToolbarTemplate = () => {
   //   return (
@@ -73,7 +68,7 @@ function QuestionandAnswer() {
 
   return (
     <div className="Main">
-      <div className="d-flex  bg-primary justify-content-center align-items-center">
+      <div className="d-flex   justify-content-center align-items-center">
         <div className=" bg-white rounded p-3">
           {error && <div className="alert alert-danger">{error}</div>}
           <h1 className="mt-2 text-dark">Q & A Table</h1>
@@ -101,34 +96,112 @@ function QuestionandAnswer() {
               style={{ width: "5%" }}
             ></Column>
             <Column
-              field="user"
+              field="id_users"
               header="user"
-              style={{ width: "25%" }}
+              style={{ width: "5%" }}
+            ></Column>
+            <Column field="age" header="age" style={{ width: "10%" }}></Column>
+            <Column
+              field="education"
+              header="education"
+              style={{ width: "10%" }}
             ></Column>
             <Column
-              field="question"
-              header="question"
-              style={{ width: "25%" }}
+              field="income"
+              header="income"
+              style={{ width: "10%" }}
             ></Column>
             <Column
-              field="choice"
-              header="choice"
-              style={{ width: "25%" }}
+              field="household"
+              header="household"
+              style={{ width: "10%" }}
             ></Column>
             <Column
-              field="group_name"
-              header="groupname"
-              style={{ width: "25%" }}
+              field="after_freq"
+              header="after_freq"
+              style={{ width: "10%" }}
             ></Column>
-
+            <Column
+              field="after_person"
+              header="after_person"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="after_expenditure"
+              header="after_expenditure"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="after_day_travel"
+              header="after_day_travel"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="gender"
+              header="gender"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="occupation"
+              header="occupation"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="per_vehicle"
+              header="per_vehicle"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="status"
+              header="status"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="per_region"
+              header="per_region"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="after_season"
+              header="after_season"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="after_type"
+              header="after_type"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="after_region"
+              header="after_region"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="after_vehicle"
+              header="after_vehicle"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="after_period_time"
+              header="after_period_time"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="after_want_travel"
+              header="after_want_travel"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="groups"
+              header="groups"
+              style={{ width: "10%" }}
+            ></Column>
             {/* <Column
               body={actionBodyTemplate}
               exportable={false}
               style={{ minWidth: "12rem" }}
             ></Column> */}
           </DataTable>
-
-          
         </div>
       </div>
     </div>
