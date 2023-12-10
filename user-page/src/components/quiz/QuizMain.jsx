@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./QuizMain.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import PageLoader from "../../pages/loading";
 
 const QuizMain = () => {
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState({});
   const [step, setStep] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -21,6 +23,25 @@ const QuizMain = () => {
         // Handle the error here
       });
   }, []);
+
+  useEffect(() => {
+    // Warning message for page refresh during loading
+    const handleBeforeUnload = (e) => {
+      if (isLoading) {
+        e.preventDefault();
+        e.returnValue = ''; // Chrome requires returnValue to be set
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [isLoading]); // Dependency array with isLoading
+
+  
 
   const formatData = (data) => {
     const questionMap = {};
@@ -190,9 +211,11 @@ const QuizMain = () => {
   };
 
   const submitAnswers = async () => {
+    
     console.log("questions:", questions);
     console.log("userAnswers:", userAnswers);
     // const userId = getUserIdFromStorage()
+    setIsLoading(true);
 
     try {
       const id_user = getUserIdFromStorage();
@@ -286,9 +309,13 @@ const QuizMain = () => {
     localStorage.setItem('feedback', '0');
 
     // นำทางไปยังหน้าที่ถูกต้องตามกลุ่มที่ทำนายได้
-    navigate(`/HomePredict${predictedGroup}`);
+    setTimeout(() => {
+      setIsLoading(false); // Stop loading after 5 seconds
+      navigate(`/HomePredict${predictedGroup}`);
+    }, 3000)
+    
 
-
+    // 3600000
       // switch (predictedGroup) {
       //   case 0:
       //     navigate("/HomePredict0");
@@ -312,6 +339,10 @@ const QuizMain = () => {
     { length: questions.length },
     (_, index) => `${index + 1}/${questions.length}`
   );
+
+  if (isLoading) {
+    return <PageLoader />; // Display the loader when isLoading is true
+  }
 
   return (
     <div className="Content">
@@ -372,6 +403,7 @@ const QuizMain = () => {
               </button>
             )}
           </div>
+          
         </>
       ) : (
         <div className="finalPage">
@@ -382,6 +414,7 @@ const QuizMain = () => {
             preferences."
           </p>
         </div>
+
       )}
     </div>
   );
