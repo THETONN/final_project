@@ -226,7 +226,7 @@ function Trip() {
   // =====================================================================================================
   return (
     <div className="Main">
-      <div className="d-flex  bg-primary justify-content-center align-items-center">
+      <div className="d-flex  justify-content-center align-items-center">
         <div className=" bg-white rounded p-3">
           {error && <div className="alert alert-danger">{error}</div>}
           <h1 className="mt-2 text-dark ">Trip Table </h1>

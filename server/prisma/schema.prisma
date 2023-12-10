@@ -21,52 +21,82 @@ model users {
   name      String?
   password  String
   role      Role      @default(USER)
+  group     Int?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
   groupId   Int?
+  feedback  String?
+}
+
+model answers_users {
+  id                Int    @id @default(autoincrement())
+  id_users          String @unique
+  age               String
+  education         String
+  income            String
+  household         String
+  after_freq        String
+  after_person      String
+  after_expenditure String
+  after_day_travel String
+  gender            String
+  occupation        String
+  per_vehicle       String
+  status            String
+  per_region        String
+  after_season      String
+  after_type        String
+  after_region      String
+  after_vehicle     String
+  after_period_time String
+  after_want_travel String
+  groups            Int
 }
 
 model choice {
-  id_choice     Int   @id @default(autoincrement())
-  choice        String
-  id_question   Int
+  id_choice   Int    @id @default(autoincrement())
+  choice      String
+  id_question Int
 }
 
 model feedback_question {
-  id_feedback_q           Int @id   @default(autoincrement())
-  question_feedback       String
-  question_rate           Int
-  id_recommen             Int
+  id_feedback       Int    @id @default(autoincrement())
+  question_feedback String
 }
 
 model mgroup {
-  id_group                Int   @id @default(autoincrement())
-  group_name              String
-  group_description       String
-  image                   String
+  id_group          Int    @id @default(autoincrement())
+  group_name        String
+  group_description String @db.VarChar(1000)
+  image             String
 }
 
 model questionnaire {
-  id_question             Int   @id @default(autoincrement())
-  question_topic          String
+  id_question    Int    @id @default(autoincrement())
+  question_topic String
 }
 
-model recommendation {
-  id_recommen             Int   @id @default(autoincrement())
-  id_group                Int
-  id_users                Int
+model users_ratings {
+  id_feed  Int @id @default(autoincrement())
+  id_users Int
+  Q1       Int
+  Q2       Int
+  Q3       Int
+  Q4       Int
+  Q5       Int
+  groupId  Int
 }
 
 model responses {
-  id_responses            Int   @id @default(autoincrement())
-  id_users                Int
-  id_choice               Int
+  id_responses Int @id @default(autoincrement())
+  id_users     Int
+  id_choice    Int
 }
 
 model trip {
-  id_trip                 Int   @id @default(autoincrement())
-  trip_name               String
-  trip_description        String
-  id_group                Int
+  id_trip          Int    @id @default(autoincrement())
+  trip_name        String
+  trip_description String
+  id_group         Int
 }

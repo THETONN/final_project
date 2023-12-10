@@ -356,7 +356,7 @@ app.post('/update-group-and-feedback', (req, res) => {
     const scores = [Q1, Q2, Q3, Q4, Q5];
 
     // SQL query for inserting feedback
-    const sql = 'INSERT INTO user_ratings (id_user, Q1, Q2, Q3, Q4, Q5, groupId) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const sql = 'INSERT INTO users_ratings (id_users, Q1, Q2, Q3, Q4, Q5, groupId) VALUES (?, ?, ?, ?, ?, ?, ?)';
     
     // Execute the query
     con.query(sql, [id_user, groupId, ...scores], (err, result) => {

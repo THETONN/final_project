@@ -183,7 +183,7 @@ function Groupmain() {
           className="mr-2 rounded-5"
           onClick={() => handleUpdate(group)}
         />
-        <Button
+        {/* <Button
           icon="pi pi-trash"
           rounded
           outlined
@@ -191,7 +191,7 @@ function Groupmain() {
           raised
           className="rounded-5 "
           onClick={(e) => handleDeleteUser(group.id_group)}
-        />
+        /> */}
       </React.Fragment>
     );
   };
@@ -226,7 +226,7 @@ function Groupmain() {
   // =====================================================================================================
   return (
     <div className="Main">
-      <div className="d-flex  bg-primary justify-content-center align-items-center">
+      <div className="d-flex   justify-content-center align-items-center">
         <div className=" bg-white rounded p-3">
           {error && <div className="alert alert-danger">{error}</div>}
           <h1 className="mt-2 text-dark">Group Table </h1>
@@ -234,7 +234,7 @@ function Groupmain() {
 
           <Toolbar
             className="mb-4 mt-3 p-2"
-            left={leftToolbarTemplate}
+            // left={leftToolbarTemplate}
             right={rightToolbarTemplate}
           ></Toolbar>
 

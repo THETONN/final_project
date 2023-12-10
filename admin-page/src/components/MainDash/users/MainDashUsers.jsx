@@ -235,7 +235,7 @@ function MainDashUsers() {
   // =====================================================================================================
   return (
     <div className="Main">
-      <div className="d-flex  bg-primary justify-content-center align-items-center">
+      <div className="d-flex  justify-content-center align-items-center">
         <div className=" bg-white rounded p-3">
           {error && <div className="alert alert-danger">{error}</div>}
           <h1 className="mt-2 text-dark">Users Table </h1>
@@ -276,10 +276,21 @@ function MainDashUsers() {
             <Column
               field="email"
               header="Email"
-              style={{ width: "25%" }}
+              style={{ width: "50%" }}
             ></Column>
+            
             <Column field="role" header="Role" style={{ width: "25%" }}>
             </Column>
+            <Column
+              field="groupId"
+              header="Group"
+              style={{ width: "25%" }}
+            ></Column>
+             <Column
+              field="feedback"
+              header="Feedback"
+              style={{ width: "25%" }}
+            ></Column>
             {/* <Column
               field="createdAt"
               header="createdAt"
