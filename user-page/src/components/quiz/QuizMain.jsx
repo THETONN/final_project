@@ -29,19 +29,17 @@ const QuizMain = () => {
     const handleBeforeUnload = (e) => {
       if (isLoading) {
         e.preventDefault();
-        e.returnValue = ''; // Chrome requires returnValue to be set
+        e.returnValue = ""; // Chrome requires returnValue to be set
       }
     };
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
     // Cleanup function
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, [isLoading]); // Dependency array with isLoading
-
-  
 
   const formatData = (data) => {
     const questionMap = {};
@@ -67,8 +65,14 @@ const QuizMain = () => {
     setStep(step - 1);
   };
 
-  const checkAnswer = (answerId) => {
-    const answerText = questions[step].answers[answerId];
+  // const checkAnswer = (answerId) => {
+  //   const answerText = questions[step].answers[answerId];
+  //   setUserAnswers({
+  //     ...userAnswers,
+  //     [questions[step].question]: answerText,
+  //   });
+  // };
+  const checkAnswer = (answerText) => {
     setUserAnswers({
       ...userAnswers,
       [questions[step].question]: answerText,
@@ -211,7 +215,6 @@ const QuizMain = () => {
   };
 
   const submitAnswers = async () => {
-    
     console.log("questions:", questions);
     console.log("userAnswers:", userAnswers);
     // const userId = getUserIdFromStorage()
@@ -301,21 +304,20 @@ const QuizMain = () => {
       await axios.post("http://localhost:8081/update-group-and-feedback", {
         id_user: id_user,
         group: predictedGroup,
-        feedback: '0',
+        feedback: "0",
       });
 
       // อัปเดตกลุ่มของผู้ใช้ใน localStorage
-    localStorage.setItem('groupId', predictedGroup);
-    localStorage.setItem('feedback', '0');
+      localStorage.setItem("groupId", predictedGroup);
+      localStorage.setItem("feedback", "0");
 
-    // นำทางไปยังหน้าที่ถูกต้องตามกลุ่มที่ทำนายได้
-    setTimeout(() => {
-      setIsLoading(false); // Stop loading after 5 seconds
-      navigate(`/HomePredict${predictedGroup}`);
-    }, 3000)
-    
+      // นำทางไปยังหน้าที่ถูกต้องตามกลุ่มที่ทำนายได้
+      setTimeout(() => {
+        setIsLoading(false); // Stop loading after 5 seconds
+        navigate(`/HomePredict${predictedGroup}`);
+      }, 3000);
 
-    // 3600000
+      // 3600000
       // switch (predictedGroup) {
       //   case 0:
       //     navigate("/HomePredict0");
@@ -360,21 +362,19 @@ const QuizMain = () => {
               </div>
             </div>
             <div className="Answer">
-              {questions[step].answers.map((answer, index) => (
-                <div
-                  className="AnswerOption"
-                  key={index}
-                  onClick={() => checkAnswer(index)}
-                >
+              {questions[step].answers.map((answerText, index) => (
+                <label key={index} className="AnswerOption">
                   <input
                     type="radio"
                     name={`answer-${step}`}
-                    value={index}
-                    onChange={() => {}}
-                    checked={userAnswers[questions[step].question] === index}
+                    value={answerText}
+                    checked={
+                      userAnswers[questions[step].question] === answerText
+                    }
+                    onChange={() => checkAnswer(answerText)}
                   />
-                  <label style={{ marginLeft: "0.3rem" }}>{answer}</label>
-                </div>
+                  {answerText}
+                </label>
               ))}
             </div>
           </div>
@@ -403,7 +403,6 @@ const QuizMain = () => {
               </button>
             )}
           </div>
-          
         </>
       ) : (
         <div className="finalPage">
@@ -414,7 +413,6 @@ const QuizMain = () => {
             preferences."
           </p>
         </div>
-
       )}
     </div>
   );

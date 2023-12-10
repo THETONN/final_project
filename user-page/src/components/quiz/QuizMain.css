@@ -183,10 +183,28 @@ a {
     font-size: 11px;
 
 }
-
-
-
-
+.QandA {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .AnswerOption {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* เพิ่มระยะห่างด้านล่าง */
+  }
+  
+  /* ใช้สำหรับจัดเรียงข้อความของแต่ละตัวเลือกให้อยู่ในแนวเดียวกัน */
+  /* .AnswerOption label {
+    margin-right: 20px; 
+  } */
+  
+  /* ใช้สำหรับจัดขนาดของ radio button */
+  .AnswerOption input[type="radio"] {
+    /* ปรับขนาดหรือการแสดงผลของ radio button ได้ที่นี่ */
+    margin-right: 10px;
+  }
+  
 
 .progressbar li:before {
     width: 20px;
