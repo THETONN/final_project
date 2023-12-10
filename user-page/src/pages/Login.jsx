@@ -33,7 +33,10 @@ const Login = () => {
   useEffect(() => {
     // ตรวจสอบว่ามี session ใน localStorage หรือไม่
     const userId = localStorage.getItem('userId');
+    const role = localStorage.getItem('role');
     console.log(userId);
+    console.log('role',role);
+    
     if (userId) {
       navigate('/LoginHome'); // ถ้ามี session, นำทางไปยังหน้าหลัก
     }
@@ -67,6 +70,7 @@ const Login = () => {
       localStorage.setItem("username", res.username); // ตั้งค่า username ใน localStorage
       localStorage.setItem("groupId", res.groupId);
       localStorage.setItem("feedback", res.feedback);
+      localStorage.setItem("role", res.role);
       
 
 

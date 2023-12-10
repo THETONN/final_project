@@ -359,7 +359,7 @@ app.post('/update-group-and-feedback', (req, res) => {
     const sql = 'INSERT INTO users_ratings (id_users, Q1, Q2, Q3, Q4, Q5, groupId) VALUES (?, ?, ?, ?, ?, ?, ?)';
     
     // Execute the query
-    con.query(sql, [id_user, groupId, ...scores], (err, result) => {
+    con.query(sql, [id_user, ...scores, groupId], (err, result) => {
         if (err) {
             console.error('Error inserting feedback:', err);
             res.status(500).send('Internal Server Error');
@@ -622,7 +622,7 @@ app.get('/feedback', (req, res) => {
 // });
 
 app.get('/feed', (req, res) => {
-    const sql = 'SELECT * FROM user_ratings';
+    const sql = 'SELECT * FROM users_ratings';
     con.query(sql, (err, data) => {
         if (err) {
             console.error('Database query error:', err);
@@ -659,7 +659,7 @@ app.get('/average-ratings', (req, res) => {
     const query = `
       SELECT groupId, 
              AVG((Q1 + Q2 + Q3 + Q4 + Q5) / 5.0) AS averageRating
-      FROM user_ratings
+      FROM users_ratings
       GROUP BY groupId;
     `;
     con.query(query, (err, results) => {

@@ -42,6 +42,7 @@ function LoginHomePage() {
         // You can set state here to conditionally render a message or disable the Tours button.
         console.log('Please complete the questionnaire to be assigned to a group.');
       }
+ 
     }
   }, [userId, navigate]);
   

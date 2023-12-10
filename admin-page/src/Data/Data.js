@@ -35,28 +35,10 @@ export const SidebarData = [
         heading: "Users",
         Link:'/Users'
     },
-    // {
-    //     icon:  UilTable,
-    //     heading: "Response",
-    //     Link:'/Res'
-
-        
-    // },
-
-    // {
-    //     icon:  UilAward,
-    //     heading: "Recommandation",
-    //     Link:'/Recommandation'
-
-    // },
     {
         icon:  UilFileQuestionAlt,
         heading: "Question&Choice",
         Link:'/Q&A',
-        // subMenu: [
-        //     { title: "Question 1", Link: "/Question1" },
-        //     { title: "Question 2", Link: "/Question2" }
-        // ]
         
     },
 
@@ -82,7 +64,7 @@ export const SidebarData = [
     {
         icon: UilSignOutAlt,
         heading: "SignOut",
-        Link:'http://localhost:5173/'
+        Link:'http://localhost:5173/Login'
 
     },
 
