@@ -9,8 +9,16 @@ const MainDash = () => {
     <div>
       <div className="MainDash">
             <h1>Dashboard</h1>
-            <Cardnew/>
-            <Chartnew/>
+            
+            <div class="col">
+              <Cardnew/>
+            </div>
+            <div class="col">
+              <Chartnew/>
+            </div>
+              
+            
+            
             
           
 

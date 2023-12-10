@@ -15,7 +15,7 @@ function Cardnew() {
     // console.log(groupCounts);
   }, []);
   return (
-    <div>
+    <div className="row">
       <div className="grid mt-2">
         <div className="col-12 md:col-6 lg:col-3 ">
           <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
