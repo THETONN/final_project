@@ -1,8 +1,8 @@
 # final_project
-final_project
+Final_project
 
 # for command to used this project
-# Run user-page (front-end)
+## Run user-page (front-end)
   cd user-page
   npm i
   npm run dev
@@ -12,9 +12,10 @@ final_project
   npm i
   npm run dev
 
-# Run server (back-end)
+## Run server (back-end)
   cd server
   npm i
+  
   ## build prisma for database (phpmyAdmin)
     npx prisma format
     npx prisma generate
