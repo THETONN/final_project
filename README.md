@@ -1,7 +1,6 @@
-# final_project
-Final_project
+# Final_project
+Command to used in Final_project
 
-# for command to used this project
 # Run user-page 
   ## command run fron-end user-page
     cd user-page
