@@ -25,7 +25,7 @@ Final_project
     npx prisma migrate dev --name init
     
   ## build and run docker image together
-    [Docker]([LinktoGo](https://docs.mikelopster.dev/c/basic/intro))
+    [Docker](https://docs.mikelopster.dev/c/basic/intro)
     docker-compose up -d --build
   ## down service
     docker-compose down
