@@ -19,11 +19,14 @@ Final_project
     cd server
     npm i
   
-  ## build prisma for database (phpmyAdmin)
+  ## build prisma to database (phpmyadmin)
     npx prisma format
     npx prisma generate
     npx prisma migrate dev --name init
     
-  ## build docker-composer for run back-end
+  ## build and run docker image together
+    [Docker]([LinktoGo](https://docs.mikelopster.dev/c/basic/intro))
     docker-compose up -d --build
+  ## down service
+    docker-compose down
 
