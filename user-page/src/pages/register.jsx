@@ -159,7 +159,7 @@ function Registers() {
           text: error?.response?.data?.message || "เกิดข้อผิดพลาดไม่ทราบสาเหตุ",
         });
     }}
-    setValues(prevValues => ({ ...prevValues, password: '', confirm_password: '' }));;
+    // setValues(prevValues => ({ ...prevValues, password: '', confirm_password: '' }));;
   };
 
   return (

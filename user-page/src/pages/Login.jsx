@@ -76,7 +76,7 @@ const Login = () => {
     } catch (error) {
       showAlert2(); // แสดง alert หากมีข้อผิดพลาด
       // รีเซ็ตค่าในฟอร์ม input
-      setValues({ email: '', password: '' });
+      // setValues({ email: '', password: '' });
       setError(error?.response?.data?.message || "เกิดข้อผิดพลาดไม่ทราบสาเหตุ");
     }
   };
