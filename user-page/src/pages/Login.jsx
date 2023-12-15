@@ -34,8 +34,8 @@ const Login = () => {
     // ตรวจสอบว่ามี session ใน localStorage หรือไม่
     const userId = localStorage.getItem('userId');
     const role = localStorage.getItem('role');
-    console.log(userId);
-    console.log('role',role);
+    // console.log(userId);
+    // console.log('role',role);
     
     if (userId) {
       navigate('/LoginHome'); // ถ้ามี session, นำทางไปยังหน้าหลัก
@@ -48,7 +48,7 @@ const Login = () => {
     Swal.fire({
       icon: "error",
       title: "Oops",
-      text: "Email and password cannot be empty!",
+      text: "Email and Password Worng!",
       // footer: '<a href="#">Why do I have this issue?</a>'
     });
   };
@@ -59,11 +59,7 @@ const Login = () => {
     event.preventDefault();
     
     try {
-      // if (values.email === '' || values.password === '') {
-      //   showAlert2();
-      //   return;
-      // }
-      
+  
       const { data: res } = await axios.post("http://localhost:8081/login", values);
       // alert('Login response:', res);
       localStorage.setItem("userId", res.userId);
@@ -72,16 +68,16 @@ const Login = () => {
       localStorage.setItem("feedback", res.feedback);
       localStorage.setItem("role", res.role);
       
-
-
-  
       if (res.role === "ADMIN") {
         window.location.href = 'http://localhost:5174/Dashboard'; // พอร์ตสำหรับ Admin
       } else {
         window.location.href = '/LoginHome'; // พอร์ตสำหรับ User
       }
     } catch (error) {
-      setError(error?.response?.data?.message);
+      showAlert2(); // แสดง alert หากมีข้อผิดพลาด
+      // รีเซ็ตค่าในฟอร์ม input
+      setValues({ email: '', password: '' });
+      setError(error?.response?.data?.message || "เกิดข้อผิดพลาดไม่ทราบสาเหตุ");
     }
   };
 

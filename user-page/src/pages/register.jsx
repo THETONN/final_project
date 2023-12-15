@@ -144,9 +144,22 @@ function Registers() {
       // ตรวจสอบว่าการแจ้งเตือนแสดงขึ้นจริงๆ ก่อนที่จะนำทางผู้ใช้
       // navigate("/Login");
     } catch (error) {
-      setError(error?.response?.data?.message);
-      // อย่าลืมจัดการแสดงข้อความข้อผิดพลาดใน UI
-    }
+      if (error?.response?.status === 409) {
+        // ถ้ามีผู้ใช้นี้อยู่แล้ว, แสดงข้อความแจ้งเตือน
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "มีผู้ใช้นี้อยู่แล้ว!",
+        });
+      } else {
+        // แสดงข้อความแจ้งเตือนเมื่อเกิดข้อผิดพลาดอื่นๆ
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error?.response?.data?.message || "เกิดข้อผิดพลาดไม่ทราบสาเหตุ",
+        });
+    }}
+    setValues(prevValues => ({ ...prevValues, password: '', confirm_password: '' }));;
   };
 
   return (
