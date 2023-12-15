@@ -44,7 +44,7 @@ function HomePredict() {
               <div className='ContainMain2'>
                 <h1 style={{ marginBottom: '1rem', color: '#9F7CFC' }}>Prediction results</h1>
                 <h3 style={{ marginBottom: '1rem', color: '#9F7CFC' }}>You have been assigned to Group 1</h3>
-                <h4 style={{ color: 'white' }}>Their age ranges from 21 to 40 years, with educational qualifications typically at the bachelor's degree level or lower. They are primarily private sector employees, including students, with monthly incomes falling within the range of 15,000 to 30,000 Baht. Most members in this group do not have personal vehicles and only a few members own motorcycles. They are mostly single, and their households typically consist of 2- 3 people. They express a desire to travel to the northern and central regions of Thailand, with a budget ranging from 500 to 2,500 Baht per person.</h4>
+                <h4 style={{ color: 'white' }}>This group consists of female and male mostly graduated under bachelor’s degree with age range less than 20 – 40 years old which have an income less than 15,000 – 45,000 baht per month , most of the member in this group have their own motor cycle , their home town mostly located in Western , North-East and Central of Thailand , The majority of them status is single with 1-3 people in their households , their preferences for traveling is 1-2 days per trip , mostly traveling with 1-4 people and they prefer to travel at the Central , Eastern , North-East and Western of Thailand , They like to travel during hot and cold season and most like to travel in  cultural including historical and recreational , with a budget of less than 500 – 2500 baht per person.</h4>
               </div>
             </Container>
           </div>
@@ -69,7 +69,7 @@ function HomePredict() {
             <div className='ContainMain2'>
               <div id='coverAllofBTN2'>
                 <h3 className='DetailPredictTour2'>
-                  <span className='TopicEachHome2'>Find perfect <span style={{ color: '#9F7CFC' }}>TRIP</span> with us!</span>
+                  <h1 className='TopicEachHome2'>Find perfect <span style={{ color: '#9F7CFC' }}>TRIP</span> with us!</h1>
                   <hr className='style52' />
                   <p className='DetailEachHome2'>Please take a few minutes to complete our survey and provide us with your valuable feedback</p>
                 </h3>
@@ -87,7 +87,7 @@ function HomePredict() {
 
       {/* {S-Questionnaire} */}
       <section id='sectionFeedback2'>
-        <Questionnaire />
+        <Questionnaire groupId={1} />
       </section>
       {/* {E-Questionnaire} */}
 

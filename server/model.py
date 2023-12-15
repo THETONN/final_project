@@ -41,13 +41,13 @@ def predict():
     print(standardized_data)
 
 
-    season_col = 'after_season'
-    if season_col in standardized_data.columns:
-        standardized_data[season_col] = standardized_data[season_col] * 2
-    else:
-        print(f"Warning: Column '{season_col}' not found in the data.")
+    # season_col = 'after_season'
+    # if season_col in standardized_data.columns:
+    #     standardized_data[season_col] = standardized_data[season_col] * 2
+    # else:
+    #     print(f"Warning: Column '{season_col}' not found in the data.")
 
-    print("standardized_data[season*2]:", standardized_data[season_col])
+    # print("standardized_data[season*2]:", standardized_data[season_col])
 
     print("Standardized data before pca:", standardized_data)
 

@@ -39,7 +39,7 @@ function PredictTour() {
                             <div className='col-sm-12 col-md-6'>
                                 <h1 className='logoPredictTour3 text-center'>
                                     <img style={{ borderRadius: '20px', height: '20rem', width: '100%', marginTop: '4.7rem' }}
-                                        src='./images/G2bangkok.jpg'
+                                        src='./images/G2Krabi.jpg'
                                         className='img-fluid d-inline-block align-top mx-auto'
                                         alt='RocketTrip'
                                     />
@@ -47,16 +47,16 @@ function PredictTour() {
                             </div>
                             <div className='col-sm-12 col-md-6'>
                                 <h3 className='DetailPredictTour'>
-                                    <p className='TopicEach'>Visit temples, take a boat cruise to admire the capital city of Thailand, and enjoy the delights of Siam Amazing Park</p>
+                                    <p className='TopicEach'>Immerse Yourself in Krabi: A 2-Day Journey Through Local Heritage and Scenic Marvels</p>
                                     <p className='DetailEach'>
-                                        <span style={{ color: "#9F7CFC" }}>Province</span> : Bangkok
+                                        <span style={{ color: "#9F7CFC" }}>Province</span> : Krabi
                                         <br />
-                                        <span style={{ color: "#9F7CFC" }}>Price</span> : 4,200 Bath
+                                        <span style={{ color: "#9F7CFC" }}>Price</span> : 3,100 Bath
                                         <br />
-                                        <span style={{ color: "#9F7CFC" }}>Period</span> : 3 Days 2 Nights
+                                        <span style={{ color: "#9F7CFC" }}>Period</span> : 2 Days 1 Nights
                                         <br /><br />
                                         <p style={{ marginBottom: '2rem' }}> <span style={{ paddingLeft: '1rem' }}>Embark </span>
-                                            on a mesmerizing journey through the heart of Thailand with our 3-day tour. Explore the spiritual wonders of Wat Phra Sri Rattana Satsadaram and Wat Pho, cruise along the enchanting Chao Phraya River, and indulge in the vibrant nightlife of the capital city. Immerse yourself in cultural richness at Wat Arun and shop freely at the iconic Icon Siam. Be captivated by the spectacular ICONIC Multimedia Water Features show and enjoy leisurely shopping. Conclude your adventure with a visit to Siam Amazing Park, promising fun-filled attractions and delightful meals. An unforgettable Thai experience awaits you!</p>
+                                            on an enriching 2-day adventure with our "Discover Krabi's Charm" tour. Immerse yourself in the cultural tapestry of Lanta Old Town, savor delectable meals at NAHM restaurant, and explore historical landmarks at Wat Maha That Wachiramongkol. From the vibrant markets of OTOP to the pristine beaches of Promthep Cape, this tour seamlessly blends cultural exploration, culinary delights, and breathtaking natural wonders. Join us for an unforgettable journey through the captivating landscapes of Krabi!</p>
 
                                         <div className='buttonContainer'>
                                             <button className='btnEach' style={{ width: '50%', marginRight: '1rem' }} onClick={handleDetailsClick}>More Details</button>
@@ -75,33 +75,40 @@ function PredictTour() {
                 <div className="detailsModal">
                     <div className="modalContent">
                         <div className='modalContentDetail'>
-                            <h4 style={{ color: '#6800C4' }}>Visit temples, take a boat cruise to admire the capital city of Thailand, and enjoy the delights of Siam Amazing Park</h4>
+                            <h4 style={{ color: '#6800C4' }}>Immerse Yourself in Krabi: A 2-Day Journey Through Local Heritage and Scenic Marvels</h4>
                             <br />
                             <h4 style={{ paddingBottom: '1rem' }}>Day 1
                             </h4>
-                            <p><span style={{ color: '#6800C4' }}>08.00 a.m. : </span>Meet up at the specified meeting point and departure on a journey.</p>
-                            <p><span style={{ color: '#6800C4' }}>09.30 a.m. : </span>Visit Wat Phra Sri Rattana Satsadaram, also known as the Temple of the Emerald Buddha.</p>
-                            <p><span style={{ color: '#6800C4' }}>12.30 a.m. : </span>Have lunch.</p>
-                            <p><span style={{ color: '#6800C4' }}>02.00 p.m. : </span>Visit Wat Phra Chetuphon Wimon Mangkhalaram, also known as Wat Pho.</p>
-                            <p><span style={{ color: '#6800C4' }}>04.00 p.m. : </span> Take a long-tail boat cruise to observe the way of life on both sides of the canals along the Chao Phraya River during the evening.</p>
-                            <p><span style={{ color: '#6800C4' }}>06.30 p.m. : </span>Dine for dinner and return to the hotel for relaxation.</p>
+                            <p><span style={{ color: '#6800C4' }}>10.00 a.m. : </span>Meeting at the meeting point at the arrival hall next to the Krabi international airport.</p>
+                            <p><span style={{ color: '#6800C4' }}>11.00 a.m. : </span>Vistied  Lanta Old Town.</p>
+                            <p><span style={{ color: '#6800C4' }}>12.00 a.m. : </span>Enjoy lunch meal at  NAHM restaurant.</p>
+                            <p><span style={{ color: '#6800C4' }}>01.00 p.m. : </span>Visit historical landmarks at Wat Maha That Wachiramongkol.</p>
+                            <p><span style={{ color: '#6800C4' }}>02.00 p.m. : </span> Visited the OTOP shop.</p>
+                            <p><span style={{ color: '#6800C4' }}>03.30 p.m. : </span>Visit the Promthep Cape including Kata Beach, Karon Beach และ Patong Beach.</p>
+                            <p><span style={{ color: '#6800C4' }}>06.00 p.m. : </span>
+                                <p><span style={{ color: '#6800C4' }}>03.30 p.m. : </span>Visit the Promthep Cape including Kata Beach, Karon Beach และ Patong Beach.</p></p>
                             <br />
 
                             <h4 style={{ paddingBottom: '1rem' }}>
                                 Day 2</h4>
-                            <p><span style={{ color: '#6800C4' }}>07.00 a.m. : </span> Breakfast service.</p>
-                            <p><span style={{ color: '#6800C4' }}>09.30  a.m. : </span>Visit Wat Arun Ratchawararam Ratchawaramahawihan, the beautiful temple with its stunning pagoda along the banks of the Chao Phraya River.</p>
-                            <p><span style={{ color: '#6800C4' }}>11.30 a.m. : </span>Take you to Icon Siam and having lunch at Icon Siam. Enjoy the freedom to choose and dine at your leisure.</p>
-                            <p><span style={{ color: '#6800C4' }}>02.00 p.m. : </span>Experience The ICONIC Multimedia Water Features show, featuring synchronized water dances with lights, colors, sound, and multimedia elements.</p>
-                            <p><span style={{ color: '#6800C4' }}>03.30 p.m. : </span>Allowing free time for shopping according to personal preferences.</p>
-                            <p><span style={{ color: '#6800C4' }}>05.00 p.m. : </span>Return to the hotel and have dinner at the accommodation.</p>
+                            <p><span style={{ color: '#6800C4' }}>08.00 a.m. : </span> – Having Breakfast at the hotel.</p>
+                            <p><span style={{ color: '#6800C4' }}>09.00  a.m. : </span>Traveling from the hotel to the port.</p>
+                            <p><span style={{ color: '#6800C4' }}>10.30 a.m. : </span>Travel to koh-klang Krabi to  Study the way of life of indigenous people.</p>
+                            <p><span style={{ color: '#6800C4' }}>11.30 a.m. : </span>Watching the show and do the activity with Indigenous peoples.</p>
+                            <p><span style={{ color: '#6800C4' }}>12.30 a.m. : </span>Having lunch at Krabi Koh Klang Seafood Restaurant on Farm.</p>
+                            <p><span style={{ color: '#6800C4' }}>01.30 p.m. : </span>Visit the Mud Crabs Sculpture.</p>
+                            <p><span style={{ color: '#6800C4' }}>03.30 p.m. : </span>Visit the hot waterfall, emerald pool.</p>
+                            <p><span style={{ color: '#6800C4' }}>04.30 p.m. : </span>Enjoy your dinner at Wangsai Seafood.</p>
                             <br />
 
                             <h4 style={{ paddingBottom: '1rem' }}>
                                 Day 3</h4>
-                            <p><span style={{ color: '#6800C4' }}>07.00 a.m. : </span> Take you to Siam Amazing Park and have breakfast on the way.</p>
-                            <p><span style={{ color: '#6800C4' }}>09.00  p.m. : </span>Arrive at Siam Amazing Park and distribute lunch vouchers, along with a scheduled time for the return journey.</p>
-                            <p><span style={{ color: '#6800C4' }}>04.00 a.m. : </span>Return journey.</p>
+                            <p><span style={{ color: '#6800C4' }}>09.00 a.m. : </span>Having a breakfast at the hotel and check out.</p>
+                            <p><span style={{ color: '#6800C4' }}>10.00  a.m. : </span>Leaving hotel and travel to Laem Sak Tourism Community.</p>
+                            <p><span style={{ color: '#6800C4' }}>11.00 a.m. : </span>Go to see the way of life of Laem Sak community.</p>
+                            <p><span style={{ color: '#6800C4' }}>12.00 a.m. : </span>Have a lunch at Khaothong Terrace Restaurant.</p>
+                            <p><span style={{ color: '#6800C4' }}>01.30 p.m. : </span>Watch the Manohra Rongngen show.</p>
+                            <p><span style={{ color: '#6800C4' }}>03.00 a.m. : </span>Heading back to the Krabi International Airport.</p>
                         </div>
                         <button onClick={handleCloseDetails}>Close</button>
                     </div>
@@ -115,7 +122,7 @@ function PredictTour() {
                             <div className='col-sm-12 col-md-6'>
                                 <h1 className='logoPredictTour3 text-center'>
                                     <img style={{ borderRadius: '20px', height: '20rem', width: '100%', marginTop: '4.7rem' }}
-                                        src='./images/G2Suphan Buri.jpeg'
+                                        src='./images/G2Sukhothai.jpg'
                                         className='img-fluid d-inline-block align-top mx-auto'
                                         alt='RocketTrip'
                                     />
@@ -123,16 +130,16 @@ function PredictTour() {
                             </div>
                             <div className='col-sm-12 col-md-6'>
                                 <h3 className='DetailPredictTour'>
-                                    <p className='TopicEach'>Tour a Cultural Journey through History and Nature, and Exploring Towering Observatories and Premier Shopping Spots</p>
+                                    <p className='TopicEach'>Explore Sukhothai: Embark on a 3-Day Journey through Ancient Temples, Artistic Workshops, and Local Heritage.</p>
                                     <p className='DetailEach'>
-                                        <span style={{ color: "#9F7CFC" }}>Province</span> : Suphan Buri
+                                        <span style={{ color: "#9F7CFC" }}>Province</span> : Sukhothai
                                         <br />
-                                        <span style={{ color: "#9F7CFC" }}>Price</span> : 4,600 Bath
+                                        <span style={{ color: "#9F7CFC" }}>Price</span> : 3,800 Bath
                                         <br />
                                         <span style={{ color: "#9F7CFC" }}>Period</span> : 3 Days 2 Night
                                         <br /><br />
                                         <p style={{ marginBottom: '2rem' }}> <span style={{ paddingLeft: '1rem' }}>Embark </span>
-                                            on a captivating 3-day journey through the cultural heart of Thailand, where history and nature intertwine seamlessly. Explore the vibrant markets, serene temples, and the rich heritage of Suphanburi, all while indulging in local flavors. Experience the spiritual essence of Thai rice farmers, pay homage at significant temples, and marvel at the enchanting Dragon Paradise Park. Ascend Banhan Chaemsai Tower for breathtaking views and unwind at the luxurious Vasidtee City Hotel. Immerse yourself in the charm of Sam Chuk's Hundred Years Market and witness the cultural tapestry of Wat Phai Rong Wua. This odyssey promises a perfect blend of history, nature, and unforgettable moments.</p>
+                                            on an enriching 3-day adventure with our "Explore Sukhothai" tour. Immerse yourself in the ancient charm of temples, engage in artistic workshops, and delve into the local heritage of Sukhothai. This carefully curated itinerary promises a unique blend of cultural exploration and hands-on experiences, providing an unforgettable journey through the heart of Thailand's historical treasures. Join us for an immersive and insightful exploration!</p>
 
                                         <div className='buttonContainer'>
                                             <button className='btnEach' style={{ width: '50%', marginRight: '1rem' }} onClick={handleDetailsClick2}>More Details</button>
@@ -151,37 +158,38 @@ function PredictTour() {
                 <div className="detailsModal">
                     <div className="modalContent">
                         <div className='modalContentDetail'>
-                            <h4 style={{ color: '#6800C4' }}>Tour a Cultural Journey through History and Nature, and Exploring Towering Observatories and Premier Shopping Spots</h4>
+                            <h4 style={{ color: '#6800C4' }}>Explore Sukhothai: Embark on a 3-Day Journey through Ancient Temples, Artistic Workshops, and Local Heritage.</h4>
                             <br />
                             <h4 style={{ paddingBottom: '1rem' }}>Day 1</h4>
-                            <p><span style={{ color: '#6800C4' }}>06.00 a.m. : </span>Meet up at the specified meeting point and departure on a journey.</p>
-                            <p><span style={{ color: '#6800C4' }}>08.00 a.m. : </span>Invite you to savor local cuisine at a native restaurant.</p>
-                            <p><span style={{ color: '#6800C4' }}>09.30 a.m. : </span>Take you on a journey to Bueng Chawak.</p>
-                            <p><span style={{ color: '#6800C4' }}>10.30 a.m. : </span>Traveling to the Thai Buffalo Conservation Village.</p>
-                            <p><span style={{ color: '#6800C4' }}>12.00 p.m. : </span>Dine for lunch at a local restaurant.</p>
-                            <p><span style={{ color: '#6800C4' }}>02.00 p.m. : </span>Journey to Khum Khun Phaen, an art center that portrays the literary and historical significance of Khun Chang and Khun Phaen</p>
-                            <p><span style={{ color: '#6800C4' }}>04.00 p.m. : </span>Proceeding next to the Sukhothai National Historical Park in Suphanburi, a site that gathers the historical narratives of the city of Suphan.</p>
-                            <p><span style={{ color: '#6800C4' }}>06.30 p.m. : </span>Accompany you to check in at the Vassanti Hotel, where you'll enjoy dinner and have the opportunity to relax at your leisure.</p>
+                            <p><span style={{ color: '#6800C4' }}>09:00 a.m. : </span>Meeting at the Sukhothai airport and then guide will picking up and head to Organic Agriculture Project. </p>
+                            <p><span style={{ color: '#6800C4' }}>10.00 a.m. : </span>Activities at the Organic Agriculture Project such as plucking seedlings , transplant rice seedlings , etc.</p>
+                            <p><span style={{ color: '#6800C4' }}>12.00 a.m. : </span>Having lunch at  krua sukho Organic Agriculture Project.</p>
+                            <p><span style={{ color: '#6800C4' }}>01.00 p.m. : </span>Travel to sukhothai historical park.</p>
+                            <p><span style={{ color: '#6800C4' }}>02.00 p.m. : </span>Visit important places within the park such as Wat Mahathat, Wat Chana Songkhram, Wat Phra Phai Luang, Wat Si Chum.</p>
+                            <p><span style={{ color: '#6800C4' }}>04.00 p.m. : </span>- Leave the sukhothai historical park.</p>
+                            <p><span style={{ color: '#6800C4' }}>05.00 p.m. : </span>Travel to the Sukhothai walking street.</p>
+                            <p><span style={{ color: '#6800C4' }}>07.00 p.m. : </span>Checked-in at Legendha Sukhothai Resort and take a rest at your leisure.</p>
                             <br />
 
                             <h4 style={{ paddingBottom: '1rem' }}>Day 2</h4>
-                            <p><span style={{ color: '#6800C4' }}>07.30 a.m. : </span>Have breakfast in the room at Vasidtee City Hotel</p>
-                            <p><span style={{ color: '#6800C4' }}>08.30  a.m. : </span>Take you on a journey to Nakhia, a learning center that showcases the lifestyle and spiritual essence of Thai rice farmers.</p>
-                            <p><span style={{ color: '#6800C4' }}>09.30 p.m. : </span>Traveling to Wat Pa Lelai Worawihan, an important temple that serves as a spiritual center for the local community in Suphanburi province.</p>
-                            <p><span style={{ color: '#6800C4' }}>11.00 p.m. : </span>Have lunch.</p>
-                            <p><span style={{ color: '#6800C4' }}>01.00 p.m. : </span>Take you on a journey to the Dragon Paradise Park</p>
-                            <p><span style={{ color: '#6800C4' }}>03.00 p.m. : </span>Traveling to Banhan Chaemsai Tower, the first and tallest observation tower in Thailand.</p>
-                            <p><span style={{ color: '#6800C4' }}>05.00 p.m. : </span>Accompany you to check in at the Vassanti Hotel, where you'll enjoy dinner and have the opportunity to relax at your leisure.</p>
+                            <p><span style={{ color: '#6800C4' }}>08.00 a.m. : </span>Breakfast at the hotel.</p>
+                            <p><span style={{ color: '#6800C4' }}>09.00  a.m. : </span>Travel and sightseeing around the srisachanarai historical park.</p>
+                            <p><span style={{ color: '#6800C4' }}>10.00 a.m. : </span>Travel to baan pri-da-rom.</p>
+                            <p><span style={{ color: '#6800C4' }}>11.00 a.m. : </span>Activity : Drawing Sangkhalok patterns on cloth at Baan Pridapirom. </p>
+                            <p><span style={{ color: '#6800C4' }}>12.30 a.m. : </span>Enjoy lunch meal at  MAI KLANG KRUNG RESTAURANT.</p>
+                            <p><span style={{ color: '#6800C4' }}>01.30 p.m. : </span>Travel to ancient house community.</p>
+                            <p><span style={{ color: '#6800C4' }}>02.30 p.m. : </span>Sightseeing around the ancient house community which have a history of 100 years.</p>
+                            <p><span style={{ color: '#6800C4' }}>04.00 p.m. : </span>Travel back to the hotel and take a rest at you leisure. </p>
+                            <p><span style={{ color: '#6800C4' }}>05.00 p.m. : </span>Enjoy a local dinner food at the hotel.</p>
                             <br />
 
                             <h4 style={{ paddingBottom: '1rem' }}>Day 3</h4>
-                            <p><span style={{ color: '#6800C4' }}>07.30 a.m. : </span>Have breakfast in the room at Vasidtee City Hotel</p>
-                            <p><span style={{ color: '#6800C4' }}>08.30  a.m. : </span>Embark on a journey to Sam Chuk, the Hundred Years Market.</p>
-                            <p><span style={{ color: '#6800C4' }}>10.30 p.m. : </span>Traveling to Wat Phai Rong Wua, paying respects to the Buddha's footprint and the giant statue of Guanyin, and making a stop to explore the Heavenly Garden and Hell Garden.</p>
-                            <p><span style={{ color: '#6800C4' }}>12.00 p.m. : </span>Have lunch.</p>
-                            <p><span style={{ color: '#6800C4' }}>01.30 p.m. : </span>Taking you to Wat Thap Kradan, also known as the popular Wat Phum Pong.</p>
-                            <p><span style={{ color: '#6800C4' }}>02.30 p.m. : </span>Traveling to Akchai Salila Suphan, the largest souvenir shop in Suphanburi province.</p>
-                            <p><span style={{ color: '#6800C4' }}>05.00 p.m. : </span>Return journey.</p>
+                            <p><span style={{ color: '#6800C4' }}>08.00 a.m. : </span>Breakfast at the hotel.</p>
+                            <p><span style={{ color: '#6800C4' }}>09.30  a.m. : </span>Visit Wat Phiphat Mongkol It is an old temple, approximately 700 years old.</p>
+                            <p><span style={{ color: '#6800C4' }}>11.00 a.m. : </span>Travel to the National Museum See sculptures and Buddha images from various periods before the Sukhothai period.</p>
+                            <p><span style={{ color: '#6800C4' }}>12.00 a.m. : </span>Have lunch at Sukhothai Restaurant.</p>
+                            <p><span style={{ color: '#6800C4' }}>01.30 p.m. : </span>Visit the museum National Sawan Woranayok.</p>
+                            <p><span style={{ color: '#6800C4' }}>02.30 p.m. : </span>Return to the city and travel to the airport.</p>
                         </div>
                         <button onClick={handleCloseDetails2}>Close</button>
                     </div>

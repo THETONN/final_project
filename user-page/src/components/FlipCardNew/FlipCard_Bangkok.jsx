@@ -29,11 +29,12 @@ const FlipCard_Bangkok = () => {
       <div className="flip-card-inner ">
         <div className=" flip-card-front">
           <Card className="card">
-            <Card.Img className='imageCard' variant="top" src="./images/BangkokCard.png" />
+            <Card.Img className='imageCard' variant="top" src="./images/WhiteJD.jpg" />
             <Card.Body>
-              <Card.Title className='card-name-each'>Bangkok, Thailand</Card.Title>
+              <Card.Title className='card-name-each'>Nonthaburi, Thailand</Card.Title>
               <Card.Text>
-                Wat Arun Ratchawararam Ratchawaramahawihan
+
+                Wat Paramaiyikawat
               </Card.Text>
             </Card.Body>
           </Card>
@@ -41,9 +42,10 @@ const FlipCard_Bangkok = () => {
         <div className="flip-card-back">
           <Card className="card">
             <Card.Body>
-              <Card.Title className='cardTitleBack'>Wat Arun Ratchawararam Ratchawaramahawihan</Card.Title>
+              <Card.Title className='cardTitleBack'>
+                Wat Paramaiyikawat</Card.Title>
               <Card.Text className='cardTextBack'>
-                Bangkok is the capital and most populous city of Thailand. It is known for its vibrant street life, beautiful temples, and delicious street food.Wat Arun is among the best known of Thailand's landmarks. The first light of the morning reflects off the surface of the temple with pearly iridescence.
+                Wat Paramaiyikawat, an ancient Buddhist temple on Ko Kret in Nonthaburi Province, Thailand, was built in the late Ayutthaya period and initially named "Wat Pak Ao." Classified as a second-rank royal temple, its historical importance is tied to the Chao Phraya River region.
               </Card.Text>
               {/* <Button className='cardBTN' variant="primary">Back</Button> */}
             </Card.Body>

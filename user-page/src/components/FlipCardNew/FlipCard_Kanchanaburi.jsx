@@ -26,19 +26,20 @@ const Kanchanaburi = () => {
       <div className="flip-card-inner">
         <div className="flip-card-front">
           <Card className="card">
-            <Card.Img className="imageCard" variant="top" src="./images/Kanchanaburi.jpg" />
+            <Card.Img className="imageCard" variant="top" src="./images/Sukhothai Historical Park.jpg" />
             <Card.Body>
-              <Card.Title>Kanchanaburi, Thailand</Card.Title>
-              <Card.Text>The Bridge Over the River Kwai</Card.Text>
+              <Card.Title>Sukhothai, Thailand</Card.Title>
+              <Card.Text>Sukhothai Historical Park</Card.Text>
             </Card.Body>
           </Card>
         </div>
         <div className="flip-card-back">
           <Card className="card">
             <Card.Body>
-              <Card.Title className="cardTitleBack">The Bridge Over the <br /> River Kwai</Card.Title>
+              <Card.Title className="cardTitleBack">Sukhothai Historical Park</Card.Title>
               <Card.Text className="cardTextBack">
-                The Kwae River bridge in Kanchanaburi, Thailand, showcases a unique semi-circular steel structure. Serving as a crucial path for the Thonburi - Nam Tok railway, it blends truss and reinforced concrete sections. Located around 4 kilometers north of the city center, the bridge holds historical importance as part of the Death Railway.</Card.Text>
+
+                Sukhothai Historical Park, a significant historical site in Thailand, covers the ancient Sukhothai Kingdom's ruins, the pivotal governing hub in the 18th-19th centuries. Situated in the Muang Kao sub-district, it symbolizes the historical influence of the Sukhothai Empire in northern Thailand.</Card.Text>
             </Card.Body>
           </Card>
         </div>

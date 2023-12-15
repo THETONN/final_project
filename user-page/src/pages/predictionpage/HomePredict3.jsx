@@ -32,9 +32,10 @@ function HomePredict3() {
       }, [navigate]);
 
 
-    return (
+      return (
         <div className='App2'>
             <MainNavbarLog />
+            {/* <MainNavbar /> */}
             <div style={{ backgroundColor: 'black', paddingTop: '5rem' }}>
                 <section id='sectionAbout2'>
                     <div className='mainTopHome3'>
@@ -42,7 +43,7 @@ function HomePredict3() {
                             <div className='ContainMain2'>
                                 <h1 style={{ marginBottom: '1rem', color: '#9F7CFC' }}>Prediction results</h1>
                                 <h3 style={{ marginBottom: '1rem', color: '#9F7CFC' }}>You have been assigned to Group 3</h3>
-                                <h4 style={{ color: 'white' }}>This cluster mainly consists of college students or recent graduates aged around 21 to 30 years old. Most have bachelor’s degrees in education. Their income is mostly less than 15,000 Baht per month. They own motorcycles or other vehicles, but they tend to use private cars or airplanes for travel. The majority of their hometown is located in the southern region and a minority is located in the northern region of Thailand. The majority are single, and households typically contain 4 or more people. They express a desire to travel for 3 - 4 days per trip, with two to more than 5 trips per year. The regions they want to explore are the north and south of Thailand, with a budget exceeding 3,500 Baht per person.</h4>
+                                <h4 style={{ color: 'white' }}>This group is consisting of Alternative and female, most of them are students graduated Bachelor’s degree or studying , with age less than 20 – 30 years old , Their income mostly less than 15,000 baht per month , They mostly own the other vehicle apart from the private car and also own a motorcycle and some of them don’t have any of it . Their hometown located in eastern , south , north-east and the north of Thailand , the majority of their status is single with more than 4 peoples in their household, They prefer to travel for 3-4 or more than 4 days per trip with more than 5 peoples in each trip. They mostly like to travel with airplane or private car , they like to travel during both cold and hot season and like to travel in recreational and ethnic with a budget more than 2,500 baht per person. They mostly travel during weekends or holidays and lovely to travel more than twice per years</h4>
                             </div>
                         </Container>
                     </div>
@@ -84,19 +85,19 @@ function HomePredict3() {
 
 
             {/* {S-Questionnaire} */}
-            <section id='sectionFeedback'>
-                <Questionnaire />
+            <section id='sectionFeedback2'>
+                <Questionnaire groupId={3} />
             </section>
             {/* {E-Questionnaire} */}
 
             {/* S-Contact */}
-            <section id="sectionContact" className="scroll-section">
+            <section id="sectionContact2" className="scroll-section">
                 <Contact />
             </section>
             {/* E-Contact */}
 
             {/* S-Footer */}
-            <section id="sectionFooter">
+            <section id="sectionFooter2">
                 <Footer />
             </section>
             {/* E-Footer */}

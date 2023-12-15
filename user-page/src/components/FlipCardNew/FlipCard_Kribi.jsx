@@ -15,11 +15,11 @@ const FlipCard_Kribi = () => {
             <div className="flip-card-inner">
                 <div className="flip-card-front">
                     <Card className="card">
-                        <Card.Img className='imageCard' variant="top" src="./images/SuphanBuri.jpg" />
+                        <Card.Img className='imageCard' variant="top" src="./images/Similan Islands.jpg" />
                         <Card.Body>
-                            <Card.Title>Suphan Buri, Thailand</Card.Title>
+                            <Card.Title>Phuket, Thailand</Card.Title>
                             <Card.Text>
-                                The Celestial Dragon Village
+                                Similan Islands
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -27,10 +27,10 @@ const FlipCard_Kribi = () => {
                 <div className="flip-card-back">
                     <Card className="card">
                         <Card.Body>
-                            <Card.Title className='cardTitleBack'>The Celestial Dragon Village
+                            <Card.Title className='cardTitleBack'>Similan Islands
                             </Card.Title>
                             <Card.Text className='cardTextBack'>
-                                During his tenure as Prime Minister, Banyar Sillapacharoen led the establishment of a museum in Suphan Buri Province, Thailand. This museum highlights the history of the local Chinese community and Chinese culture. Positioned near the main shrine along the Suphan Buri River, the initiative commemorates the 20th anniversary of Thai-Chinese diplomatic relations in 2539 B.E.
+                                Koh Similan, also called the Similan Islands or "Nine Islands" in Malay, is the focal point of the Similan Islands National Park and the largest in the group. The name "Similan" translates to "nine," reflecting the islands' sequence. Notably, the island is recognized for its unique sail rock formations.
                             </Card.Text>
                             {/* <Button className='cardBTN' variant="primary">Back</Button> */}
                         </Card.Body>

@@ -43,7 +43,7 @@ function HomePredict2() {
               <div className='ContainMain2'>
                 <h1 style={{ marginBottom: '1rem', color: '#9F7CFC' }}>Prediction results</h1>
                 <h3 style={{ marginBottom: '1rem', color: '#9F7CFC' }}>You have been assigned to Group 2</h3>
-                <h4 style={{ color: 'white' }}>This cluster mainly consists of the working age group, aged 31 to 60. The education background bachelor’s degrees to advanced degrees. The income typically falls within the range of 30,000 to more than 60,000 Baht per month. They mostly own private cars and prefer to use them for traveling. Their hometowns are primarily located in central Thailand. The majority are married, and their households typically consist of 4 - 5 people. They express a desire to travel for 3 - 4 days per trip, with 2 - 3 trips per year. The preferred travel region is mainly central Thailand, with a budget of more than 3,500 baht per person.</h4>
+                <h4 style={{ color: 'white' }}>This group consists of a male and mostly a working age which more than 31 years old, graduated higher than bachelor’s degree level. Their income is mostly more than 30,000 baht per month , mostly people in this group have their own private car ,  the majority of them status are married and they prefer to travel in historical including ethnic with a budget of more than 3500 baht per person.</h4>
               </div>
             </Container>
           </div>
@@ -86,7 +86,7 @@ function HomePredict2() {
 
       {/* {S-Questionnaire} */}
       <section id='sectionFeedback2'>
-        <Questionnaire />
+        <Questionnaire groupId={2} />
       </section>
       {/* {E-Questionnaire} */}
 

@@ -26,19 +26,20 @@ const ChonBuri = () => {
             <div className="flip-card-inner">
                 <div className="flip-card-front">
                     <Card className="card">
-                        <Card.Img className="imageCard" variant="top" src="./images/Tak.jpg" />
+                        <Card.Img className="imageCard" variant="top" src="./images/Samet2.jpg" />
                         <Card.Body>
-                            <Card.Title>Tak, Thailand</Card.Title>
-                            <Card.Text>Doi Hua Mod</Card.Text>
+                            <Card.Title>Rayong, Thailand</Card.Title>
+                            <Card.Text>Koh Kaew Yai</Card.Text>
                         </Card.Body>
                     </Card>
                 </div>
                 <div className="flip-card-back">
                     <Card className="card">
                         <Card.Body>
-                            <Card.Title className="cardTitleBack">Doi Hua Mod</Card.Title>
+                            <Card.Title className="cardTitleBack">Koh Kaew Yai</Card.Title>
                             <Card.Text className="cardTextBack">
-                                Doi Hua Mod, located in Tambon Ung Pang, Umphang District, Tak Province, is a renowned fog-viewing spot within the Umphang Wildlife Sanctuary. The summit is adorned with grass, low bushes, and drought-resistant trees like pines and teak, which blossom in the rainy season. The landscape is characterized by the absence of large trees.                            </Card.Text>
+                                Koh Samet, triangular in shape, is linked to the legendary Glass Island from Sunthorn Phu's "Phra Aphai Mani." This connection may arise from its pristine sandy beaches. Notably, Sai Kaew Beach features a mermaid sculpture from the Thai literary masterpiece.
+                            </Card.Text>
                         </Card.Body>
                     </Card>
                 </div>
