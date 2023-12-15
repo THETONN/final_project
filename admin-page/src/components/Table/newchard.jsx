@@ -41,6 +41,8 @@ export default function Chartnew() {
       // สมมติว่า response คือ array ของ average ratings สำหรับแต่ละกลุ่ม
       const labels = response.data.map(item => `Group ${item.groupId}`);
       const dataValues = response.data.map(item => item.averageRating);
+      console.log(labels);
+      console.log(dataValues);
 
       setChartData2({
         labels: labels,

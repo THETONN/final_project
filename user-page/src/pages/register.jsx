@@ -12,12 +12,12 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { Password } from 'primereact/password';
-import { Divider } from 'primereact/divider';
+// import { Password } from 'primereact/password';
+// import { Divider } from 'primereact/divider';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function Registers() {
   const [values, setValues] = useState({
@@ -33,29 +33,34 @@ function Registers() {
 
   const handleRegister = async (userData) => {
     try {
-      const response = await axios.post('http://localhost:8081/register', userData);
-      
+      const response = await axios.post(
+        "http://localhost:8081/register",
+        userData
+      );
+
       // ตรวจสอบว่า response มี data หรือไม่
       if (response.data) {
         // ตั้งค่า userId ใน localStorage
-        localStorage.setItem('userId', response.data.userId);
-        
+        localStorage.setItem("userId", response.data.userId);
+
         // ตรวจสอบว่ามี groupId ใน response หรือไม่
-        if(response.data.groupId) {
-          localStorage.setItem('groupId', response.data.groupId);
+        if (response.data.groupId) {
+          localStorage.setItem("groupId", response.data.groupId);
         } else {
           // ถ้าไม่มี groupId อาจจะเป็นเพราะเป็นผู้ใช้ใหม่ที่ยังไม่ได้ทำการจัดกลุ่ม
-          console.log('New user registered without groupId. They may need to complete a questionnaire.');
+          console.log(
+            "New user registered without groupId. They may need to complete a questionnaire."
+          );
         }
-        
+
         // นำทางไปยังหน้าแรกหรือหน้าที่เหมาะสม
-        navigate('/homepage');
+        navigate("/homepage");
       } else {
         // จัดการกรณีที่ไม่ได้รับ response data อย่างเหมาะสม
-        throw new Error('Registration did not return expected data.');
+        throw new Error("Registration did not return expected data.");
       }
     } catch (error) {
-      console.error('Registration failed:', error);
+      console.error("Registration failed:", error);
       // จัดการกับข้อผิดพลาดที่นี่
     }
   };
@@ -84,8 +89,45 @@ function Registers() {
     });
   };
 
+  const [passwordErrors, setPasswordErrors] = useState([]);
+
+  // ฟังก์ชันตรวจสอบความแข็งแรงของรหัสผ่าน
+  const validatePassword = (password) => {
+    let errors = [];
+    if (password.length < 8) {
+      errors.push("ต้องมีอย่างน้อย 8 ตัวอักษร!");
+    }
+    if (!/[A-Z]/.test(password)) {
+      errors.push("ต้องมีตัวอักษรตัวใหญ่อย่างน้อย 1 ตัว!");
+    }
+    if (!/[a-z]/.test(password)) {
+      errors.push("ต้องมีตัวอักษรตัวเล็กอย่างน้อย 1 ตัว!");
+    }
+    if (!/\d/.test(password)) {
+      errors.push("ต้องมีตัวเลขอย่างน้อย 1 ตัว!");
+    }
+    if (!/[^A-Za-z0-9]/.test(password)) {
+      errors.push("ต้องมีตัวอักษรพิเศษอย่างน้อย 1 ตัว!");
+    }
+
+    setPasswordErrors(errors);
+    return errors.length === 0;
+  };
+
+  const handlePasswordChange = (e) => {
+    const password = e.target.value;
+    // อัปเดตรหัสผ่านในสถานะ values
+    setValues({ ...values, password: password });
+    // ตรวจสอบความแข็งแรงของรหัสผ่าน
+    validatePassword(password);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!validatePassword(values.password)) {
+      // ไม่ต้องแสดง Swal เพราะเราจะแสดงข้อผิดพลาดใต้ช่องรหัสผ่าน
+      return;
+    }
 
     try {
       if (values.password !== values.confirm_password) {
@@ -97,12 +139,10 @@ function Registers() {
         "http://localhost:8081/register",
         values
       );
-        showAlert();
-    
-      
+      showAlert();
+
       // ตรวจสอบว่าการแจ้งเตือนแสดงขึ้นจริงๆ ก่อนที่จะนำทางผู้ใช้
       // navigate("/Login");
-
     } catch (error) {
       setError(error?.response?.data?.message);
       // อย่าลืมจัดการแสดงข้อความข้อผิดพลาดใน UI
@@ -206,13 +246,19 @@ function Registers() {
                     type="password"
                     size="lg"
                     required
-                    onChange={(e) =>
-                      setValues({ ...values, password: e.target.value })
-                    }
+                    onChange={handlePasswordChange}
+                    value={values.password}
+                    // invalid={passwordErrors.length > 0}
+                    invalid={passwordErrors.length > 0 ? 'true' : undefined}
                   />
+                  {passwordErrors.map((error, index) => (
+                    <div key={index} className="text-danger mb-2 mt-0">
+                      <FontAwesomeIcon icon={faTimesCircle} /> {error}
+                    </div>
+                  ))}
 
                   {/* <Password onChange={(e) => setValues({...values, password: e.target.value})} header={header} footer={footer} toggleMask /> */}
-                  
+
                   <MDBInput
                     wrapperClass="mb-4 w-100"
                     label="Confirm Password"

@@ -315,7 +315,7 @@ const QuizMain = () => {
       setTimeout(() => {
         setIsLoading(false); // Stop loading after 5 seconds
         navigate(`/HomePredict${predictedGroup}`);
-      }, 3000);
+      }, 2000);
 
       // 3600000
       // switch (predictedGroup) {
