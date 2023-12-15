@@ -95,19 +95,24 @@ function Registers() {
   const validatePassword = (password) => {
     let errors = [];
     if (password.length < 8) {
-      errors.push("ต้องมีอย่างน้อย 8 ตัวอักษร!");
+      // errors.push("ต้องมีอย่างน้อย 8 ตัวอักษร!");
+      errors.push("Must be at least 8 characters!");
     }
     if (!/[A-Z]/.test(password)) {
-      errors.push("ต้องมีตัวอักษรตัวใหญ่อย่างน้อย 1 ตัว!");
+      // errors.push("ต้องมีตัวอักษรตัวใหญ่อย่างน้อย 1 ตัว!");
+      errors.push("Must contain at least one uppercase letter!");
     }
     if (!/[a-z]/.test(password)) {
-      errors.push("ต้องมีตัวอักษรตัวเล็กอย่างน้อย 1 ตัว!");
+      // errors.push("ต้องมีตัวอักษรตัวเล็กอย่างน้อย 1 ตัว!");
+      errors.push("Must contain at least one lowercase letter!");
     }
     if (!/\d/.test(password)) {
-      errors.push("ต้องมีตัวเลขอย่างน้อย 1 ตัว!");
+      // errors.push("ต้องมีตัวเลขอย่างน้อย 1 ตัว!");
+      errors.push("Must contain at least one number!");
     }
     if (!/[^A-Za-z0-9]/.test(password)) {
-      errors.push("ต้องมีตัวอักษรพิเศษอย่างน้อย 1 ตัว!");
+      // errors.push("ต้องมีตัวอักษรพิเศษอย่างน้อย 1 ตัว!");
+      errors.push("Must contain at least one special character!");
     }
 
     setPasswordErrors(errors);
