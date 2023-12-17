@@ -94,46 +94,54 @@ function QuestionandAnswer() {
             rows={4}
             rowsPerPageOptions={[4, 10, 25, 50]}
             tableStyle={{ minWidth: "50rem" }}
+            
           >
             <Column
               body={(data, options) => options.rowIndex + 1}
               header="#"
-              style={{ width: "5%" }}
+              style={{ width: "5%", }}
+              
             ></Column>
             <Column
-              field="	id_user"
+              field="id_users"
               header="user"
-              style={{ width: "15%" }}
+              style={{ width: "5%"}}
             ></Column>
             <Column
               field="Q1"
-              header="Q1"
-              style={{ width: "15%" }}
+              header="According to the prediction results from machine learning, how closely do the characteristics match yours?"
+              style={{ width: "20%", textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
+    headerStyle={{ minWidth: '120px', maxWidth: '200px' }}
+              
             ></Column>
             <Column
               field="Q2"
-              header="Q2"
-              style={{ width: "15%" }}
+              header="How well did our recommended tour package align with your personal interests and preferences?"
+              style={{ width: "20%", textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
+    headerStyle={{ minWidth: '120px', maxWidth: '200px' }}
             ></Column>
             <Column
               field="Q3"
-              header="Q3"
-              style={{ width: "15%" }}
+              header="How helpful were the tour recommendations in assisting you to find a suitable tour package?"
+              style={{ width: "20%", textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
+    headerStyle={{ minWidth: '120px', maxWidth: '200px' }}
             ></Column>
             <Column
               field="Q4"
-              header="Q4"
-              style={{ width: "15%" }}
+              header="How worthwhile and interesting are the tour packages we recommend?"
+              style={{ width: "20%", textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
+    headerStyle={{ minWidth: '120px', maxWidth: '200px' }}
             ></Column>
             <Column
               field="Q5"
-              header="Q5"
-              style={{ width: "15%" }}
+              header="How appropriate are the questions in our questionnaire?"
+              style={{ width: "20%", textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
+              headerStyle={{ minWidth: '120px', maxWidth: '200px' }}
             ></Column>
             <Column
               field="groupId"
               header="groupId"
-              style={{ width: "25%" }}
+              style={{ width: "5%" }}
             ></Column>
             
             {/* <Column
