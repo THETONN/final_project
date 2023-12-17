@@ -2,7 +2,6 @@
 TRAVEL PROGRAM RECOMMENDATION BY MACHINE LEARNING
 
 # Run user-page 
-Command to used in Final_project
   ## command run fron-end user-page
     cd user-page
     npm i
