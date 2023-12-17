@@ -28,6 +28,8 @@ function MainNavbar() {
     setGroupId(storedGroupId);
   }, []);
 
+  
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -96,7 +98,7 @@ function MainNavbar() {
               <Nav.Link
                 style={{ marginRight: 40, fontSize: 'large' }}
                 href="#About"
-                onClick={() => handleClick('sectionAbout')}
+                onClick={() => handleClick('sectionAbout2')}
               >
                 About
               </Nav.Link>
@@ -106,7 +108,7 @@ function MainNavbar() {
               <Nav.Link
                 style={{ marginRight: 40, fontSize: 'large' }}
                 href="#Contact"
-                onClick={() => handleClick('sectionContact')}
+                onClick={() => handleClick('sectionContact2')}
               >
                 Contact
               </Nav.Link>

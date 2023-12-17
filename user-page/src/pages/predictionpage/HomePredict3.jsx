@@ -86,7 +86,7 @@ function HomePredict3() {
 
             {/* {S-Questionnaire} */}
             <section id='sectionFeedback2'>
-                <Questionnaire groupId={3} />
+                <Questionnaire/>
             </section>
             {/* {E-Questionnaire} */}
 
