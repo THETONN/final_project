@@ -248,7 +248,7 @@ function MainDashUsers() {
 
           <Toolbar
             className="mb-4 mt-3 p-2"
-            left={leftToolbarTemplate}
+            // left={leftToolbarTemplate}
             right={rightToolbarTemplate}
           ></Toolbar>
 

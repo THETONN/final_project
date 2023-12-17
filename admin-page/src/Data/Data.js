@@ -55,12 +55,12 @@ export const SidebarData = [
         Link:'/Group'
 
     },
-    {
-        icon:  UilBusSchool,
-        heading: "Trip",
-        Link:'/Trip'
+    // {
+    //     icon:  UilBusSchool,
+    //     heading: "Trip",
+    //     Link:'/Trip'
 
-    },
+    // },
     {
         icon: UilSignOutAlt,
         heading: "SignOut",
