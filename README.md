@@ -120,11 +120,11 @@ TRAVEL PROGRAM RECOMMENDATION BY MACHINE LEARNING
     (88, 'Definitely not!', 19);
     
     INSERT INTO `feedback_question` (`id_feedback`, `question_feedback`) VALUES
-    (1, 'hi'),
+    (1, 'According to the prediction results from machine learning, how closely do the characteristics match yours?'),
     (2, 'How well did our recommended tour package align with your personal interests and preferences?'),
-    (3, 'Question 3: Did you find the recommended tour appealing based on your personal preferences?'),
-    (4, 'Question 4: How well did our recommended tour package align with your personal interests and preferences?'),
-    (5, 'Question 5: How well did our recommended tour package align with your personal interests and preferences?');
+    (3, 'How helpful were the tour recommendations in assisting you to find a suitable tour package?'),
+    (4, 'How worthwhile and interesting are the tour packages we recommend?'),
+    (5, 'How appropriate are the questions in our questionnaire?');
     
     INSERT INTO `mgroup` (`id_group`, `group_name`, `group_description`, `image`) VALUES
     (1, 'Group1', 'Their age ranges from 21 to 40 years, with educational qualifications typically at the bachelor\'s degree level or lower. They are primarily private sector employees, including students, with monthly incomes falling within the range of 15,000 to 30,000 Baht. Most members in this group do not have personal vehicles and only a few members own motorcycles. They are mostly single, and their households typically consist of 2 - 3 people. They express a desire to travel to the northern and central regions of Thailand, with a budget ranging from 500 to 2,500 Baht per person.', '/public/images/Cluster1.jpg'),
