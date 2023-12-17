@@ -49,6 +49,8 @@ def predict():
 
     # print("standardized_data[season*2]:", standardized_data[season_col])
 
+    
+
     print("Standardized data before pca:", standardized_data)
 
     # Apply PCA transformation on the standardized data
