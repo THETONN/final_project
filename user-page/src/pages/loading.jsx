@@ -34,7 +34,7 @@ const PageLoader = () => {
       <l-dot-stream size="150" speed="2.5" color="white"></l-dot-stream>
       <l-dot-stream size="150" speed="2.5" color="white"></l-dot-stream> */}
       {/* <div class="spinner"></div> */}
-      <div class="loading-text">Loading...</div>
+      <div class="loading-text">Your result is coming...</div>
       {/* <div class="circle"></div> */}
       {/* <div class="circle"></div> */}
       {/* <div class="circle"></div> */}
