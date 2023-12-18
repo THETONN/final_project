@@ -132,11 +132,11 @@ function Groupmain() {
           getGroup();
           Toast.fire({
             icon: "success",
-            title: "Update user success",
+            title: "Update group success",
           });
         })
         .catch((err) => {
-          console.error("Error updating user:", err);
+          console.error("Error updating group:", err);
           // Handle error
         });
     } else {
@@ -152,11 +152,11 @@ function Groupmain() {
         getGroup();
         Toast.fire({
           icon: "success",
-          title: "Add new user success",
+          title: "Add new group success",
         });
       })
       .catch((err) => {
-        console.error("Error adding user:", err);
+        console.error("Error adding group:", err);
         // Handle error
       });
     }
