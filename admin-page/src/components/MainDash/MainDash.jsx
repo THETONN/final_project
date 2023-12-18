@@ -8,7 +8,7 @@ const MainDash = () => {
     <div className="main-dash">
       
       <div className="dashboard-grid">
-        <div className="sidebar">
+        <div className="sidebar1">
           <h1>Dashboard</h1>
           {/* Sidebar content here */}
         </div>

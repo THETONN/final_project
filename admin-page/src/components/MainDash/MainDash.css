@@ -16,7 +16,12 @@
         align-items: center;
     }
 }
+.sidebar1{
+    margin-top: 2rem;
+    padding-left: 5rem;
+}
 h1{
+    
     color: var(--black);
 }
 h2{
